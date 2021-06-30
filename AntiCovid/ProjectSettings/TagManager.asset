@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Hospital
+  - Pharmacy
+  - VaksinPlace
+  - Officer
+  - Goverment
   layers:
   - Default
   - TransparentFX
@@ -39,6 +43,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: background
+    uniqueID: 4118988919
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

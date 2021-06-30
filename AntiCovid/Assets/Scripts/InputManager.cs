@@ -14,7 +14,8 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !PharmacyManager.instance.pharmacyBuyPanel.activeSelf && !VaksinManager.instance.vaksinPlaceBuyPanel.activeSelf 
+            && !HospitalManager.instance.hospitalBuyPanel.activeSelf && !OfficerManager.instance.officerBuyPanel.activeSelf && !Goverment.instance.govermentPanel.activeSelf)
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
@@ -26,19 +27,19 @@ public class InputManager : MonoBehaviour
                 }
                 else if(hit.collider.tag == "Pharmacy")
                 {
-
+                    PharmacyManager.instance.ShowBuyPharmacyPanel(true);
                 }
                 else if (hit.collider.tag == "Goverment")
                 {
-
+                    Goverment.instance.ShowGovermentPanel(true);
                 }
                 else if (hit.collider.tag == "Officer")
                 {
-
+                    OfficerManager.instance.ShowBuyOfficerPanel(true);
                 }
                 else if (hit.collider.tag == "VaksinPlace")
                 {
-
+                    VaksinManager.instance.ShowBuyVaksinPlacePanel(true);
                 }
             }
         }

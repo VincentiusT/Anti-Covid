@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hospital : MonoBehaviour
 {
-    private int capacity = 50;
-    private int buyPrice;
+    private int capacity = 100;
+    [SerializeField] private Slider slider;
     private int upgradePrice;
 
     private int hospitalizedPeoples;
@@ -17,6 +18,7 @@ public class Hospital : MonoBehaviour
     private void Start()
     {
         restTimeOriginal = restTime;
+        slider.maxValue = capacity;
     }
 
     private void Update()
@@ -30,6 +32,8 @@ public class Hospital : MonoBehaviour
         {
             restTime -= Time.deltaTime;
         }
+
+        updateSlider();
     }
 
     public void ReceiveSickPeople(int peoples)
@@ -51,13 +55,15 @@ public class Hospital : MonoBehaviour
     {
         if (hospitalizedPeoples < releaseCount)
         {
-            hospitalizedPeoples = 0;
             Citizen.instance.HealthyPeoples += hospitalizedPeoples;
+            Debug.Log("release from " + name + "  " + hospitalizedPeoples);
+            hospitalizedPeoples = 0;
         }
         else
         {
             hospitalizedPeoples -= releaseCount;
             Citizen.instance.HealthyPeoples += releaseCount;
+            Debug.Log("release from " + name + "  " + releaseCount);
         }
 
         if (Citizen.instance.HealthyPeoples >= Citizen.instance.TotalCitizen)
@@ -65,8 +71,13 @@ public class Hospital : MonoBehaviour
             Citizen.instance.HealthyPeoples = Citizen.instance.TotalCitizen;
         }
         Citizen.instance.HospitalizedPeoples = hospitalizedPeoples;
-        Debug.Log("release from "+ name + "  " + hospitalizedPeoples);
         
+        
+    }
+
+    private void updateSlider()
+    {
+        slider.value = hospitalizedPeoples;
     }
 
     public int GetHospitalizePeople()

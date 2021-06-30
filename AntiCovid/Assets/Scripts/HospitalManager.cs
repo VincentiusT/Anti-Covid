@@ -11,6 +11,7 @@ public class HospitalManager : MonoBehaviour
     public GameObject hospitalObj;
     public GameObject hospitalBuyPanel;
 
+    private int price = 30;
     private List<Hospital> hospitals;
     private int totalHospitalizedPeoples;
 
@@ -75,6 +76,14 @@ public class HospitalManager : MonoBehaviour
         if(hospitalPoints[whichHospital].transform.childCount >= 1) //klo udh beli lgsg return
         {
             return;
+        }
+        if(Goverment.instance.Money < price)
+        {
+            return;
+        }
+        else
+        {
+            Goverment.instance.Money -= price;
         }
         GameObject go = Instantiate(hospitalObj, hospitalPoints[whichHospital].transform.position, hospitalPoints[whichHospital].transform.rotation) as GameObject;
         go.transform.parent = hospitalPoints[whichHospital].transform;

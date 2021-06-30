@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7603671674033631216}
   - component: {fileID: 8216036501520692614}
-  - component: {fileID: 9059443827029235021}
   m_Layer: 0
-  m_Name: box
+  m_Name: officerPlace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fb7a8dc847180cd4ab7e7262c9f67603, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 45a06dfbef3cd6445bf7f6c3f31843a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,15 +82,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9059443827029235021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2879296104854731567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e993ffb1fcd48642be86c147aa1d946, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

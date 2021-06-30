@@ -12,7 +12,7 @@ public class Pharmacy : MonoBehaviour
      *  lvl 3 = 50 -> obat obatan
      * 
      */
-    private int buyPrice;
+ 
     private int upgradePrice;
 
     void Start()

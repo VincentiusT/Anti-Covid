@@ -114,4 +114,9 @@ public class Citizen : MonoBehaviour
         set { hospitalizedPeoples = value; }
         get { return hospitalizedPeoples; }
     }
+    public int VaksinedPeoples
+    {
+        set { vaksinedPeoples = value; }
+        get { return vaksinedPeoples; }
+    }
 }
