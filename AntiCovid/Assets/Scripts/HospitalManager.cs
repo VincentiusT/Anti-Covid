@@ -9,6 +9,7 @@ public class HospitalManager : MonoBehaviour
 
     public GameObject[] hospitalPoints;
     public GameObject hospitalObj;
+    public GameObject hospitalBuyPanel;
 
     private List<Hospital> hospitals;
     private int totalHospitalizedPeoples;
@@ -22,12 +23,17 @@ public class HospitalManager : MonoBehaviour
     {
         hospitals = new List<Hospital>();
 
-        for (int i = 0; i < hospitalPoints.Length; i++)
-        {
-            hospitals.Add(hospitalPoints[i].GetComponentInChildren<Hospital>());
-            Debug.Log("initiate " + hospitals[i]);
-        }
+        //for (int i = 0; i < hospitalPoints.Length; i++)
+        //{
+        //    hospitals.Add(hospitalPoints[i].GetComponentInChildren<Hospital>());
+        //    Debug.Log("initiate " + hospitals[i]);
+        //}
     }
+
+    private void Update() {
+        
+    }
+
     public void HospitalizePeople() //masukin orang kerumah sakit pas di tap
     {
         hospitals[index].ReceiveSickPeople(1);
@@ -59,16 +65,34 @@ public class HospitalManager : MonoBehaviour
         return totalHospitalizedPeoples;
     }
 
-    public void ShowBuyHospitalPanel() //munculin buy panel
+    public void ShowBuyHospitalPanel(bool show) //munculin buy panel
     {
-
+        hospitalBuyPanel.SetActive(show);
     }
 
     public void BuyHospital(int whichHospital)
     {
+        if(hospitalPoints[whichHospital].transform.childCount >= 1) //klo udh beli lgsg return
+        {
+            return;
+        }
         GameObject go = Instantiate(hospitalObj, hospitalPoints[whichHospital].transform.position, hospitalPoints[whichHospital].transform.rotation) as GameObject;
         go.transform.parent = hospitalPoints[whichHospital].transform;
         go.name = "hospital" + whichHospital;
+        if (whichHospital == 0 || whichHospital == 3)
+        {
+            go.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        }
+        else if (whichHospital == 1)
+        {
+            go.GetComponent<SpriteRenderer>().sortingOrder = 0;
+        }
+        else if (whichHospital == 2)
+        {
+            go.GetComponent<SpriteRenderer>().sortingOrder = 2;
+        }
         hospitals.Add(go.GetComponent<Hospital>());
+
+        ShowBuyHospitalPanel(false);
     }
 }

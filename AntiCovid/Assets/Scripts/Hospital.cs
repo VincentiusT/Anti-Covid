@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hospital : MonoBehaviour
 {
-    private int capacity = 10;
+    private int capacity = 50;
     private int buyPrice;
     private int upgradePrice;
 

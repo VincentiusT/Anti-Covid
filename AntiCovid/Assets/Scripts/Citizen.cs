@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
 public class Citizen : MonoBehaviour
 {
     public static Citizen instance;
@@ -19,6 +20,11 @@ public class Citizen : MonoBehaviour
     private float timeTemp;
     private int increaseRate = 10;
 
+    [SerializeField] private TextMeshProUGUI sickPeopleText;
+    [SerializeField] private TextMeshProUGUI healthyPeopleText;
+    [SerializeField] private TextMeshProUGUI transmissionRateText;
+    [SerializeField] private TextMeshProUGUI hospitalizedPeopleText;
+
     float second=1f;
 
     private void Awake()
@@ -32,6 +38,8 @@ public class Citizen : MonoBehaviour
     }
     private void Update()
     {
+        UpdateUIText();
+
         if (timeToIncreaseTransmissionRate <= 0)
         {
             transmissionRate += increaseRate;
@@ -55,11 +63,18 @@ public class Citizen : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.A))
         {
-            healthyPeoples = totalCitizen - HospitalManager.instance.GetAllHospitalizePeople() - sickPeoples;
+            
             Debug.Log("org kena : " + sickPeoples + " || orang di rmh sakit:  "+ HospitalManager.instance.GetAllHospitalizePeople() + " || org sehat : " + healthyPeoples);
         }
     }
 
+    void UpdateUIText()
+    {
+        sickPeopleText.text = sickPeoples.ToString("0");
+        healthyPeopleText.text = healthyPeoples.ToString("0");
+        transmissionRateText.text = transmissionRate.ToString("0");
+        hospitalizedPeopleText.text = HospitalManager.instance.GetAllHospitalizePeople().ToString("0");
+    }
     public void GetVirus(int total)
     {
         for(int i = 0; i < total; i++)
