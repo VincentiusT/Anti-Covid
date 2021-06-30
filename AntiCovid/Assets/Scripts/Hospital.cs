@@ -32,7 +32,7 @@ public class Hospital : MonoBehaviour
         }
     }
 
-    public void ReceiveSickPeople()
+    public void ReceiveSickPeople(int peoples)
     {
         if (hospitalizedPeoples >= capacity)
         {
@@ -40,8 +40,8 @@ public class Hospital : MonoBehaviour
             return;
         }
 
-        hospitalizedPeoples++;
-        Citizen.instance.SickPeoples--;
+        hospitalizedPeoples+= peoples;
+        Citizen.instance.SickPeoples-= peoples;
 
         Citizen.instance.HospitalizedPeoples = hospitalizedPeoples;
         Debug.Log(name + "  " + hospitalizedPeoples);

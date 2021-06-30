@@ -70,6 +70,12 @@ public class Citizen : MonoBehaviour
         
     }
 
+    public int TransmissionRate
+    {
+        set { transmissionRate = value; }
+        get { return transmissionRate; }
+    }
+
     public int TotalCitizen
     {
         set { totalCitizen = value; }

@@ -30,7 +30,17 @@ public class HospitalManager : MonoBehaviour
     }
     public void HospitalizePeople() //masukin orang kerumah sakit pas di tap
     {
-        hospitals[index].ReceiveSickPeople();
+        hospitals[index].ReceiveSickPeople(1);
+        index++;
+        if (index >= hospitals.Count)
+        {
+            index = 0;
+        }
+    }
+
+    public void HospitalizePeopleFromAmbulance(int peoples)
+    {
+        hospitals[index].ReceiveSickPeople(peoples);
         index++;
         if (index >= hospitals.Count)
         {
