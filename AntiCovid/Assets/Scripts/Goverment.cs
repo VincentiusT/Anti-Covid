@@ -15,6 +15,9 @@ public class Goverment : MonoBehaviour
     private float timeToGetMoney = 1f;
     private float timeToGetMoneyTemp;
 
+    private int PSBBprice = 100;
+    private int LockDownPrice = 300;
+
     private void Awake()
     {
         instance = this;
@@ -47,18 +50,35 @@ public class Goverment : MonoBehaviour
 
     public void PSBB()
     {
+        if (money < PSBBprice)
+        {
+            return;
+        }
+        else
+        {
+            money -= PSBBprice;
+        }
         float rate = (float)Citizen.instance.TransmissionRate * 0.5f;
         Citizen.instance.TransmissionRate -= (int)rate;
     }
 
     public void LockDown()
     {
+        if (money < LockDownPrice)
+        {
+            return;
+        }
+        else
+        {
+            money -= LockDownPrice;
+        }
         float rate = (float)Citizen.instance.TransmissionRate * 0.9f;
         Citizen.instance.TransmissionRate -= (int)rate;
     }
 
     public int Money
     {
+
         set { money = value; }
         get { return money; }
     }

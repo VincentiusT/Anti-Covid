@@ -8,7 +8,7 @@ public class Citizen : MonoBehaviour
     public static Citizen instance;
 
     private int totalCitizen = 1000000;
-    private int sickPeoples = 100;
+    private int sickPeoples = 0;
     private int healthyPeoples;
     private int hospitalizedPeoples;
     private int vaksinedPeoples;
@@ -18,12 +18,19 @@ public class Citizen : MonoBehaviour
 
     private float timeToIncreaseTransmissionRate = 20;
     private float timeTemp;
-    private int increaseRate = 10;
+    private int transmissionIncreaseRate = 25;
+
+    private int deathRate = 3; //people dead per timeuntildeath
+    private float timeUntilDeath = 30f;
+    private float timeUntilDeathTemp;
 
     [SerializeField] private TextMeshProUGUI sickPeopleText;
     [SerializeField] private TextMeshProUGUI healthyPeopleText;
     [SerializeField] private TextMeshProUGUI transmissionRateText;
     [SerializeField] private TextMeshProUGUI hospitalizedPeopleText;
+    [SerializeField] private TextMeshProUGUI deadPeopleText;
+    [SerializeField] private TextMeshProUGUI vaccinatedPeopleText;
+    [SerializeField] private TextMeshProUGUI citizenAliveText;
 
     float second=1f;
 
@@ -35,6 +42,7 @@ public class Citizen : MonoBehaviour
     private void Start()
     {
         timeTemp = timeToIncreaseTransmissionRate;
+        timeUntilDeathTemp = timeUntilDeath;
     }
     private void Update()
     {
@@ -42,7 +50,7 @@ public class Citizen : MonoBehaviour
 
         if (timeToIncreaseTransmissionRate <= 0)
         {
-            transmissionRate += increaseRate;
+            transmissionRate += transmissionIncreaseRate;
             timeToIncreaseTransmissionRate = timeTemp;
         }
         else
@@ -61,6 +69,18 @@ public class Citizen : MonoBehaviour
             second -= Time.deltaTime;
         }
 
+        if(timeUntilDeath <= 0 && sickPeoples > 0)
+        {
+            Dead(deathRate);
+            timeUntilDeath = timeUntilDeathTemp;
+        }
+        else
+        {
+            timeUntilDeath -= Time.deltaTime;
+        }
+        
+
+        //debug
         if (Input.GetKeyDown(KeyCode.A))
         {
             
@@ -74,6 +94,9 @@ public class Citizen : MonoBehaviour
         healthyPeopleText.text = healthyPeoples.ToString("0");
         transmissionRateText.text = transmissionRate.ToString("0");
         hospitalizedPeopleText.text = HospitalManager.instance.GetAllHospitalizePeople().ToString("0");
+        vaccinatedPeopleText.text = vaksinedPeoples.ToString("0");
+        deadPeopleText.text = deadPeoples.ToString("0");
+        citizenAliveText.text = "Citizen Alive : " + totalCitizen.ToString("0");
     }
     public void GetVirus(int total)
     {
@@ -85,10 +108,25 @@ public class Citizen : MonoBehaviour
         
     }
 
+    public void Dead(int total)
+    {
+        if(sickPeoples < total)
+        {
+            deadPeoples += sickPeoples;
+            sickPeoples = 0;
+            totalCitizen -= sickPeoples;
+            return;
+        }
+        deadPeoples += total;
+        sickPeoples -= total;
+        totalCitizen -= total;
+
+    }
+
     public int TransmissionRate
     {
-        set { transmissionRate = value; }
-        get { return transmissionRate; }
+        set { transmissionIncreaseRate = value; }
+        get { return transmissionIncreaseRate; }
     }
 
     public int TotalCitizen
