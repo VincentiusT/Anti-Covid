@@ -19,10 +19,14 @@ public class Hospital : MonoBehaviour
 
     private void Awake()
     {
+        releaseCount = hospitalLevelSystem[0].outRate;
+        restTime = hospitalLevelSystem[0].outSpeed;
+        capacity = hospitalLevelSystem[0].capacity;
         restTimeOriginal = restTime;
         slider.maxValue = capacity;
         upgradePrice = hospitalLevelSystem[1].price;
     }
+
 
     private void Update()
     {
@@ -86,7 +90,7 @@ public class Hospital : MonoBehaviour
         releaseCount = hospitalLevelSystem[level - 1].outRate;
         restTime = hospitalLevelSystem[level - 1].outSpeed;
         slider.maxValue = capacity;
-
+        restTimeOriginal = restTime;
         if (level >= hospitalLevelSystem.Length) return;
         upgradePrice = hospitalLevelSystem[level].price;
     }

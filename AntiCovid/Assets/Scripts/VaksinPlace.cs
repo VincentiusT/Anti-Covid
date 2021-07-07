@@ -52,6 +52,7 @@ public class VaksinPlace : MonoBehaviour
 
         vaksinRate = vaccineLevelSystem[level - 1].vaksinRate;
         vaksinTime = vaccineLevelSystem[level - 1].vaksinTime;
+        vaksinTimeTemp = vaksinTime;
 
         if (level >= vaccineLevelSystem.Length) return;
         upgradePrice = vaccineLevelSystem[level].price;

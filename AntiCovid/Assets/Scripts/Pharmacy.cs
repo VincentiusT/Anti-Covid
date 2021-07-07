@@ -38,7 +38,7 @@ public class Pharmacy : MonoBehaviour
         level++;
 
         transmissionDecreaseRate = pharmacyLevelSystem[level - 1].transmissionDecreaseRate;
-
+        Citizen.instance.TransmissionRate -= transmissionDecreaseRate;
         if (level >= pharmacyLevelSystem.Length) return;
         upgradePrice = pharmacyLevelSystem[level].price;
     }

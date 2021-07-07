@@ -20,7 +20,8 @@ public class HospitalManager : MonoBehaviour
     private TextMeshProUGUI[] hospitalReleaseCountText = new TextMeshProUGUI[4];
     private TextMeshProUGUI[] hospitalPriceText = new TextMeshProUGUI[4];
     [SerializeField] private int price = 30;
-    private List<Hospital> hospitals;
+    //private List<Hospital> hospitals;
+    private Hospital[] hospitals = { null, null, null, null};
     private int totalHospitalizedPeoples;
     private bool[] alreadyBought = { false, false, false, false};
 
@@ -32,7 +33,7 @@ public class HospitalManager : MonoBehaviour
     }
     private void Start()
     {
-        hospitals = new List<Hospital>();
+        //hospitals = new List<Hospital>();
         for(int i = 0; i < buyButtons.Length; i++)
         {
             hospitalBuyText[i] = buyButtons[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>();
@@ -47,9 +48,17 @@ public class HospitalManager : MonoBehaviour
 
     public void HospitalizePeople() //masukin orang kerumah sakit pas di tap
     {
+        while (hospitals[index] == null)
+        {
+            index++;
+            if (index >= hospitals.Length)
+            {
+                index = 0;
+            }
+        }
         hospitals[index].ReceiveSickPeople(1);
         index++;
-        if (index >= hospitals.Count)
+        if (index >= hospitals.Length)
         {
             index = 0;
         }
@@ -57,9 +66,17 @@ public class HospitalManager : MonoBehaviour
 
     public void HospitalizePeopleFromAmbulance(int peoples)
     {
+        while (hospitals[index] == null)
+        {
+            index++;
+            if (index >= hospitals.Length)
+            {
+                index = 0;
+            }
+        }
         hospitals[index].ReceiveSickPeople(peoples);
         index++;
-        if (index >= hospitals.Count)
+        if (index >= hospitals.Length)
         {
             index = 0;
         }
@@ -68,8 +85,9 @@ public class HospitalManager : MonoBehaviour
     public int GetAllHospitalizePeople() //get semua orang yang ada di semua rumah sakit
     {
         totalHospitalizedPeoples = 0;
-        for(int i=0;i< hospitals.Count; i++)
+        for(int i=0;i< hospitals.Length; i++)
         {
+            if(hospitals[i]!=null)
             totalHospitalizedPeoples += hospitals[i].GetHospitalizePeople();
         }
 
@@ -104,17 +122,18 @@ public class HospitalManager : MonoBehaviour
         go.name = "hospital" + whichHospital;
         if (whichHospital == 0 || whichHospital == 3)
         {
-            go.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            go.GetComponent<SpriteRenderer>().sortingOrder = 5;
         }
         else if (whichHospital == 1)
         {
-            go.GetComponent<SpriteRenderer>().sortingOrder = 0;
+            go.GetComponent<SpriteRenderer>().sortingOrder = 4;
         }
         else if (whichHospital == 2)
         {
-            go.GetComponent<SpriteRenderer>().sortingOrder = 2;
+            go.GetComponent<SpriteRenderer>().sortingOrder = 6;
         }
-        hospitals.Add(go.GetComponent<Hospital>());
+        //hospitals.Add(go.GetComponent<Hospital>());
+        hospitals[whichHospital] = go.GetComponent<Hospital>();
 
         ShowBuyHospitalPanel(false);
         alreadyBought[whichHospital] = true;

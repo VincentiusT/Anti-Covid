@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7603671674033631216}
   - component: {fileID: 8216036501520692614}
   - component: {fileID: 5240216730553999021}
+  - component: {fileID: 6272372768419788348}
   m_Layer: 0
   m_Name: ambulance
   m_TagString: Untagged
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4e4251901c1083f4b99422c95d8311df, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -80,7 +81,7 @@ SpriteRenderer:
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &5240216730553999021
@@ -95,3 +96,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8d4583a602874043be28e814fd7a7b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ambulanceLevelSystem:
+  - {fileID: 11400000, guid: a7308372a1b719849925a275562e1122, type: 2}
+  - {fileID: 11400000, guid: 8e7f18a56716591438a6c25756e6cc0f, type: 2}
+  - {fileID: 11400000, guid: e38127cf4a3df5b43ae4a6355080f730, type: 2}
+--- !u!95 &6272372768419788348
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2879296104854731567}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 88ea3ff643fb9b1409296e27c4451bba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

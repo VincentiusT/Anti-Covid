@@ -18,7 +18,7 @@ public class PharmacyManager : MonoBehaviour
     private TextMeshProUGUI[] pharmacyPriceText = new TextMeshProUGUI[4];
 
     private int price=20;
-    private List<Pharmacy> pharmacy;
+    private Pharmacy[] pharmacy = { null, null, null, null};
     private bool[] alreadyBought = { false, false, false, false };
 
     int index = 0;
@@ -28,7 +28,7 @@ public class PharmacyManager : MonoBehaviour
     }
     private void Start()
     {
-        pharmacy = new List<Pharmacy>();
+        //pharmacy = new List<Pharmacy>();
 
         for (int i = 0; i < buyButtons.Length; i++)
         {
@@ -50,11 +50,9 @@ public class PharmacyManager : MonoBehaviour
         if (alreadyBought[whichPharmacy])
         {
             UpgradePharmacy(whichPharmacy);
-        }
-        if (pharmacyPoints[whichPharmacy].transform.childCount >= 1)//klo udh beli lgsg return
-        {
             return;
         }
+
         if (Goverment.instance.Money < price)
         {
             return;
@@ -82,10 +80,10 @@ public class PharmacyManager : MonoBehaviour
         {
             go.GetComponent<SpriteRenderer>().sortingOrder = 3;
         }
-        pharmacy.Add(go.GetComponent<Pharmacy>());
+        //pharmacy.Add(go.GetComponent<Pharmacy>());
+        pharmacy[whichPharmacy] = go.GetComponent<Pharmacy>();
 
         ShowBuyPharmacyPanel(false);
-        pharmacyBuyText[index].text = "Upgrade";
         alreadyBought[whichPharmacy] = true;
         UpdateBuyUI(whichPharmacy);
     }
