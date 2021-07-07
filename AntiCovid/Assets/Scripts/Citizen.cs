@@ -96,14 +96,11 @@ public class Citizen : MonoBehaviour
         hospitalizedPeopleText.text = HospitalManager.instance.GetAllHospitalizePeople().ToString("0");
         vaccinatedPeopleText.text = vaksinedPeoples.ToString("0");
         deadPeopleText.text = deadPeoples.ToString("0");
-        citizenAliveText.text = "Citizen Alive : " + totalCitizen.ToString("0");
+        citizenAliveText.text = totalCitizen.ToString("0");
     }
     public void GetVirus(int total)
     {
-        for(int i = 0; i < total; i++)
-        {
-            sickPeoples++;
-        }
+        sickPeoples += total;
         healthyPeoples = totalCitizen - HospitalManager.instance.GetAllHospitalizePeople() - sickPeoples;
         
     }

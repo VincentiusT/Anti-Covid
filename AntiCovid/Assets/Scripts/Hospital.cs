@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class Hospital : MonoBehaviour
 {
+    private int level=1;
     private int capacity = 100;
     [SerializeField] private Slider slider;
+    [SerializeField] private HospitalLevelSystem[] hospitalLevelSystem;
     private int upgradePrice;
 
     private int hospitalizedPeoples;
@@ -15,10 +17,11 @@ public class Hospital : MonoBehaviour
     private float restTime = 20f; //berapa waktu yg dibutuhin sebelom orang keluar dari rumah sakit
     private float restTimeOriginal;
 
-    private void Start()
+    private void Awake()
     {
         restTimeOriginal = restTime;
         slider.maxValue = capacity;
+        upgradePrice = hospitalLevelSystem[1].price;
     }
 
     private void Update()
@@ -75,6 +78,24 @@ public class Hospital : MonoBehaviour
         
     }
 
+    public void UpgradeHospital()
+    {
+        level++;
+
+        capacity = hospitalLevelSystem[level - 1].capacity;
+        releaseCount = hospitalLevelSystem[level - 1].outRate;
+        restTime = hospitalLevelSystem[level - 1].outSpeed;
+        slider.maxValue = capacity;
+
+        if (level >= hospitalLevelSystem.Length) return;
+        upgradePrice = hospitalLevelSystem[level].price;
+    }
+
+    public bool CheckMaxLevel()
+    {
+        return level >= hospitalLevelSystem.Length;
+    }
+
     private void updateSlider()
     {
         slider.value = hospitalizedPeoples;
@@ -83,5 +104,28 @@ public class Hospital : MonoBehaviour
     public int GetHospitalizePeople()
     {
         return hospitalizedPeoples;
+    }
+
+    public int Level
+    {
+        set { level = value; }
+        get { return level; }
+    }
+
+    public int UpgradePrice
+    {
+        get { return upgradePrice; }
+    }
+    public int Capacity
+    {
+        get { return capacity; }
+    }
+    public float RestTime
+    {
+        get { return restTime; }
+    }
+    public int ReleaseCount
+    {
+        get { return releaseCount; }
     }
 }

@@ -95,3 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 065e73428635f044397124c46e38eebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pharmacyLevelSystem:
+  - {fileID: 11400000, guid: bed44d0a331cdbb4b9cbbb5de85e688c, type: 2}
+  - {fileID: 11400000, guid: bac724bedf22f594da52de5248f27058, type: 2}
+  - {fileID: 11400000, guid: 409ca998b6336dc409a162081b73a679, type: 2}

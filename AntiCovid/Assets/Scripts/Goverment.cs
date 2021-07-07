@@ -11,12 +11,15 @@ public class Goverment : MonoBehaviour
     private int moneyRate = 10; //get money per second
 
     [SerializeField] private TextMeshProUGUI moneyText;
+    [SerializeField] private TextMeshProUGUI PSBBpriceText;
+    [SerializeField] private TextMeshProUGUI lockDownPriceText;
+
     public GameObject govermentPanel;
     private float timeToGetMoney = 1f;
     private float timeToGetMoneyTemp;
 
     private int PSBBprice = 100;
-    private int LockDownPrice = 300;
+    private int lockDownPrice = 300;
 
     private void Awake()
     {
@@ -26,6 +29,8 @@ public class Goverment : MonoBehaviour
     void Start()
     {
         timeToGetMoneyTemp = timeToGetMoney;
+        PSBBpriceText.text = "Price: " + PSBBprice.ToString("0");
+        lockDownPriceText.text = "Price: " + lockDownPrice.ToString("0");
     }
 
     void Update()
@@ -64,13 +69,13 @@ public class Goverment : MonoBehaviour
 
     public void LockDown()
     {
-        if (money < LockDownPrice)
+        if (money < lockDownPrice)
         {
             return;
         }
         else
         {
-            money -= LockDownPrice;
+            money -= lockDownPrice;
         }
         float rate = (float)Citizen.instance.TransmissionRate * 0.9f;
         Citizen.instance.TransmissionRate -= (int)rate;
@@ -78,7 +83,6 @@ public class Goverment : MonoBehaviour
 
     public int Money
     {
-
         set { money = value; }
         get { return money; }
     }
