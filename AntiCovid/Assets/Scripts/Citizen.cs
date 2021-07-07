@@ -13,6 +13,7 @@ public class Citizen : MonoBehaviour
     private int hospitalizedPeoples;
     private int vaksinedPeoples;
     private int deadPeoples;
+    private float deadPeopleLimit = 0.5f; // percentage from totalCitizen
 
     private int transmissionRate = 10; //people per second
 
@@ -20,10 +21,18 @@ public class Citizen : MonoBehaviour
     private float timeTemp;
     private int transmissionIncreaseRate = 25;
 
-    private int deathRate = 3; //people dead per timeuntildeath
+    private float deathRate = 0.03f; //percentage from sickpeople
     private float timeUntilDeath = 30f;
     private float timeUntilDeathTemp;
 
+    private float crowdSpawnTimeMax = 20f;
+    private float crowdSpawnTimeMin = 8f;
+    private float crowdSpawnTime;
+
+    public List<Crowd> crowds;
+    [SerializeField] private GameObject[] crowdObj;
+    [SerializeField] private Transform[] crowdSpawnPoint;
+  
     [SerializeField] private TextMeshProUGUI sickPeopleText;
     [SerializeField] private TextMeshProUGUI healthyPeopleText;
     [SerializeField] private TextMeshProUGUI transmissionRateText;
@@ -41,12 +50,25 @@ public class Citizen : MonoBehaviour
 
     private void Start()
     {
+        crowds = new List<Crowd>();
+        crowdSpawnTime = Random.Range(crowdSpawnTimeMin, crowdSpawnTimeMax);
         timeTemp = timeToIncreaseTransmissionRate;
         timeUntilDeathTemp = timeUntilDeath;
     }
     private void Update()
     {
         UpdateUIText();
+
+        //win codition
+        if(vaksinedPeoples >= totalCitizen)
+        {
+            GameManager.instance.Win();
+        }
+        //lose condition
+        if(deadPeoples >= totalCitizen * deadPeopleLimit)
+        {
+            GameManager.instance.GameOver();
+        }
 
         if (timeToIncreaseTransmissionRate <= 0)
         {
@@ -71,7 +93,8 @@ public class Citizen : MonoBehaviour
 
         if(timeUntilDeath <= 0 && sickPeoples > 0)
         {
-            Dead(deathRate);
+            float deadCount = deathRate * (float)sickPeoples;
+            Dead((int)deadCount);
             timeUntilDeath = timeUntilDeathTemp;
         }
         else
@@ -79,6 +102,15 @@ public class Citizen : MonoBehaviour
             timeUntilDeath -= Time.deltaTime;
         }
         
+        if(crowdSpawnTime <= 0)
+        {
+            SpawnCrowd();
+            crowdSpawnTime = Random.Range(crowdSpawnTimeMin, crowdSpawnTimeMax);
+        }
+        else
+        {
+            crowdSpawnTime -= Time.deltaTime;
+        }
 
         //debug
         if (Input.GetKeyDown(KeyCode.A))
@@ -115,12 +147,40 @@ public class Citizen : MonoBehaviour
             return;
         }
         deadPeoples += total;
+        
         sickPeoples -= total;
         totalCitizen -= total;
 
     }
 
-    public int TransmissionRate
+    public void SpawnCrowd()
+    {
+        int limit =0;
+        int idx = Random.Range(0, crowdObj.Length);
+        while(crowdSpawnPoint[idx].childCount != 0)
+        {
+            idx++;
+            if (idx >= crowdObj.Length) idx = 0;
+            limit++;
+            if (limit >= crowdObj.Length)
+            {
+                return;
+            }
+        }
+
+        GameObject go = Instantiate(crowdObj[idx], transform.position, transform.rotation) as GameObject;
+        crowds.Add(go.GetComponent<Crowd>());
+        go.name = "crowd" + idx;
+        go.transform.parent = crowdSpawnPoint[idx];
+    }
+
+    public int TransmissionRateTotal
+    {
+        set { transmissionRate = value; }
+        get { return transmissionRate;  }
+    }
+
+    public int TransmissionIncreaseRate
     {
         set { transmissionIncreaseRate = value; }
         get { return transmissionIncreaseRate; }

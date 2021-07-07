@@ -63,8 +63,8 @@ public class Goverment : MonoBehaviour
         {
             money -= PSBBprice;
         }
-        float rate = (float)Citizen.instance.TransmissionRate * 0.5f;
-        Citizen.instance.TransmissionRate -= (int)rate;
+        float rate = (float)Citizen.instance.TransmissionRateTotal * 0.5f;
+        Citizen.instance.TransmissionRateTotal -= (int)rate;
     }
 
     public void LockDown()
@@ -77,8 +77,8 @@ public class Goverment : MonoBehaviour
         {
             money -= lockDownPrice;
         }
-        float rate = (float)Citizen.instance.TransmissionRate * 0.9f;
-        Citizen.instance.TransmissionRate -= (int)rate;
+        float rate = (float)Citizen.instance.TransmissionRateTotal * 0.9f;
+        Citizen.instance.TransmissionRateTotal -= (int)rate;
     }
 
     public int Money

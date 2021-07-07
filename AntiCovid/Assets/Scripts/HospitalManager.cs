@@ -120,9 +120,13 @@ public class HospitalManager : MonoBehaviour
         GameObject go = Instantiate(hospitalObj, hospitalPoints[whichHospital].transform.position, hospitalPoints[whichHospital].transform.rotation) as GameObject;
         go.transform.parent = hospitalPoints[whichHospital].transform;
         go.name = "hospital" + whichHospital;
-        if (whichHospital == 0 || whichHospital == 3)
+        if (whichHospital == 0)
         {
             go.GetComponent<SpriteRenderer>().sortingOrder = 5;
+        }
+        else if(whichHospital == 3)
+        {
+            go.GetComponent<SpriteRenderer>().sortingOrder = 6;
         }
         else if (whichHospital == 1)
         {
@@ -130,7 +134,7 @@ public class HospitalManager : MonoBehaviour
         }
         else if (whichHospital == 2)
         {
-            go.GetComponent<SpriteRenderer>().sortingOrder = 6;
+            go.GetComponent<SpriteRenderer>().sortingOrder = 7;
         }
         //hospitals.Add(go.GetComponent<Hospital>());
         hospitals[whichHospital] = go.GetComponent<Hospital>();

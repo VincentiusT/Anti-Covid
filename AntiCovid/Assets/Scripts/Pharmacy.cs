@@ -25,7 +25,7 @@ public class Pharmacy : MonoBehaviour
     {
         transmissionDecreaseRate = pharmacyLevelSystem[0].transmissionDecreaseRate;
 
-        Citizen.instance.TransmissionRate -= transmissionDecreaseRate;
+        Citizen.instance.TransmissionIncreaseRate -= transmissionDecreaseRate;
     }
 
     public bool CheckMaxLevel()
@@ -38,7 +38,7 @@ public class Pharmacy : MonoBehaviour
         level++;
 
         transmissionDecreaseRate = pharmacyLevelSystem[level - 1].transmissionDecreaseRate;
-        Citizen.instance.TransmissionRate -= transmissionDecreaseRate;
+        Citizen.instance.TransmissionIncreaseRate -= transmissionDecreaseRate;
         if (level >= pharmacyLevelSystem.Length) return;
         upgradePrice = pharmacyLevelSystem[level].price;
     }

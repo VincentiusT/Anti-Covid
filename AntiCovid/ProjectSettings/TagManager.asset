@@ -9,6 +9,7 @@ TagManager:
   - VaksinPlace
   - Officer
   - Goverment
+  - Crowd
   layers:
   - Default
   - TransparentFX
