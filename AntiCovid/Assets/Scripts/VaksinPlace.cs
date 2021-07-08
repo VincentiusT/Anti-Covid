@@ -22,6 +22,8 @@ public class VaksinPlace : MonoBehaviour
     private void Awake()
     {
         upgradePrice = vaccineLevelSystem[1].price;
+        vaksinRate = vaccineLevelSystem[0].vaksinRate;
+        vaksinTime = vaccineLevelSystem[0].vaksinTime;
     }
     void Start()
     {

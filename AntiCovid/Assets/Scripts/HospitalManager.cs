@@ -48,6 +48,15 @@ public class HospitalManager : MonoBehaviour
 
     public void HospitalizePeople() //masukin orang kerumah sakit pas di tap
     {
+        int x=0;
+        for(int i = 0; i < 4; i++)
+        {
+            if(hospitals[i] == null)
+            {
+                x++;
+            }
+        }
+        if (x >= 4) return;
         while (hospitals[index] == null)
         {
             index++;
@@ -66,6 +75,7 @@ public class HospitalManager : MonoBehaviour
 
     public void HospitalizePeopleFromAmbulance(int peoples)
     {
+        if (hospitals.Length <= 0) return;
         while (hospitals[index] == null)
         {
             index++;

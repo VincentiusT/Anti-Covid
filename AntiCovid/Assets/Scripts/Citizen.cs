@@ -46,6 +46,23 @@ public class Citizen : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        int diff = PlayerPrefs.GetInt("diff");
+        if (diff == 0)
+        {
+           
+        }
+        else if (diff == 1)
+        {
+            transmissionRate = 100;
+            transmissionIncreaseRate = 50;
+            deathRate = 7;
+        }
+        else if(diff == 2)
+        {
+            transmissionRate = 500;
+            transmissionIncreaseRate = 100;
+            deathRate = 10;
+        }
     }
 
     private void Start()

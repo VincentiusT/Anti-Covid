@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject winPanel;
     public GameObject losePanel;
-
+    public GameObject pausePanel;
     private void Awake()
     {
         instance = this;
@@ -44,5 +44,13 @@ public class GameManager : MonoBehaviour
     public void Home()
     {
         SceneManager.LoadScene("menu");
+    }
+
+    public void Pause(bool pause)
+    {
+        if (pause == true) Time.timeScale = 0f;
+        else if (pause == false) Time.timeScale = 1f;
+
+        pausePanel.SetActive(pause);
     }
 }

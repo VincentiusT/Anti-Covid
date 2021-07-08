@@ -67,6 +67,7 @@ public class Crowd : MonoBehaviour
 
     private void IncreaseTransmissionRate()
     {
-        Citizen.instance.TransmissionIncreaseRate += transmissionIncreaseRate;
+        Debug.Log("test : +" + transmissionIncreaseRate);
+        Citizen.instance.TransmissionRateTotal += transmissionIncreaseRate;
     }
 }
