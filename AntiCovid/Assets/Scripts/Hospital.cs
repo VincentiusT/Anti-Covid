@@ -51,8 +51,16 @@ public class Hospital : MonoBehaviour
             return;
         }
 
-        hospitalizedPeoples+= peoples;
-        Citizen.instance.SickPeoples-= peoples;
+        if(hospitalizedPeoples+peoples >= capacity)
+        {
+            hospitalizedPeoples = capacity;
+            Citizen.instance.SickPeoples -= hospitalizedPeoples + peoples - capacity;
+        }
+        else
+        {
+            hospitalizedPeoples+= peoples;
+            Citizen.instance.SickPeoples-= peoples;
+        }
 
         Citizen.instance.HospitalizedPeoples = hospitalizedPeoples;
         Debug.Log(name + "  " + hospitalizedPeoples);
