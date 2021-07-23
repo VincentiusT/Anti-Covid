@@ -8,11 +8,6 @@ public class Pharmacy : MonoBehaviour
 
     private int transmissionDecreaseRate = 5;
    
-    /*  lvl 1 = 5 -> masker
-     *  lvl 2 = 15 -> hand sanitizer
-     *  lvl 3 = 50 -> obat obatan
-     * 
-     */
     [SerializeField] private PharmacyLevelSystem[] pharmacyLevelSystem;
     private int upgradePrice;
 
@@ -25,7 +20,7 @@ public class Pharmacy : MonoBehaviour
     {
         transmissionDecreaseRate = pharmacyLevelSystem[0].transmissionDecreaseRate;
 
-        Citizen.instance.TransmissionIncreaseRate -= transmissionDecreaseRate;
+        DecreaseTransmissionIncreaseRate();
     }
 
     public bool CheckMaxLevel()
@@ -38,9 +33,20 @@ public class Pharmacy : MonoBehaviour
         level++;
 
         transmissionDecreaseRate = pharmacyLevelSystem[level - 1].transmissionDecreaseRate;
-        Citizen.instance.TransmissionIncreaseRate -= transmissionDecreaseRate;
+        DecreaseTransmissionIncreaseRate();
         if (level >= pharmacyLevelSystem.Length) return;
         upgradePrice = pharmacyLevelSystem[level].price;
+    }
+
+    private void DecreaseTransmissionIncreaseRate()
+    {
+        if(Citizen.instance.TransmissionIncreaseRate <= 5)
+        {
+            Citizen.instance.TransmissionIncreaseRate = 5;
+            return;
+        }
+
+        Citizen.instance.TransmissionIncreaseRate -= transmissionDecreaseRate;
     }
 
     public int Level
