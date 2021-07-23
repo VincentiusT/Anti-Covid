@@ -17,3 +17,4 @@ MonoBehaviour:
   capacity: 500
   outRate: 20
   outSpeed: 15
+  peopleOutPerTap: 3
