@@ -32,7 +32,8 @@ public class InputManager : MonoBehaviour
                 }
                 else if (hit.collider.tag == "Goverment")
                 {
-                    Goverment.instance.ShowGovermentPanel(true);
+                    if(!InfoBarInteraction.instance.isCurrentlyShowing)
+                        Goverment.instance.ShowGovermentPanel(true);
                 }
                 else if (hit.collider.tag == "Officer")
                 {

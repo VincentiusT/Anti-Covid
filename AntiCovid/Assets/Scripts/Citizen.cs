@@ -40,6 +40,9 @@ public class Citizen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI deadPeopleText;
     [SerializeField] private TextMeshProUGUI vaccinatedPeopleText;
     [SerializeField] private TextMeshProUGUI citizenAliveText;
+    [SerializeField] private TextMeshProUGUI deathRateText;
+    [SerializeField] private TextMeshProUGUI transmissionIncreaseRateText;
+    [SerializeField] private TextMeshProUGUI AwarenessText;
 
     float second=1f;
 
@@ -146,6 +149,9 @@ public class Citizen : MonoBehaviour
         vaccinatedPeopleText.text = vaksinedPeoples.ToString("0");
         deadPeopleText.text = deadPeoples.ToString("0");
         citizenAliveText.text = totalCitizen.ToString("0");
+        deathRateText.text = deathRate.ToString();
+        transmissionIncreaseRateText.text = transmissionIncreaseRate.ToString("0");
+        AwarenessText.text = "30%"; //ini belum ditambahin
     }
     public void GetVirus(int total)
     {
