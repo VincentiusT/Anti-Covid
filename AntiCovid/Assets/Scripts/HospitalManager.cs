@@ -65,7 +65,7 @@ public class HospitalManager : MonoBehaviour
                 index = 0;
             }
         }
-        hospitals[index].ReceiveSickPeople(1);
+        hospitals[index].ReceiveSickPeople(hospitals[index].PeopleOutPerTap);
         index++;
         if (index >= hospitals.Length)
         {
@@ -188,5 +188,7 @@ public class HospitalManager : MonoBehaviour
 
         hospitals[whichHospital].UpgradeHospital();
         UpdateBuyUI(whichHospital);
+
+
     }
 }
