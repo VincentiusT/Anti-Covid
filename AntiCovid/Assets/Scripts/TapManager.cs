@@ -1,0 +1,69 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TapManager : MonoBehaviour
+{
+    public delegate void OnMultiplierChange(float multiplier);
+    public static event OnMultiplierChange onMultiplierChange;
+
+    [SerializeField] private float timeToKeepMultiplier = 1f;
+    [SerializeField] private float maxMultiplier = 3f;
+    private float timeElapsedSinceLastTap = 0f;
+
+    [SerializeField] private float multiplier = 1.0f;
+    private float prevMultiplier = 1.0f;
+    public int tapAmount = 0;
+
+    public void TapHospitalize()
+    {
+        timeElapsedSinceLastTap = 0f;
+        tapAmount++;
+
+        CalculateMultiplier();
+
+        HospitalManager.instance.HospitalizePeople(multiplier);
+    }
+
+    private void CalculateMultiplier()
+    {
+        if(multiplier >= maxMultiplier)
+        {
+            multiplier = maxMultiplier;
+            return;
+        }
+            
+        int x = (int)(tapAmount / 10);
+        multiplier = 1 + (x / 10f);
+
+        CheckMultiplierChange(multiplier);
+    }
+
+    private void CheckMultiplierChange(float multiplier)
+    {
+        if(multiplier != prevMultiplier)
+        {
+            onMultiplierChange(multiplier);
+            prevMultiplier = multiplier;
+        }
+    }
+
+    private void Update()
+    {
+        timeElapsedSinceLastTap += Time.deltaTime;
+        if(timeElapsedSinceLastTap > timeToKeepMultiplier)
+        {
+            ResetMultiplier();
+        }
+    }
+
+    private void ResetMultiplier()
+    {
+        tapAmount = 0;
+        multiplier = 1.0f;
+        CheckMultiplierChange(multiplier);
+    }
+
+
+}

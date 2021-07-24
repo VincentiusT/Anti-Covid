@@ -46,7 +46,7 @@ public class HospitalManager : MonoBehaviour
         }
     }
 
-    public void HospitalizePeople() //masukin orang kerumah sakit pas di tap
+    public void HospitalizePeople(float multiplier) //masukin orang kerumah sakit pas di tap
     {
         int x=0;
         for(int i = 0; i < 4; i++)
@@ -65,7 +65,7 @@ public class HospitalManager : MonoBehaviour
                 index = 0;
             }
         }
-        hospitals[index].ReceiveSickPeople(hospitals[index].PeopleOutPerTap);
+        hospitals[index].ReceiveSickPeople((int)(hospitals[index].PeopleOutPerTap * multiplier));
         index++;
         if (index >= hospitals.Length)
         {
