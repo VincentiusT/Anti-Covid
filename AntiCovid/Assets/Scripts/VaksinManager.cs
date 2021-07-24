@@ -20,9 +20,10 @@ public class VaksinManager : MonoBehaviour
     private TextMeshProUGUI[] vaccinePlacePriceText = new TextMeshProUGUI[4];
 
     private int price = 15;
-    private List<VaksinPlace> vaksinPlace;
+    //private List<VaksinPlace> vaksinPlace;
 
     private bool[] alreadyBought = { false, false, false, false };
+    private VaksinPlace[] vaksinPlace = { null, null, null, null };
 
     int index = 0;
     private void Awake()
@@ -31,7 +32,7 @@ public class VaksinManager : MonoBehaviour
     }
     private void Start()
     {
-        vaksinPlace = new List<VaksinPlace>();
+        //vaksinPlace = new List<VaksinPlace>();
 
         for (int i = 0; i < buyButtons.Length; i++)
         {
@@ -54,11 +55,11 @@ public class VaksinManager : MonoBehaviour
         if (alreadyBought[whichVaksinPlace])
         {
             UpgradeVaksinPlace(whichVaksinPlace);
-        }
-        if (vaksinPlacePoints[whichVaksinPlace].transform.childCount >= 1)//klo udh beli lgsg return
-        {
             return;
         }
+
+        if (HospitalManager.instance.placeCount() < 3 && PharmacyManager.instance.placeCount() < 3) return;
+
         if (Goverment.instance.Money < price)
         {
             return;
@@ -86,7 +87,8 @@ public class VaksinManager : MonoBehaviour
         {
             go.GetComponent<SpriteRenderer>().sortingOrder = 3;
         }
-        vaksinPlace.Add(go.GetComponent<VaksinPlace>());
+        //vaksinPlace.Add(go.GetComponent<VaksinPlace>());
+        vaksinPlace[whichVaksinPlace] = go.GetComponent<VaksinPlace>();
 
         ShowBuyVaksinPlacePanel(false);
         alreadyBought[whichVaksinPlace] = true;
@@ -125,5 +127,15 @@ public class VaksinManager : MonoBehaviour
 
         vaksinPlace[whichVaksinPlace].UpgradeVaksinPlace();
         UpdateBuyUI(whichVaksinPlace);
+    }
+
+    public int placeCount()
+    {
+        int counter=0;
+        for(int i = 0; i < vaksinPlace.Length; i++) 
+        {
+            if (vaksinPlace[i] != null) counter++;
+        }
+        return counter;
     }
 }

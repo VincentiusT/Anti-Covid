@@ -121,4 +121,15 @@ public class PharmacyManager : MonoBehaviour
         pharmacy[whichPharmacy].UpgradePharmacy();
         UpdateBuyUI(whichPharmacy);
     }
+
+    public int placeCount()
+    {
+        int counter = 0;
+        for (int i = 0; i < pharmacy.Length; i++)
+        {
+            if (pharmacy[i] != null) counter++;
+        }
+        return counter;
+    }
+
 }

@@ -20,7 +20,7 @@ public class Goverment : MonoBehaviour
 
     private float PSBBdecreaseRate = 0.5f;
     private float lockDownDecreaseRate = 0.9f;
-    private float socializationDecreaseRate = 0.2f;
+    private float socializationIncreaseRate = 0.3f;
 
     private int PSBBprice = 100;
     private int lockDownPrice = 300;
@@ -96,8 +96,8 @@ public class Goverment : MonoBehaviour
         {
             money -= socializationPrice;
         }
-        float rate = Citizen.instance.Awareness * socializationDecreaseRate;
-        Citizen.instance.Awareness -= rate;
+        float rate = Citizen.instance.Awareness * socializationIncreaseRate;
+        Citizen.instance.Awareness += rate;
     }
 
     public int Money

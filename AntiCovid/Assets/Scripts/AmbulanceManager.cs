@@ -46,6 +46,7 @@ public class AmbulanceManager : MonoBehaviour
 
     public void BuyAmbulance(int whichAMbulance)
     {
+        if (HospitalManager.instance.placeCount() < 1) return;
 
         if (alreadyBought[whichAMbulance])
         {

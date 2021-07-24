@@ -49,14 +49,14 @@ public class HospitalManager : MonoBehaviour
     public void HospitalizePeople(float multiplier) //masukin orang kerumah sakit pas di tap
     {
         int x=0;
-        for(int i = 0; i < 4; i++)
+        for(int i = 0; i < hospitals.Length; i++)
         {
             if(hospitals[i] == null)
             {
                 x++;
             }
         }
-        if (x >= 4) return;
+        if (x >= hospitals.Length) return;
         while (hospitals[index] == null)
         {
             index++;
@@ -111,22 +111,14 @@ public class HospitalManager : MonoBehaviour
 
     public void BuyHospital(int whichHospital)
     {
-        if (alreadyBought[whichHospital])
-        {
-            UpgradeHospital(whichHospital);
-        }
-        if(hospitalPoints[whichHospital].transform.childCount >= 1) //klo udh beli lgsg return
-        {
-            return;
-        }
-        if(Goverment.instance.Money < price)
-        {
-            return;
-        }
-        else
-        {
-            Goverment.instance.Money -= price;
-        }
+        if (alreadyBought[whichHospital]) UpgradeHospital(whichHospital);
+        
+        if(hospitalPoints[whichHospital].transform.childCount >= 1) return;
+        
+        if(Goverment.instance.Money < price) return;
+        else Goverment.instance.Money -= price;
+
+
         GameObject go = Instantiate(hospitalObj, hospitalPoints[whichHospital].transform.position, hospitalPoints[whichHospital].transform.rotation) as GameObject;
         go.transform.parent = hospitalPoints[whichHospital].transform;
         go.name = "hospital" + whichHospital;
@@ -134,7 +126,7 @@ public class HospitalManager : MonoBehaviour
         {
             go.GetComponent<SpriteRenderer>().sortingOrder = 5;
         }
-        else if(whichHospital == 3)
+        else if (whichHospital == 3)
         {
             go.GetComponent<SpriteRenderer>().sortingOrder = 6;
         }
@@ -146,13 +138,13 @@ public class HospitalManager : MonoBehaviour
         {
             go.GetComponent<SpriteRenderer>().sortingOrder = 7;
         }
-        //hospitals.Add(go.GetComponent<Hospital>());
+
         hospitals[whichHospital] = go.GetComponent<Hospital>();
 
         ShowBuyHospitalPanel(false);
+
         alreadyBought[whichHospital] = true;
         UpdateBuyUI(whichHospital);
-        
     }
 
     private void UpdateBuyUI(int index)
@@ -190,5 +182,15 @@ public class HospitalManager : MonoBehaviour
         UpdateBuyUI(whichHospital);
 
 
+    }
+
+    public int placeCount()
+    {
+        int counter = 0;
+        for (int i = 0; i < hospitals.Length; i++)
+        {
+            if (hospitals[i] != null) counter++;
+        }
+        return counter;
     }
 }

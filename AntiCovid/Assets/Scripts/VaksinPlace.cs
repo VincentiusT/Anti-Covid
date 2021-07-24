@@ -7,11 +7,7 @@ public class VaksinPlace : MonoBehaviour
     private int level = 1;
 
     private int vaksinRate = 5; //people per vaksinTime
-    /*  lvl 1 = 5 
-     *  lvl 2 = 15 
-     *  lvl 3 = 50 
-     * 
-     */
+
     [SerializeField] private VaccineLevelSystem[] vaccineLevelSystem;
 
     private float vaksinTime = 10;
