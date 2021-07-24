@@ -18,8 +18,13 @@ public class Goverment : MonoBehaviour
     private float timeToGetMoney = 1f;
     private float timeToGetMoneyTemp;
 
+    private float PSBBdecreaseRate = 0.5f;
+    private float lockDownDecreaseRate = 0.9f;
+    private float socializationDecreaseRate = 0.2f;
+
     private int PSBBprice = 100;
     private int lockDownPrice = 300;
+    private int socializationPrice = 200;
 
     private void Awake()
     {
@@ -63,7 +68,7 @@ public class Goverment : MonoBehaviour
         {
             money -= PSBBprice;
         }
-        float rate = (float)Citizen.instance.TransmissionRateTotal * 0.5f;
+        float rate = (float)Citizen.instance.TransmissionRateTotal * PSBBdecreaseRate;
         Citizen.instance.TransmissionRateTotal -= (int)rate;
     }
 
@@ -77,8 +82,22 @@ public class Goverment : MonoBehaviour
         {
             money -= lockDownPrice;
         }
-        float rate = (float)Citizen.instance.TransmissionRateTotal * 0.9f;
+        float rate = (float)Citizen.instance.TransmissionRateTotal * lockDownDecreaseRate;
         Citizen.instance.TransmissionRateTotal -= (int)rate;
+    }
+
+    public void Socialization()
+    {
+        if (money < socializationPrice)
+        {
+            return;
+        }
+        else
+        {
+            money -= socializationPrice;
+        }
+        float rate = Citizen.instance.Awareness * socializationDecreaseRate;
+        Citizen.instance.Awareness -= rate;
     }
 
     public int Money

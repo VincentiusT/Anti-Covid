@@ -29,6 +29,8 @@ public class Citizen : MonoBehaviour
     private float crowdSpawnTimeMin = 8f;
     private float crowdSpawnTime;
 
+    private float awareness = 0.1f; //percentage
+
     public List<Crowd> crowds;
     [SerializeField] private GameObject[] crowdObj;
     [SerializeField] private Transform[] crowdSpawnPoint;
@@ -52,7 +54,7 @@ public class Citizen : MonoBehaviour
         int diff = PlayerPrefs.GetInt("diff");
         if (diff == 0)
         {
-           
+           //default
         }
         else if (diff == 1)
         {
@@ -72,6 +74,7 @@ public class Citizen : MonoBehaviour
     {
         crowds = new List<Crowd>();
         crowdSpawnTime = Random.Range(crowdSpawnTimeMin, crowdSpawnTimeMax);
+        crowdSpawnTime -= crowdSpawnTime * (1 - awareness);
         timeTemp = timeToIncreaseTransmissionRate;
         timeUntilDeathTemp = timeUntilDeath;
     }
@@ -126,6 +129,7 @@ public class Citizen : MonoBehaviour
         {
             SpawnCrowd();
             crowdSpawnTime = Random.Range(crowdSpawnTimeMin, crowdSpawnTimeMax);
+            crowdSpawnTime -= crowdSpawnTime * (1-awareness);
         }
         else
         {
@@ -149,9 +153,9 @@ public class Citizen : MonoBehaviour
         vaccinatedPeopleText.text = vaksinedPeoples.ToString("0");
         deadPeopleText.text = deadPeoples.ToString("0");
         citizenAliveText.text = totalCitizen.ToString("0");
-        deathRateText.text = deathRate.ToString();
+        deathRateText.text = (deathRate*100).ToString();
         transmissionIncreaseRateText.text = transmissionIncreaseRate.ToString("0");
-        AwarenessText.text = "30%"; //ini belum ditambahin
+        AwarenessText.text = (awareness*100).ToString(); //ini belum ditambahin
     }
     public void GetVirus(int total)
     {
@@ -236,5 +240,11 @@ public class Citizen : MonoBehaviour
     {
         set { vaksinedPeoples = value; }
         get { return vaksinedPeoples; }
+    }
+
+    public float Awareness
+    {
+        get { return awareness; }
+        set { awareness = value; }
     }
 }
