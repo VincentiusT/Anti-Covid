@@ -6,9 +6,10 @@ using TMPro;
 public class Goverment : MonoBehaviour
 {
     public static Goverment instance;
-
+    [SerializeField] private DayManager dayManager;
     private int money;
     private int moneyRate = 10; //get money per second
+    [SerializeField] private PolicyData[] policyDatas;
 
     [SerializeField] private TextMeshProUGUI moneyText;
     [SerializeField] private TextMeshProUGUI PSBBpriceText;
@@ -18,13 +19,25 @@ public class Goverment : MonoBehaviour
     private float timeToGetMoney = 1f;
     private float timeToGetMoneyTemp;
 
-    private float PSBBdecreaseRate = 0.5f;
-    private float lockDownDecreaseRate = 0.9f;
+    private float PSBBdecreaseRate = 0.2f;
+    private float lockDownDecreaseRate = 0.5f;
     private float socializationIncreaseRate = 0.3f;
 
     private int PSBBprice = 100;
     private int lockDownPrice = 300;
     private int socializationPrice = 200;
+
+    private int PSBBDuration = 3;
+    private int lockDownDuration = 3;
+    private int socializationDuration = 5;
+
+    private float timeToDecreasePSBB = 15f, timeToDecreasePSBBTemp;
+    private float timeToDecreaseLockDown = 15f, timeToDecreaseLockDownTemp;
+    private float timeToIncreaseSocialization = 15f, timeToIncreaseSocializationTemp;
+
+    private bool isPSBB, isLockDown, isSocialization;
+    private int PSBBStartDay, lockDownStartDay, socializationStartDay;
+    private int PSBBEndDay, lockDownEndDay, socializationEndDay;
 
     private void Awake()
     {
@@ -36,6 +49,9 @@ public class Goverment : MonoBehaviour
         timeToGetMoneyTemp = timeToGetMoney;
         PSBBpriceText.text = "Price: " + PSBBprice.ToString("0");
         lockDownPriceText.text = "Price: " + lockDownPrice.ToString("0");
+        timeToDecreaseLockDownTemp = timeToDecreaseLockDown;
+        timeToDecreasePSBBTemp = timeToDecreasePSBB;
+        timeToIncreaseSocializationTemp = timeToIncreaseSocialization;
     }
 
     void Update()
@@ -51,11 +67,81 @@ public class Goverment : MonoBehaviour
         }
 
         moneyText.text = money.ToString("0");
-    }
 
+
+        RunPolicies();
+    }
     public void ShowGovermentPanel(bool show)
     {
         govermentPanel.SetActive(show);
+    }
+
+    private void RunPolicies()
+    {
+        if (isPSBB)
+        {
+            if (dayManager.getDay() >= PSBBEndDay)
+            {
+                isPSBB = false;
+                Debug.Log("policyEnd");
+            }
+            else
+            {
+                if(timeToDecreasePSBB <= 0)
+                {
+                    float rate = (float)Citizen.instance.TransmissionRateTotal * PSBBdecreaseRate / PSBBDuration;
+                    Citizen.instance.TransmissionRateTotal -= (int)rate;
+                    timeToDecreasePSBB = timeToDecreasePSBBTemp;
+                }
+                else
+                {
+                    timeToDecreasePSBB -= Time.deltaTime;
+                }
+            }
+        }
+        if (isLockDown)
+        {
+            if (dayManager.getDay() >= lockDownEndDay)
+            {
+                isLockDown = false;
+                Debug.Log("policyEnd");
+            }
+            else
+            {
+                if (timeToDecreaseLockDown <= 0)
+                {
+                    float rate = (float)Citizen.instance.TransmissionRateTotal * lockDownDecreaseRate / lockDownDuration;
+                    Citizen.instance.TransmissionRateTotal -= (int)rate;
+                    timeToDecreaseLockDown = timeToDecreaseLockDownTemp;
+                }
+                else
+                {
+                    timeToDecreaseLockDown -= Time.deltaTime;
+                }
+            }
+        }
+        if (isSocialization)
+        {
+            if (dayManager.getDay() >= socializationEndDay)
+            {
+                isSocialization = false;
+                Debug.Log("policyEnd");
+            }
+            else
+            {
+                if (timeToIncreaseSocialization <= 0)
+                {
+                    float rate = Citizen.instance.Awareness * socializationIncreaseRate / socializationDuration;
+                    Citizen.instance.Awareness += rate;
+                    timeToIncreaseSocialization = timeToIncreaseSocializationTemp;
+                }
+                else
+                {
+                    timeToIncreaseSocialization -= Time.deltaTime;
+                }
+                
+            }
+        }
     }
 
     public void PSBB()
@@ -68,8 +154,10 @@ public class Goverment : MonoBehaviour
         {
             money -= PSBBprice;
         }
-        float rate = (float)Citizen.instance.TransmissionRateTotal * PSBBdecreaseRate;
-        Citizen.instance.TransmissionRateTotal -= (int)rate;
+        
+        isPSBB = true;
+        PSBBStartDay = dayManager.getDay();
+        PSBBEndDay = PSBBStartDay + PSBBDuration;
     }
 
     public void LockDown()
@@ -82,8 +170,10 @@ public class Goverment : MonoBehaviour
         {
             money -= lockDownPrice;
         }
-        float rate = (float)Citizen.instance.TransmissionRateTotal * lockDownDecreaseRate;
-        Citizen.instance.TransmissionRateTotal -= (int)rate;
+        
+        isLockDown = true;
+        lockDownStartDay = dayManager.getDay();
+        lockDownEndDay = lockDownStartDay + lockDownDuration;
     }
 
     public void Socialization()
@@ -96,8 +186,10 @@ public class Goverment : MonoBehaviour
         {
             money -= socializationPrice;
         }
-        float rate = Citizen.instance.Awareness * socializationIncreaseRate;
-        Citizen.instance.Awareness += rate;
+        
+        isSocialization = true;
+        socializationStartDay = dayManager.getDay();
+        socializationEndDay = socializationStartDay + socializationDuration;
     }
 
     public int Money

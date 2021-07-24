@@ -15,6 +15,9 @@ public class UIManager : MonoBehaviour
     private TextMeshProUGUI multiplierText;
     private GameObject multiplierPanel;
 
+    private GameObject notifPanel;
+    private TextMeshProUGUI notifText;
+
     private void Start()
     {
         if(instance == null)
@@ -25,6 +28,9 @@ public class UIManager : MonoBehaviour
 
         multiplierPanel = canvas.transform.Find("GamePanel/MultiplierPanel").gameObject;
         multiplierText = canvas.transform.Find("GamePanel/MultiplierPanel/multiplier").GetComponent<TextMeshProUGUI>();
+
+        notifPanel = canvas.transform.Find("GamePanel/notifPanel").gameObject;
+        notifText = notifPanel.transform.Find("info/info").GetComponent<TextMeshProUGUI>();
 
         SubscribeToDayEvent();
         SubscribeToMultiplierEvent();
@@ -84,5 +90,13 @@ public class UIManager : MonoBehaviour
         multiplierPanel.GetComponent<Animator>().SetBool("Show", show);
     }
 
+
+
     #endregion
+
+    public void ShowNotifPanel(string text)
+    {
+        notifText.text = text;
+        notifPanel.GetComponent<Animator>().SetTrigger("show");
+    }
 }

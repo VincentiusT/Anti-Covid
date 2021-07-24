@@ -19,7 +19,7 @@ public class InfoBarInteraction : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
-        showDataText = transform.Find("showMoreButton/Text (TMP)").GetComponent<TextMeshProUGUI>();
+        showDataText = transform.Find("infoBar/showMoreButton/Text (TMP)").GetComponent<TextMeshProUGUI>();
     }
     public void ShowMoreData(bool isShowing)
     {

@@ -8,6 +8,7 @@ public class TapManager : MonoBehaviour
     public delegate void OnMultiplierChange(float multiplier);
     public static event OnMultiplierChange onMultiplierChange;
 
+    
     [SerializeField] private float timeToKeepMultiplier = 1f;
     [SerializeField] private float maxMultiplier = 3f;
     private float timeElapsedSinceLastTap = 0f;
@@ -18,6 +19,8 @@ public class TapManager : MonoBehaviour
 
     public void TapHospitalize()
     {
+        if (HospitalManager.instance.placeCount() < 1) UIManager.instance.ShowNotifPanel("You don't have any hospital!\nTry to build a hospital first before hospitalize people.");
+
         timeElapsedSinceLastTap = 0f;
         tapAmount++;
 

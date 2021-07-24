@@ -17,7 +17,7 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonUp(0) && !IsPointerOverUIElement()/* !PharmacyManager.instance.pharmacyBuyPanel.activeSelf && !VaksinManager.instance.vaksinPlaceBuyPanel.activeSelf 
+        if (Input.GetMouseButtonDown(0) && !IsPointerOverUIElement()/* !PharmacyManager.instance.pharmacyBuyPanel.activeSelf && !VaksinManager.instance.vaksinPlaceBuyPanel.activeSelf 
             && !HospitalManager.instance.hospitalBuyPanel.activeSelf && !OfficerManager.instance.officerBuyPanel.activeSelf && !Goverment.instance.govermentPanel.activeSelf
             && !GameManager.instance.pausePanel.activeSelf*/)
         {

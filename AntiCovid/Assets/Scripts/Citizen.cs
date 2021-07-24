@@ -155,7 +155,7 @@ public class Citizen : MonoBehaviour
         citizenAliveText.text = totalCitizen.ToString("0");
         deathRateText.text = (deathRate*100).ToString();
         transmissionIncreaseRateText.text = transmissionIncreaseRate.ToString("0");
-        AwarenessText.text = (awareness*100).ToString(); //ini belum ditambahin
+        AwarenessText.text = (awareness*100).ToString(".0"); //ini belum ditambahin
     }
     public void GetVirus(int total)
     {
