@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     public GameObject difficulty;
-
-    
+    public GameObject SettingPanel;
 
     public void Play(int dif)
     {
@@ -17,6 +16,11 @@ public class MenuManager : MonoBehaviour
     public void showDifficultyPanel(bool isShowing)
     {
         difficulty.SetActive(isShowing);
+    }
+
+    public void showSetting(bool isShowing)
+    {
+        SettingPanel.SetActive(isShowing);
     }
 
     public void Quit()
