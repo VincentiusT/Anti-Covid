@@ -20,8 +20,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        if(instance == null)
-            instance = this;
+        instance = this;
 
         textDay = canvas.transform.Find("GamePanel/DayPanel/DayCount").GetComponent<TextMeshProUGUI>();
         DayPopUpPanel = canvas.transform.Find("GamePanel/DayInformationPanel").gameObject;
@@ -87,7 +86,8 @@ public class UIManager : MonoBehaviour
 
     private void ShowMultiplierPanel(bool show)
     {
-        multiplierPanel.GetComponent<Animator>().SetBool("Show", show);
+        if(multiplierPanel != null)
+            multiplierPanel.GetComponent<Animator>().SetBool("Show", show);
     }
 
 
