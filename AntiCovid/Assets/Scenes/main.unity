@@ -12317,9 +12317,9 @@ MonoBehaviour:
   socializationPanel: {fileID: 1622481173}
   moneyText: {fileID: 1111320429}
   govermentPanel: {fileID: 58053606}
-  PSBBprice: 300
-  lockDownPrice: 500
-  socializationPrice: 350
+  PSBBprice: 1500
+  lockDownPrice: 2500
+  socializationPrice: 1650
 --- !u!60 &1358056990
 PolygonCollider2D:
   m_ObjectHideFlags: 0

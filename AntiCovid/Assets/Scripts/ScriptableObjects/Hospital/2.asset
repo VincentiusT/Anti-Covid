@@ -15,6 +15,6 @@ MonoBehaviour:
   level: 2
   price: 10
   capacity: 500
-  outRate: 20
-  outSpeed: 15
+  outRate: 50
+  outSpeed: 5
   peopleOutPerTap: 3
