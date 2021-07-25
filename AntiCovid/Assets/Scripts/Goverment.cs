@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.UI;
 public class Goverment : MonoBehaviour
 {
     public static Goverment instance;
@@ -11,9 +11,18 @@ public class Goverment : MonoBehaviour
     private int moneyRate = 10; //get money per second
     [SerializeField] private PolicyData[] policyDatas;
 
+    [SerializeField] private GameObject PSBBPanel;
+    [SerializeField] private GameObject lockDownPanel;
+    [SerializeField] private GameObject socializationPanel;
+
     [SerializeField] private TextMeshProUGUI moneyText;
-    [SerializeField] private TextMeshProUGUI PSBBpriceText;
-    [SerializeField] private TextMeshProUGUI lockDownPriceText;
+    private TextMeshProUGUI PSBBpriceText;
+    private TextMeshProUGUI lockDownPriceText;
+    private TextMeshProUGUI socializationPriceText;
+
+    private Button PSBBButton;
+    private Button lockDownButton;
+    private Button socializationButton;
 
     public GameObject govermentPanel;
     private float timeToGetMoney = 1f;
@@ -46,9 +55,18 @@ public class Goverment : MonoBehaviour
 
     void Start()
     {
+        PSBBpriceText = PSBBPanel.transform.Find("price").GetComponent<TextMeshProUGUI>();
+        lockDownPriceText = lockDownPanel.transform.Find("price").GetComponent<TextMeshProUGUI>();
+        socializationPriceText = socializationPanel.transform.Find("price").GetComponent<TextMeshProUGUI>();
+
+        PSBBButton = PSBBPanel.GetComponent<Button>();
+        lockDownButton = lockDownPanel.GetComponent<Button>();
+        socializationButton = socializationPanel.GetComponent<Button>(); 
+
         timeToGetMoneyTemp = timeToGetMoney;
         PSBBpriceText.text = "Price: " + PSBBprice.ToString("0");
         lockDownPriceText.text = "Price: " + lockDownPrice.ToString("0");
+        socializationPriceText.text = "Price: " + socializationPrice.ToString("0");
         timeToDecreaseLockDownTemp = timeToDecreaseLockDown;
         timeToDecreasePSBBTemp = timeToDecreasePSBB;
         timeToIncreaseSocializationTemp = timeToIncreaseSocialization;
@@ -83,6 +101,7 @@ public class Goverment : MonoBehaviour
             if (dayManager.getDay() >= PSBBEndDay)
             {
                 isPSBB = false;
+                PSBBButton.interactable = true;
                 Debug.Log("policyEnd");
             }
             else
@@ -97,6 +116,7 @@ public class Goverment : MonoBehaviour
                 {
                     timeToDecreasePSBB -= Time.deltaTime;
                 }
+                PSBBpriceText.text = "Running : " +  (PSBBEndDay -  dayManager.getDay()).ToString("0") + "days left";
             }
         }
         if (isLockDown)
@@ -104,6 +124,7 @@ public class Goverment : MonoBehaviour
             if (dayManager.getDay() >= lockDownEndDay)
             {
                 isLockDown = false;
+                lockDownButton.interactable = true;
                 Debug.Log("policyEnd");
             }
             else
@@ -118,6 +139,7 @@ public class Goverment : MonoBehaviour
                 {
                     timeToDecreaseLockDown -= Time.deltaTime;
                 }
+                lockDownPriceText.text = "Running : " + (lockDownEndDay - dayManager.getDay()).ToString("0") + "days left";
             }
         }
         if (isSocialization)
@@ -125,6 +147,7 @@ public class Goverment : MonoBehaviour
             if (dayManager.getDay() >= socializationEndDay)
             {
                 isSocialization = false;
+                socializationButton.interactable = true;
                 Debug.Log("policyEnd");
             }
             else
@@ -139,57 +162,44 @@ public class Goverment : MonoBehaviour
                 {
                     timeToIncreaseSocialization -= Time.deltaTime;
                 }
-                
+                socializationPriceText.text = "Running : " + (socializationEndDay - dayManager.getDay()).ToString("0") + "days left";
             }
         }
     }
 
     public void PSBB()
     {
-        if (money < PSBBprice)
-        {
-            return;
-        }
-        else
-        {
-            money -= PSBBprice;
-        }
+        if (money < PSBBprice)return;
         
+        else money -= PSBBprice;
+
         isPSBB = true;
         PSBBStartDay = dayManager.getDay();
         PSBBEndDay = PSBBStartDay + PSBBDuration;
+        PSBBButton.interactable = false;
+        
     }
 
     public void LockDown()
     {
-        if (money < lockDownPrice)
-        {
-            return;
-        }
-        else
-        {
-            money -= lockDownPrice;
-        }
+        if (money < lockDownPrice)return;
+        else  money -= lockDownPrice;
         
         isLockDown = true;
         lockDownStartDay = dayManager.getDay();
         lockDownEndDay = lockDownStartDay + lockDownDuration;
+        lockDownButton.interactable = false;
     }
 
     public void Socialization()
     {
-        if (money < socializationPrice)
-        {
-            return;
-        }
-        else
-        {
-            money -= socializationPrice;
-        }
+        if (money < socializationPrice)return;
+        else money -= socializationPrice;
         
         isSocialization = true;
         socializationStartDay = dayManager.getDay();
         socializationEndDay = socializationStartDay + socializationDuration;
+        socializationButton.interactable = false;
     }
 
     public int Money
