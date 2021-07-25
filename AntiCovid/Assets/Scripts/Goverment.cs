@@ -25,16 +25,16 @@ public class Goverment : MonoBehaviour
     private Button socializationButton;
 
     public GameObject govermentPanel;
-    private float timeToGetMoney = 1f;
+    private float timeToGetMoney = 5f;
     private float timeToGetMoneyTemp;
 
     private float PSBBdecreaseRate = 0.2f;
     private float lockDownDecreaseRate = 0.5f;
     private float socializationIncreaseRate = 0.3f;
 
-    private int PSBBprice = 100;
-    private int lockDownPrice = 300;
-    private int socializationPrice = 200;
+    [SerializeField] private int PSBBprice = 100;
+    [SerializeField] private int lockDownPrice = 300;
+    [SerializeField] private int socializationPrice = 200;
 
     private int PSBBDuration = 3;
     private int lockDownDuration = 3;
@@ -70,12 +70,15 @@ public class Goverment : MonoBehaviour
         timeToDecreaseLockDownTemp = timeToDecreaseLockDown;
         timeToDecreasePSBBTemp = timeToDecreasePSBB;
         timeToIncreaseSocializationTemp = timeToIncreaseSocialization;
+
+        money = 5000;
     }
 
     void Update()
     {
         if (timeToGetMoney <= 0)
         {
+            moneyRate = Mathf.RoundToInt(Citizen.instance.HealthyPeoples / 10000f);
             money += moneyRate;
             timeToGetMoney = timeToGetMoneyTemp;
         }

@@ -20,7 +20,7 @@ public class AmbulanceManager : MonoBehaviour
     //private List<Ambulance> ambulances;
     private Ambulance[] ambulances = { null, null, null, null };
 
-    private int price = 15;
+    [SerializeField] private int price = 15;
 
     private bool[] alreadyBought = { false, false, false, false };
 

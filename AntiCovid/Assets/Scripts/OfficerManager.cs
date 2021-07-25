@@ -19,7 +19,7 @@ public class OfficerManager : MonoBehaviour
     private TextMeshProUGUI refillTimeText;
     private TextMeshProUGUI officerPriceText;
 
-    private int price = 10;
+    [SerializeField] private int price = 10;
     private Officer officer;
     private bool alreadyBought;
 

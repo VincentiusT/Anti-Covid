@@ -19,7 +19,7 @@ public class VaksinManager : MonoBehaviour
     private TextMeshProUGUI[] vaccineTimeText = new TextMeshProUGUI[4];
     private TextMeshProUGUI[] vaccinePlacePriceText = new TextMeshProUGUI[4];
 
-    private int price = 15;
+    [SerializeField] private int price = 15;
     //private List<VaksinPlace> vaksinPlace;
 
     private bool[] alreadyBought = { false, false, false, false };

@@ -17,7 +17,7 @@ public class PharmacyManager : MonoBehaviour
     private TextMeshProUGUI[] transmissionDecreaseRateText = new TextMeshProUGUI[4];
     private TextMeshProUGUI[] pharmacyPriceText = new TextMeshProUGUI[4];
 
-    private int price=20;
+    [SerializeField] private int price=20;
     private Pharmacy[] pharmacy = { null, null, null, null};
     private bool[] alreadyBought = { false, false, false, false };
 
