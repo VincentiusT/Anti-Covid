@@ -102,6 +102,7 @@ public class Goverment : MonoBehaviour
             {
                 isPSBB = false;
                 PSBBButton.interactable = true;
+                PSBBpriceText.text = "Price: " + PSBBprice.ToString("0");
                 Debug.Log("policyEnd");
             }
             else
@@ -125,6 +126,8 @@ public class Goverment : MonoBehaviour
             {
                 isLockDown = false;
                 lockDownButton.interactable = true;
+
+                lockDownPriceText.text = "Price: " + lockDownPrice.ToString("0");
                 Debug.Log("policyEnd");
             }
             else
@@ -148,6 +151,8 @@ public class Goverment : MonoBehaviour
             {
                 isSocialization = false;
                 socializationButton.interactable = true;
+
+                socializationPriceText.text = "Price: " + socializationPrice.ToString("0");
                 Debug.Log("policyEnd");
             }
             else
