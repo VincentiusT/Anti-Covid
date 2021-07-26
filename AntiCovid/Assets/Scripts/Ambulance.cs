@@ -15,7 +15,9 @@ public class Ambulance : MonoBehaviour
     private int pickUpRate = 50; //peoples per pickup
 
     private float pickUpTime = 10;
-    private float pickUpTimeTemp;
+    private float pickUpTimeMax = 20;
+
+    private float realPickUpTime;
 
     private int upgradePrice;
 
@@ -23,8 +25,9 @@ public class Ambulance : MonoBehaviour
     {
         upgradePrice = ambulanceLevelSystem[1].price;
         pickUpTime = ambulanceLevelSystem[0].pickupTime;
+        pickUpTimeMax = ambulanceLevelSystem[0].pickupTimeMax;
         pickUpRate = ambulanceLevelSystem[0].pickupRate;
-        pickUpTimeTemp = pickUpTime;
+        realPickUpTime = Random.Range(pickUpTime, pickUpTimeMax);
     }
 
     private void Start()
@@ -35,16 +38,16 @@ public class Ambulance : MonoBehaviour
 
     private void Update()
     {
-        if (pickUpTime <= 0)
+        if (realPickUpTime <= 0)
         {
-            Debug.Log("pickup time: " + pickUpTime);
+            Debug.Log("pickup time: " + realPickUpTime);
             playAmbulanceAnimation(Random.Range(1, 4));
             //PickUpSickPeoples();
-            pickUpTime = pickUpTimeTemp;
+            realPickUpTime = Random.Range(pickUpTime, pickUpTimeMax);
         }
         else
         {
-            pickUpTime -= Time.deltaTime;
+            realPickUpTime -= Time.deltaTime;
         }
     }
 
@@ -75,7 +78,8 @@ public class Ambulance : MonoBehaviour
 
         pickUpRate = ambulanceLevelSystem[level - 1].pickupRate;
         pickUpTime = ambulanceLevelSystem[level - 1].pickupTime;
-        pickUpTimeTemp = pickUpTime;
+        pickUpTimeMax = ambulanceLevelSystem[level - 1].pickupTimeMax;
+        realPickUpTime = Random.Range(pickUpTime, pickUpTimeMax);
         if (level >= ambulanceLevelSystem.Length) return;
         upgradePrice = ambulanceLevelSystem[level].price;
     }

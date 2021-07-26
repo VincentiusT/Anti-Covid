@@ -15,4 +15,5 @@ MonoBehaviour:
   level: 1
   price: 5
   pickupRate: 5
-  pickupTime: 30
+  pickupTime: 25
+  pickupTimeMax: 35

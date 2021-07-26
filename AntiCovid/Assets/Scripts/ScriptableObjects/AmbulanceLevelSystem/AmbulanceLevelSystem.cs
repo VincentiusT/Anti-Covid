@@ -9,5 +9,6 @@ public class AmbulanceLevelSystem : ScriptableObject
     public int price = 0;
     public int pickupRate = 0;
     public int pickupTime = 0;
+    public int pickupTimeMax = 0;
     //public Sprite sprite = null;
 }
