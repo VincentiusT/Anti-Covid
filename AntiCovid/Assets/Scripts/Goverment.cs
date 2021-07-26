@@ -71,7 +71,7 @@ public class Goverment : MonoBehaviour
         timeToDecreasePSBBTemp = timeToDecreasePSBB;
         timeToIncreaseSocializationTemp = timeToIncreaseSocialization;
 
-        money = 5000;
+        money = 5000000;
     }
 
     void Update()

@@ -11,5 +11,5 @@ public class HospitalLevelSystem : ScriptableObject
     public int outRate = 0;
     public int outSpeed = 0;
     public int peopleOutPerTap = 0;
-    //public Sprite sprite = null;
+    public Sprite sprite = null;
 }

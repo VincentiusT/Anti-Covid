@@ -13,35 +13,90 @@ public class VaksinPlace : MonoBehaviour
     private float vaksinTime = 10;
     private float vaksinTimeTemp;
 
+    private float startSeccondVaccineTime = 50f;
+    private float startSeccondVaccineTimeTemp;
+    private float seccondVaksinTime = 10;
+    private float seccondVaksinTimeTemp;
+
+    private bool startSeccondVaccine = true;
+
     private int upgradePrice;
+
+    bool done;
 
     private void Awake()
     {
         upgradePrice = vaccineLevelSystem[1].price;
         vaksinRate = vaccineLevelSystem[0].vaksinRate;
         vaksinTime = vaccineLevelSystem[0].vaksinTime;
+        seccondVaksinTime = vaccineLevelSystem[0].vaksinTime;
+        vaksinTimeTemp = vaksinTime;
+        seccondVaksinTimeTemp = seccondVaksinTime;
+        startSeccondVaccineTimeTemp = startSeccondVaccineTime;
     }
     void Start()
     {
-        vaksinTimeTemp = vaksinTime;   
+
     }
 
     void Update()
     {
         if(vaksinTime <= 0)
         {
-            VaksinPeople(vaksinRate);
+            FirstVaccine(vaksinRate);
             vaksinTime = vaksinTimeTemp;
         }
         else
         {
             vaksinTime -= Time.deltaTime;
         }
+
+        if (Citizen.instance.VaksinedPeoples > 0 && !done)
+        {
+            startSeccondVaccineTime = startSeccondVaccineTimeTemp;
+            startSeccondVaccine = true;
+            done = true;
+        }
+
+        if (startSeccondVaccine)
+        {
+            if (startSeccondVaccineTime <= 0)
+            {
+                if (Citizen.instance.VaksinedPeoples <= 0)
+                {
+                    startSeccondVaccine = false;
+                    done = false;
+                    //startSeccondVaccineTime = startSeccondVaccineTimeTemp;
+                }
+
+                //start seccond vaccine
+                if (seccondVaksinTime <= 0)
+                {
+                    SeccondVaccine(vaksinRate);
+                    seccondVaksinTime = seccondVaksinTimeTemp;
+                }
+                else
+                {
+                    seccondVaksinTime -= Time.deltaTime;
+                }
+            }
+            else
+            {
+                startSeccondVaccineTime -= Time.deltaTime;
+            }
+        }
     }
 
-    public void VaksinPeople(int people)
+    public void FirstVaccine(int people)
     {
-        Citizen.instance.VaksinedPeoples += people;
+        Citizen.instance.GetFirstVaccine(people);
+        
+    }
+
+    public void SeccondVaccine(int people)
+    {
+        Citizen.instance.GetSeccondVaccine(people);
+
     }
 
     public void UpgradeVaksinPlace()
@@ -50,7 +105,9 @@ public class VaksinPlace : MonoBehaviour
 
         vaksinRate = vaccineLevelSystem[level - 1].vaksinRate;
         vaksinTime = vaccineLevelSystem[level - 1].vaksinTime;
+        seccondVaksinTime = vaccineLevelSystem[level - 1].vaksinTime;
         vaksinTimeTemp = vaksinTime;
+        seccondVaksinTimeTemp = seccondVaksinTime;
 
         if (level >= vaccineLevelSystem.Length) return;
         upgradePrice = vaccineLevelSystem[level].price;
@@ -69,12 +126,10 @@ public class VaksinPlace : MonoBehaviour
     {
         get { return upgradePrice; }
     }
-
     public int VaksinRate
     {
         get { return vaksinRate; }
     }
-
     public float VaksinTime
     {
         get { return vaksinTime; }

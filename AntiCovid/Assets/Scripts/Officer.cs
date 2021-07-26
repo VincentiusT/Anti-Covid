@@ -12,10 +12,12 @@ public class Officer : MonoBehaviour
     private int upgradePrice;
     [SerializeField] private Slider slider;
     [SerializeField] private OfficerLevelSystem[] officerLevelSystem;
-
+    private SpriteRenderer sprite;
     private void Awake()
     {
+        sprite = GetComponent<SpriteRenderer>();
         upgradePrice = officerLevelSystem[1].price;
+        sprite.sprite = officerLevelSystem[0].sprite;
     }
 
     private void Start()
@@ -30,7 +32,6 @@ public class Officer : MonoBehaviour
         if (refillTime <= 0)
         {
             disbandCrowd();
-            
         }
         else
         {
@@ -61,6 +62,7 @@ public class Officer : MonoBehaviour
         level++;
 
         refillTime = officerLevelSystem[level - 1].refillTime;
+        sprite.sprite = officerLevelSystem[level - 1].sprite;
         refillTimeTemp = refillTime;
         if (level >= officerLevelSystem.Length) return;
         upgradePrice = officerLevelSystem[level].price;

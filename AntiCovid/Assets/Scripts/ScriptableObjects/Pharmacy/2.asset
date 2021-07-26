@@ -15,3 +15,4 @@ MonoBehaviour:
   sellWhat: hand sanitizer
   price: 10
   transmissionDecreaseRate: 10
+  sprite: {fileID: 21300000, guid: ad0d6bf8a97ea6b4097b171308573c83, type: 3}

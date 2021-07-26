@@ -8,5 +8,5 @@ public class PharmacyLevelSystem : ScriptableObject
     public string sellWhat = "";
     public int price = 0;
     public int transmissionDecreaseRate=0;
-    //public Sprite sprite = null;
+    public Sprite sprite = null;
 }

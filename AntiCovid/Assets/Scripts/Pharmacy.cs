@@ -7,19 +7,22 @@ public class Pharmacy : MonoBehaviour
     private int level = 1;
 
     private int transmissionDecreaseRate = 5;
+
+    private SpriteRenderer sprite;
    
     [SerializeField] private PharmacyLevelSystem[] pharmacyLevelSystem;
     private int upgradePrice;
 
     private void Awake()
     {
+        sprite = GetComponent<SpriteRenderer>();
         upgradePrice = pharmacyLevelSystem[1].price;
+        transmissionDecreaseRate = pharmacyLevelSystem[0].transmissionDecreaseRate;
+        sprite.sprite = pharmacyLevelSystem[0].sprite;
     }
 
     void Start()
     {
-        transmissionDecreaseRate = pharmacyLevelSystem[0].transmissionDecreaseRate;
-
         DecreaseTransmissionIncreaseRate();
     }
 
@@ -33,6 +36,7 @@ public class Pharmacy : MonoBehaviour
         level++;
 
         transmissionDecreaseRate = pharmacyLevelSystem[level - 1].transmissionDecreaseRate;
+        sprite.sprite = pharmacyLevelSystem[level -1].sprite;
         DecreaseTransmissionIncreaseRate();
         if (level >= pharmacyLevelSystem.Length) return;
         upgradePrice = pharmacyLevelSystem[level].price;
@@ -40,7 +44,7 @@ public class Pharmacy : MonoBehaviour
 
     private void DecreaseTransmissionIncreaseRate()
     {
-        if(Citizen.instance.TransmissionIncreaseRate <= 5)
+        if(Citizen.instance.TransmissionIncreaseRate  - transmissionDecreaseRate <= 5)
         {
             Citizen.instance.TransmissionIncreaseRate = 5;
             return;

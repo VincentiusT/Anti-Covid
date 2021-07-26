@@ -14,6 +14,8 @@ public class Hospital : MonoBehaviour
     [SerializeField] private GameObject peopleOut;
     private int upgradePrice;
 
+    private SpriteRenderer sprite;
+
     private int hospitalizedPeoples;
     private int releaseCount = 5; //berapa orang yang keluar dari rumah sakit
 
@@ -24,10 +26,12 @@ public class Hospital : MonoBehaviour
 
     private void Awake()
     {
+        sprite = GetComponent<SpriteRenderer>();
         releaseCount = hospitalLevelSystem[0].outRate;
         restTime = hospitalLevelSystem[0].outSpeed;
         capacity = hospitalLevelSystem[0].capacity;
         peopleOutPerTap = hospitalLevelSystem[0].peopleOutPerTap;
+        sprite.sprite = hospitalLevelSystem[0].sprite;
         restTimeOriginal = restTime;
         slider.maxValue = capacity;
         upgradePrice = hospitalLevelSystem[1].price;
@@ -51,6 +55,10 @@ public class Hospital : MonoBehaviour
 
     public void ReceiveSickPeople(int peoples)
     {
+        if(Citizen.instance.SickPeoples < 1)
+        {
+            return;
+        }
         if (hospitalizedPeoples >= capacity)
         {
             Debug.Log("Hospital " + name + " is full!");
@@ -64,8 +72,16 @@ public class Hospital : MonoBehaviour
         }
         else
         {
-            hospitalizedPeoples+= peoples;
-            Citizen.instance.SickPeoples-= peoples;
+            if (Citizen.instance.SickPeoples - peoples <= 0)
+            {
+                hospitalizedPeoples += Citizen.instance.SickPeoples;
+                Citizen.instance.SickPeoples = 0;
+            }
+            else
+            {
+                hospitalizedPeoples += peoples;
+                Citizen.instance.SickPeoples-= peoples;
+            }
         }
 
         Citizen.instance.HospitalizedPeoples = hospitalizedPeoples;
@@ -80,14 +96,18 @@ public class Hospital : MonoBehaviour
         if (hospitalizedPeoples < releaseCount)
         {
             Citizen.instance.HealthyPeoples += hospitalizedPeoples;
+            //Citizen.instance.UnvaccinatedPeoples += hospitalizedPeoples;
+            //Citizen.instance.UnvaccinatedPeoples2 += hospitalizedPeoples;
             Debug.Log("release from " + name + "  " + hospitalizedPeoples);
-            hospitalizedPeoples = 0;
             ShowPeopleText(-hospitalizedPeoples);
+            hospitalizedPeoples = 0;
         }
         else
         {
             hospitalizedPeoples -= releaseCount;
             Citizen.instance.HealthyPeoples += releaseCount;
+            //Citizen.instance.UnvaccinatedPeoples += releaseCount;
+            //Citizen.instance.UnvaccinatedPeoples2 += releaseCount;
             Debug.Log("release from " + name + "  " + releaseCount);
             ShowPeopleText(-releaseCount);
         }
@@ -97,7 +117,7 @@ public class Hospital : MonoBehaviour
             Citizen.instance.HealthyPeoples = Citizen.instance.TotalCitizen;
         }
         Citizen.instance.HospitalizedPeoples = hospitalizedPeoples;
-
+        
 
     }
 
@@ -129,6 +149,7 @@ public class Hospital : MonoBehaviour
         releaseCount = hospitalLevelSystem[level - 1].outRate;
         restTime = hospitalLevelSystem[level - 1].outSpeed;
         peopleOutPerTap = hospitalLevelSystem[level - 1].peopleOutPerTap;
+        sprite.sprite = hospitalLevelSystem[level -1].sprite;
         slider.maxValue = capacity;
         restTimeOriginal = restTime;
         if (level >= hospitalLevelSystem.Length) return;
