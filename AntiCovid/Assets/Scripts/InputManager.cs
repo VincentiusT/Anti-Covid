@@ -65,6 +65,10 @@ public class InputManager : MonoBehaviour
                 {
                     VaksinManager.instance.ShowBuyVaksinPlacePanel(true);
                 }
+                else if(hitPlace == "Monas")
+                {
+                    UIManager.instance.ShowNotifPanel("This is Jakarta's National Monumment, Monas!");
+                }
                 hitPlace = null;
             }
         }

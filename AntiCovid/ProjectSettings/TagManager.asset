@@ -10,6 +10,7 @@ TagManager:
   - Officer
   - Goverment
   - Crowd
+  - Monas
   layers:
   - Default
   - TransparentFX
