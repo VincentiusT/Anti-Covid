@@ -268,8 +268,12 @@ public class Citizen : MonoBehaviour
     {
         int limit =0;
         int idx = Random.Range(0, crowdObj.Length);
+
+        if (PlayerPrefs.GetInt("crowdTutorial") == 0)
+            idx = 0;
+
         while(crowdSpawnPoint[idx].childCount != 0)
-        {
+            {
             idx++;
             if (idx >= crowdObj.Length) idx = 0;
             limit++;

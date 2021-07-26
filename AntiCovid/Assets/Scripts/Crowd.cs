@@ -31,6 +31,7 @@ public class Crowd : MonoBehaviour
         {
             peopleAnims[i].SetTrigger("stop");
         }
+        Tutorial.instance.ShowCrowdTutorial(transform);
     }
 
     public void DestroyCrowd()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class DayManager : MonoBehaviour
     private int day = 0;
     [SerializeField] private int secondsPerDay = 5;
     [SerializeField] private GameObject overlayLight;
+    [Range(0, 99)][SerializeField] private int rainChance = 20;
+    [SerializeField] private ParticleSystem rainParticleSystem;
     private bool isChangingLight = false;
 
     private void Update()
@@ -19,6 +22,7 @@ public class DayManager : MonoBehaviour
         if(timeElapsed > secondsPerDay) //ganti hari
         {
             day++;
+            DetermineRainDay();
             UpdateDayUI();
             timeElapsed = 0f;
             StartCoroutine(ChangeLightGradually(-2f));
@@ -53,5 +57,49 @@ public class DayManager : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         isChangingLight = false;
+    }
+
+    private void DetermineRainDay()
+    {
+        int randomRainChance = UnityEngine.Random.Range(0, 100);
+        if(randomRainChance <= rainChance)
+        {
+            Debug.Log("HUJAN WOI");
+            int rainDelay = UnityEngine.Random.Range(0, secondsPerDay - Mathf.RoundToInt(secondsPerDay * 0.8f));
+            int rainDuration = UnityEngine.Random.Range(0, secondsPerDay - rainDelay);
+            int rainType = UnityEngine.Random.Range(0, 3);
+
+            StopAllCoroutines();
+            if(rainParticleSystem.isPlaying) rainParticleSystem.Stop();
+            StartCoroutine(ExcecuteRain(rainDelay, rainDuration, rainType));
+        }
+    }
+
+    private IEnumerator ExcecuteRain(int secondDelay, int rainDuration, int rainType)
+    {
+        yield return new WaitForSeconds(secondDelay);
+        SetParticleCountToRainType(rainType);
+        rainParticleSystem.Play();
+        yield return new WaitForSeconds(rainDuration);
+        rainParticleSystem.Stop();
+    }
+
+    private void SetParticleCountToRainType(int rainType)
+    {
+        var emission = rainParticleSystem.emission;
+
+        if(rainType == 0) //gerimis
+        {
+            emission.rateOverTime = 25;
+        }
+        else if(rainType == 1) //medium
+        {
+            emission.rateOverTime = 100;
+        }
+        else //lebat
+        {
+            emission.rateOverTime = 500;
+        }
+
     }
 }
