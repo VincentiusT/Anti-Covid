@@ -30,7 +30,7 @@ public class Citizen : MonoBehaviour
     private float timeUntilDeath = 30f;
     private float timeUntilDeathTemp;
 
-    private float crowdSpawnTimeMax = 20f;
+    private float crowdSpawnTimeMax = 30f;
     private float crowdSpawnTimeMin = 8f;
     private float crowdSpawnTime;
 
@@ -59,23 +59,7 @@ public class Citizen : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        int diff = PlayerPrefs.GetInt("diff");
-        if (diff == 0)
-        {
-           //default
-        }
-        else if (diff == 1)
-        {
-            transmissionRate = 100;
-            transmissionIncreaseRate = 50;
-            deathRate = 7;
-        }
-        else if(diff == 2)
-        {
-            transmissionRate = 500;
-            transmissionIncreaseRate = 100;
-            deathRate = 10;
-        }
+
     }
 
     private void Start()
@@ -140,7 +124,7 @@ public class Citizen : MonoBehaviour
         {
             SpawnCrowd();
             crowdSpawnTime = Random.Range(crowdSpawnTimeMin, crowdSpawnTimeMax);
-            crowdSpawnTime -= crowdSpawnTime * (1-awareness);
+            crowdSpawnTime += crowdSpawnTime * awareness;
         }
         else
         {

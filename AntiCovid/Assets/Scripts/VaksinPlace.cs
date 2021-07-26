@@ -93,6 +93,7 @@ public class VaksinPlace : MonoBehaviour
         {
             Citizen.instance.GetFirstVaccine(VaksinManager.instance.VaccineStock);
             VaksinManager.instance.VaccineStock = 0;
+            return;
         }
         Citizen.instance.GetFirstVaccine(people);
         VaksinManager.instance.VaccineStock -= people;
@@ -105,6 +106,7 @@ public class VaksinPlace : MonoBehaviour
         {
             Citizen.instance.GetSeccondVaccine(VaksinManager.instance.VaccineStock);
             VaksinManager.instance.VaccineStock = 0;
+            return;
         }
         Citizen.instance.GetSeccondVaccine(people);
         VaksinManager.instance.VaccineStock -= people;

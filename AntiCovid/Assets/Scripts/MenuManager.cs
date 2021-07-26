@@ -4,18 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
-    public GameObject difficulty;
     public GameObject SettingPanel;
 
-    public void Play(int dif)
+    public void Play()
     {
-        PlayerPrefs.SetInt("diff", dif);
-        SceneManager.LoadScene("main");
-    }
-
-    public void showDifficultyPanel(bool isShowing)
-    {
-        difficulty.SetActive(isShowing);
+        SceneManager.LoadScene("level");
     }
 
     public void showSetting(bool isShowing)

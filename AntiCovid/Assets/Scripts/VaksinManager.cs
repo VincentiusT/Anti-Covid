@@ -66,13 +66,17 @@ public class VaksinManager : MonoBehaviour
 
     public void BuyVaksinPlace(int whichVaksinPlace)
     {
+
+        if (HospitalManager.instance.placeCount() < 3 || PharmacyManager.instance.placeCount() < 3)
+        {
+            UIManager.instance.ShowNotifPanel("You need to have at least 3 hospitals and 3 pharmacy to buy vaccine place");
+            return;
+        }
         if (alreadyBought[whichVaksinPlace])
         {
             UpgradeVaksinPlace(whichVaksinPlace);
             return;
         }
-
-        if (HospitalManager.instance.placeCount() < 3 && PharmacyManager.instance.placeCount() < 3) return;
 
         if (Goverment.instance.Money < price)
         {

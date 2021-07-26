@@ -53,8 +53,11 @@ public class AmbulanceManager : MonoBehaviour
 
     public void BuyAmbulance(int whichAMbulance)
     {
-        if (HospitalManager.instance.placeCount() < 1) return;
-
+        if (HospitalManager.instance.placeCount() < 1)
+        {
+            UIManager.instance.ShowNotifPanel("you need to have at least 1 hospital to buy ambulance");
+            return;
+        }
         if (alreadyBought[whichAMbulance])
         {
             UpgradeAmbulance(whichAMbulance);
