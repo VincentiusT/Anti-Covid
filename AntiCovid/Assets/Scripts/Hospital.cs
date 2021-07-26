@@ -128,14 +128,14 @@ public class Hospital : MonoBehaviour
             GameObject go = Instantiate(peopleIn, transform.position, transform.rotation) as GameObject;
             go.transform.SetParent(transform);
             go.GetComponentInChildren<TextMeshProUGUI>().text = "+" + total;
-            Destroy(go, 0.3f);
+            Destroy(go, 0.5f);
         }
         else
         {
             GameObject go = Instantiate(peopleOut, transform.position, transform.rotation) as GameObject;
             go.transform.SetParent(transform);
             go.GetComponentInChildren<TextMeshProUGUI>().text = "-" + total;
-            Destroy(go, 0.3f);
+            Destroy(go, 0.5f);
         }
     }
 
