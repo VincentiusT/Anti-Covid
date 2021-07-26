@@ -13,19 +13,19 @@ public class VaksinManager : MonoBehaviour
     public GameObject vaksinPlaceBuyPanel;
     public GameObject[] buyButtons;
 
-    private TextMeshProUGUI[] vaccinePlaceBuyText = new TextMeshProUGUI[4];
-    private TextMeshProUGUI[] vaccinePlaceLevelText = new TextMeshProUGUI[4];
-    private TextMeshProUGUI[] vaccineRateText = new TextMeshProUGUI[4];
-    private TextMeshProUGUI[] vaccineTimeText = new TextMeshProUGUI[4];
-    private TextMeshProUGUI[] vaccinePlacePriceText = new TextMeshProUGUI[4];
+    private TextMeshProUGUI[] vaccinePlaceBuyText;
+    private TextMeshProUGUI[] vaccinePlaceLevelText;
+    private TextMeshProUGUI[] vaccineRateText;
+    private TextMeshProUGUI[] vaccineTimeText;
+    private TextMeshProUGUI[] vaccinePlacePriceText;
     [SerializeField]private TextMeshProUGUI vaccineStockText;
 
     [SerializeField] private int price = 15;
     //private List<VaksinPlace> vaksinPlace;
     private int vaccineStock = 0;
 
-    private bool[] alreadyBought = { false, false, false, false };
-    private VaksinPlace[] vaksinPlace = { null, null, null, null };
+    private bool[] alreadyBought;
+    private VaksinPlace[] vaksinPlace;
 
     int index = 0;
     private void Awake()
@@ -34,7 +34,14 @@ public class VaksinManager : MonoBehaviour
     }
     private void Start()
     {
-        //vaksinPlace = new List<VaksinPlace>();
+        vaccinePlaceBuyText = new TextMeshProUGUI[buyButtons.Length];
+        vaccinePlaceLevelText = new TextMeshProUGUI[buyButtons.Length];
+        vaccineRateText = new TextMeshProUGUI[buyButtons.Length];
+        vaccineTimeText = new TextMeshProUGUI[buyButtons.Length];
+        vaccinePlacePriceText = new TextMeshProUGUI[buyButtons.Length];
+
+        vaksinPlace = new VaksinPlace[buyButtons.Length];
+        alreadyBought = new bool[buyButtons.Length];
 
         for (int i = 0; i < buyButtons.Length; i++)
         {

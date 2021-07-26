@@ -12,14 +12,15 @@ public class PharmacyManager : MonoBehaviour
     public GameObject pharmacyBuyPanel;
     public GameObject[] buyButtons;
 
-    private TextMeshProUGUI[] pharmacyBuyText = new TextMeshProUGUI[4];
-    private TextMeshProUGUI[] pharmacyLevelText = new TextMeshProUGUI[4];
-    private TextMeshProUGUI[] transmissionDecreaseRateText = new TextMeshProUGUI[4];
-    private TextMeshProUGUI[] pharmacyPriceText = new TextMeshProUGUI[4];
+    private TextMeshProUGUI[] pharmacyBuyText;
+    private TextMeshProUGUI[] pharmacyLevelText;
+    private TextMeshProUGUI[] transmissionDecreaseRateText;
+    private TextMeshProUGUI[] pharmacyPriceText;
 
+    private Image[] pharmacySprites;
     [SerializeField] private int price=20;
-    private Pharmacy[] pharmacy = { null, null, null, null};
-    private bool[] alreadyBought = { false, false, false, false };
+    private Pharmacy[] pharmacy;
+    private bool[] alreadyBought;
 
     int index = 0;
     private void Awake()
@@ -28,7 +29,14 @@ public class PharmacyManager : MonoBehaviour
     }
     private void Start()
     {
-        //pharmacy = new List<Pharmacy>();
+        pharmacyBuyText = new TextMeshProUGUI[buyButtons.Length];
+        pharmacyLevelText = new TextMeshProUGUI[buyButtons.Length];
+        transmissionDecreaseRateText = new TextMeshProUGUI[buyButtons.Length];
+        pharmacyPriceText = new TextMeshProUGUI[buyButtons.Length];
+        pharmacySprites = new Image[buyButtons.Length];
+
+        pharmacy = new Pharmacy[buyButtons.Length];
+        alreadyBought = new bool[buyButtons.Length];
 
         for (int i = 0; i < buyButtons.Length; i++)
         {
@@ -36,6 +44,7 @@ public class PharmacyManager : MonoBehaviour
             pharmacyLevelText[i] = buyButtons[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>();
             transmissionDecreaseRateText[i] = buyButtons[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>();
             pharmacyPriceText[i] = buyButtons[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+            pharmacySprites[i] = buyButtons[i].transform.GetChild(4).GetComponent<Image>();
             pharmacyPriceText[i].text = "Price: " + price;
         }
     }
@@ -102,6 +111,7 @@ public class PharmacyManager : MonoBehaviour
         }
         transmissionDecreaseRateText[index].text = "Transmission decrease rate: " + pharmacy[index].TransmissionDecreaseRate;
         pharmacyPriceText[index].text = "Price: " + pharmacy[index].UpgradePrice;
+        pharmacySprites[index].sprite = pharmacy[index].GetSprite();
     }
 
     public void UpgradePharmacy(int whichPharmacy)

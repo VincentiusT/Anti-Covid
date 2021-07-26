@@ -67,4 +67,8 @@ public class Pharmacy : MonoBehaviour
     {
         get { return transmissionDecreaseRate; }
     }
+    public Sprite GetSprite()
+    {
+        return sprite.sprite;
+    }
 }

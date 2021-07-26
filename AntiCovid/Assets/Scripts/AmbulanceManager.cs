@@ -10,23 +10,30 @@ public class AmbulanceManager : MonoBehaviour
     public GameObject buyAmbulancePanel;
     public GameObject[] buyButtons;
 
-    private TextMeshProUGUI[] ambulanceBuyText = new TextMeshProUGUI[4];
-    private TextMeshProUGUI[] ambulanceLevelText = new TextMeshProUGUI[4];
-    private TextMeshProUGUI[] pickupRate = new TextMeshProUGUI[4];
-    private TextMeshProUGUI[] pickupTime = new TextMeshProUGUI[4];
-    private TextMeshProUGUI[] ambulancePriceText = new TextMeshProUGUI[4];
-    
+    private TextMeshProUGUI[] ambulanceBuyText;
+    private TextMeshProUGUI[] ambulanceLevelText;
+    private TextMeshProUGUI[] pickupRate;
+    private TextMeshProUGUI[] pickupTime;
+    private TextMeshProUGUI[] ambulancePriceText;
+
 
     //private List<Ambulance> ambulances;
-    private Ambulance[] ambulances = { null, null, null, null };
+    private Ambulance[] ambulances;
 
     [SerializeField] private int price = 15;
 
-    private bool[] alreadyBought = { false, false, false, false };
+    private bool[] alreadyBought ;
 
     private void Start()
     {
-        //ambulances = new List<Ambulance>();
+        ambulanceBuyText = new TextMeshProUGUI[buyButtons.Length];
+        ambulanceLevelText = new TextMeshProUGUI[buyButtons.Length];
+        pickupRate = new TextMeshProUGUI[buyButtons.Length];
+        pickupTime = new TextMeshProUGUI[buyButtons.Length];
+        ambulancePriceText = new TextMeshProUGUI[buyButtons.Length];
+
+        ambulances = new Ambulance[buyButtons.Length];
+        alreadyBought = new bool[buyButtons.Length];
 
         for (int i = 0; i < buyButtons.Length; i++)
         {

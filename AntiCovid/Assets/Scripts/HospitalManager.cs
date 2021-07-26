@@ -13,17 +13,18 @@ public class HospitalManager : MonoBehaviour
     public GameObject hospitalBuyPanel;
     public GameObject[] buyButtons;
 
-    private TextMeshProUGUI[] hospitalBuyText = new TextMeshProUGUI[4];
-    private TextMeshProUGUI[] hospitalLevelText = new TextMeshProUGUI[4];
-    private TextMeshProUGUI[] hospitalCapacityText = new TextMeshProUGUI[4];
-    private TextMeshProUGUI[] hospitalRestTimeText = new TextMeshProUGUI[4];
-    private TextMeshProUGUI[] hospitalReleaseCountText = new TextMeshProUGUI[4];
-    private TextMeshProUGUI[] hospitalPriceText = new TextMeshProUGUI[4];
+    private TextMeshProUGUI[] hospitalBuyText ;
+    private TextMeshProUGUI[] hospitalLevelText ;
+    private TextMeshProUGUI[] hospitalCapacityText;
+    private TextMeshProUGUI[] hospitalRestTimeText;
+    private TextMeshProUGUI[] hospitalReleaseCountText;
+    private TextMeshProUGUI[] hospitalPriceText;
+    private Image[] hospitalSprites;
     [SerializeField] private int price = 30;
     //private List<Hospital> hospitals;
-    private Hospital[] hospitals = { null, null, null, null};
+    private Hospital[] hospitals;
     private int totalHospitalizedPeoples;
-    private bool[] alreadyBought = { false, false, false, false};
+    private bool[] alreadyBought;
 
     int index=0;
 
@@ -34,7 +35,18 @@ public class HospitalManager : MonoBehaviour
     private void Start()
     {
         //hospitals = new List<Hospital>();
-        for(int i = 0; i < buyButtons.Length; i++)
+        hospitalBuyText = new TextMeshProUGUI[buyButtons.Length];
+        hospitalLevelText = new TextMeshProUGUI[buyButtons.Length];
+        hospitalCapacityText = new TextMeshProUGUI[buyButtons.Length];
+        hospitalRestTimeText = new TextMeshProUGUI[buyButtons.Length];
+        hospitalReleaseCountText = new TextMeshProUGUI[buyButtons.Length];
+        hospitalPriceText = new TextMeshProUGUI[buyButtons.Length];
+        hospitalSprites = new Image[buyButtons.Length];
+
+        hospitals = new Hospital[buyButtons.Length];
+        alreadyBought = new bool[buyButtons.Length];
+
+        for (int i = 0; i < buyButtons.Length; i++)
         {
             hospitalBuyText[i] = buyButtons[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             hospitalLevelText[i] = buyButtons[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>();
@@ -42,6 +54,7 @@ public class HospitalManager : MonoBehaviour
             hospitalReleaseCountText[i] = buyButtons[i].transform.GetChild(4).GetComponent<TextMeshProUGUI>();
             hospitalRestTimeText[i] = buyButtons[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>();
             hospitalPriceText[i] = buyButtons[i].transform.GetChild(5).GetComponent<TextMeshProUGUI>();
+            hospitalSprites[i] = buyButtons[i].transform.GetChild(6).GetComponent<Image>();
             hospitalPriceText[i].text = "Price: " + price;
         }
     }
@@ -163,6 +176,7 @@ public class HospitalManager : MonoBehaviour
         hospitalReleaseCountText[index].text = "Release Count: " + hospitals[index].ReleaseCount;
         hospitalRestTimeText[index].text = "Rest Time: " + hospitals[index].RestTime;
         hospitalPriceText[index].text = "Price: " + hospitals[index].UpgradePrice;
+        hospitalSprites[index].sprite = hospitals[index].GetSprite();
     }
 
     public void UpgradeHospital(int whichHospital)

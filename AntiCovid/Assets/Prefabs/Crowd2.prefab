@@ -358,6 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e1257c3603be6049a855ed1f9e53da1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tandaSeru: {fileID: 231147323107345643, guid: 65f3929a3b3e651419c98be1608cc881, type: 3}
 --- !u!58 &4600963770910845736
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -464,7 +465,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 11
+  m_SortingOrder: 13
   m_Sprite: {fileID: 21300000, guid: b09e1ce036710d541a00c7d9e0ba70ff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Crowd : MonoBehaviour
 {
     private Animator anim;
-
+    [SerializeField] private GameObject tandaSeru;
     private List<Animator> peopleAnims;
 
     private int transmissionIncreaseRate = 10;
@@ -27,11 +27,14 @@ public class Crowd : MonoBehaviour
 
     public void StopCrowdWalking()
     {
-        for (int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < peopleAnims.Count; i++)
         {
             peopleAnims[i].SetTrigger("stop");
         }
-        Tutorial.instance.ShowCrowdTutorial(transform);
+        GameObject go = Instantiate(tandaSeru, transform.position, transform.rotation);
+        go.transform.position += new Vector3(0, -0.5f, 0);
+        go.transform.SetParent(transform);
+        //Tutorial.instance.ShowCrowdTutorial(transform);
     }
 
     public void DestroyCrowd()

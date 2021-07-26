@@ -87,4 +87,8 @@ public class Officer : MonoBehaviour
     {
         get { return refillTime; }
     }
+    public Sprite GetSprite()
+    {
+        return sprite.sprite;
+    }
 }

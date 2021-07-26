@@ -19,6 +19,8 @@ public class OfficerManager : MonoBehaviour
     private TextMeshProUGUI refillTimeText;
     private TextMeshProUGUI officerPriceText;
 
+    private Image officerSprite;
+
     [SerializeField] private int price = 10;
     private Officer officer;
     private bool alreadyBought;
@@ -34,6 +36,7 @@ public class OfficerManager : MonoBehaviour
         officerLevelText = buyButton.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         refillTimeText = buyButton.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
         officerPriceText = buyButton.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        officerSprite = buyButton.transform.GetChild(4).GetComponent<Image>();
         officerPriceText.text = "Price: " + price;
     }
 
@@ -86,6 +89,7 @@ public class OfficerManager : MonoBehaviour
         }
         refillTimeText.text = "Recharge Time: " + officer.RefillTime;
         officerPriceText.text = "Price: " + officer.UpgradePrice;
+        officerSprite.sprite = officer.GetSprite();
     }
 
     public void UpgradeOfficer()

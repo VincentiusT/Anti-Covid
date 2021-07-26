@@ -198,4 +198,9 @@ public class Hospital : MonoBehaviour
     {
         get { return peopleOutPerTap; }
     }
+
+    public Sprite GetSprite()
+    {
+        return sprite.sprite;
+    }
 }
