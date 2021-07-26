@@ -14,11 +14,13 @@ public class Goverment : MonoBehaviour
     [SerializeField] private GameObject PSBBPanel;
     [SerializeField] private GameObject lockDownPanel;
     [SerializeField] private GameObject socializationPanel;
+    [SerializeField] private GameObject buyVaksinPanel;
 
     [SerializeField] private TextMeshProUGUI moneyText;
     private TextMeshProUGUI PSBBpriceText;
     private TextMeshProUGUI lockDownPriceText;
     private TextMeshProUGUI socializationPriceText;
+    private TextMeshProUGUI buyVaccineText;
 
     private Button PSBBButton;
     private Button lockDownButton;
@@ -35,6 +37,8 @@ public class Goverment : MonoBehaviour
     [SerializeField] private int PSBBprice = 100;
     [SerializeField] private int lockDownPrice = 300;
     [SerializeField] private int socializationPrice = 200;
+    [SerializeField] private int vaccinePrice = 200;
+    [SerializeField] private int vaccineStock = 50;
 
     private int PSBBDuration = 3;
     private int lockDownDuration = 3;
@@ -58,6 +62,7 @@ public class Goverment : MonoBehaviour
         PSBBpriceText = PSBBPanel.transform.Find("price").GetComponent<TextMeshProUGUI>();
         lockDownPriceText = lockDownPanel.transform.Find("price").GetComponent<TextMeshProUGUI>();
         socializationPriceText = socializationPanel.transform.Find("price").GetComponent<TextMeshProUGUI>();
+        buyVaccineText = buyVaksinPanel.transform.Find("price").GetComponent<TextMeshProUGUI>();
 
         PSBBButton = PSBBPanel.GetComponent<Button>();
         lockDownButton = lockDownPanel.GetComponent<Button>();
@@ -210,6 +215,14 @@ public class Goverment : MonoBehaviour
         socializationButton.interactable = false;
     }
 
+
+    public void BuyVaccineStock()
+    {
+        if (money < vaccinePrice) return;
+        else money -= vaccinePrice;
+
+        VaksinManager.instance.VaccineStock += vaccineStock;
+    }
     public int Money
     {
         set { money = value; }

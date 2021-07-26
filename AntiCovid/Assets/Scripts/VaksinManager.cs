@@ -18,9 +18,11 @@ public class VaksinManager : MonoBehaviour
     private TextMeshProUGUI[] vaccineRateText = new TextMeshProUGUI[4];
     private TextMeshProUGUI[] vaccineTimeText = new TextMeshProUGUI[4];
     private TextMeshProUGUI[] vaccinePlacePriceText = new TextMeshProUGUI[4];
+    [SerializeField]private TextMeshProUGUI vaccineStockText;
 
     [SerializeField] private int price = 15;
     //private List<VaksinPlace> vaksinPlace;
+    private int vaccineStock = 0;
 
     private bool[] alreadyBought = { false, false, false, false };
     private VaksinPlace[] vaksinPlace = { null, null, null, null };
@@ -43,6 +45,11 @@ public class VaksinManager : MonoBehaviour
             vaccinePlacePriceText[i] = buyButtons[i].transform.GetChild(4).GetComponent<TextMeshProUGUI>();
             vaccinePlacePriceText[i].text = "Price: " + price;
         }
+    }
+
+    private void Update()
+    {
+        vaccineStockText.text = vaccineStock.ToString("0");
     }
 
     public void ShowBuyVaksinPlacePanel(bool show) //munculin buy panel
@@ -137,5 +144,11 @@ public class VaksinManager : MonoBehaviour
             if (vaksinPlace[i] != null) counter++;
         }
         return counter;
+    }
+
+    public int VaccineStock
+    {
+        get { return vaccineStock; }
+        set { vaccineStock = value; }
     }
 }

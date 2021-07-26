@@ -89,13 +89,25 @@ public class VaksinPlace : MonoBehaviour
 
     public void FirstVaccine(int people)
     {
+        if(VaksinManager.instance.VaccineStock < people)
+        {
+            Citizen.instance.GetFirstVaccine(VaksinManager.instance.VaccineStock);
+            VaksinManager.instance.VaccineStock = 0;
+        }
         Citizen.instance.GetFirstVaccine(people);
-        
+        VaksinManager.instance.VaccineStock -= people;
+
     }
 
     public void SeccondVaccine(int people)
     {
+        if (VaksinManager.instance.VaccineStock < people)
+        {
+            Citizen.instance.GetSeccondVaccine(VaksinManager.instance.VaccineStock);
+            VaksinManager.instance.VaccineStock = 0;
+        }
         Citizen.instance.GetSeccondVaccine(people);
+        VaksinManager.instance.VaccineStock -= people;
 
     }
 
