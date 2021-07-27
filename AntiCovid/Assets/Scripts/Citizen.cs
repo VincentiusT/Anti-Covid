@@ -129,6 +129,7 @@ public class Citizen : MonoBehaviour
         else
         {
             crowdSpawnTime -= Time.deltaTime;
+            Debug.Log(Time.deltaTime);
         }
 
         //debug

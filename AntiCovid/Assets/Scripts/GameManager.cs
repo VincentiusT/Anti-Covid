@@ -13,10 +13,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-    }
-    private void Start()
-    {
-        Time.timeScale = 1f ;
+        Time.timeScale = 1f;
     }
 
     private void Update()
