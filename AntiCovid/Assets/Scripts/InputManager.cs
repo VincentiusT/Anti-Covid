@@ -19,6 +19,7 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!Tutorial.instance.IsFinished) return;
         if(Input.GetMouseButtonDown(0) && IsPointerOverUIElement())
         {
             return;
@@ -27,7 +28,7 @@ public class InputManager : MonoBehaviour
         {
             tapTimer -= Time.deltaTime;
         }
-        if (Input.GetMouseButtonDown(0) && !IsPointerOverUIElement()/* !PharmacyManager.instance.pharmacyBuyPanel.activeSelf && !VaksinManager.instance.vaksinPlaceBuyPanel.activeSelf 
+        if (Input.GetMouseButtonDown(0) && !IsPointerOverUIElement() /* !PharmacyManager.instance.pharmacyBuyPanel.activeSelf && !VaksinManager.instance.vaksinPlaceBuyPanel.activeSelf 
             && !HospitalManager.instance.hospitalBuyPanel.activeSelf && !OfficerManager.instance.officerBuyPanel.activeSelf && !Goverment.instance.govermentPanel.activeSelf
             && !GameManager.instance.pausePanel.activeSelf*/)
         {
@@ -43,7 +44,6 @@ public class InputManager : MonoBehaviour
         {
             if (tapTimer > 0f)
             {
-                Debug.Log("WOI");
                 if (hitPlace == "Hospital")
                 {
                     HospitalManager.instance.ShowBuyHospitalPanel(true);
@@ -68,6 +68,38 @@ public class InputManager : MonoBehaviour
                 else if(hitPlace == "Monas")
                 {
                     UIManager.instance.ShowNotifPanel("This is Jakarta's National Monumment, Monas!");
+                }
+                else if (hitPlace == "Bandung")
+                {
+                    UIManager.instance.ShowNotifPanel("This is Bandung's Landmark, Gedung Sate!");
+                }
+                else if (hitPlace == "Semarang")
+                {
+                    UIManager.instance.ShowNotifPanel("This is Semarang's Landmark, Lawang Sewu!");
+                }
+                else if (hitPlace == "Surabaya")
+                {
+                    UIManager.instance.ShowNotifPanel("This is Surabaya's Monumment, Sura and Baya!");
+                }
+                else if (hitPlace == "Pekanbaru")
+                {
+                    UIManager.instance.ShowNotifPanel("This is Pekanbaru's Landmark, Candi Muara Takus!");
+                }
+                else if (hitPlace == "Jogja")
+                {
+                    UIManager.instance.ShowNotifPanel("This is Jogjakarta's Monumment, Tugu Jogja Monumment!");
+                }
+                else if (hitPlace == "Denpasar")
+                {
+                    UIManager.instance.ShowNotifPanel("This is Denpasar's Landmark!");
+                }
+                else if (hitPlace == "Serang")
+                {
+                    UIManager.instance.ShowNotifPanel("This is Serang's Monumment, Masjid Agung Banten!");
+                }
+                else if (hitPlace == "Makassar")
+                {
+                    UIManager.instance.ShowNotifPanel("This is Makassar's Landmark, Masjid 99 kubah!");
                 }
                 hitPlace = null;
             }

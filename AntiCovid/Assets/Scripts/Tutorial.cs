@@ -7,19 +7,30 @@ public class Tutorial : MonoBehaviour
     public static Tutorial instance;
     [SerializeField] private GameObject canvasTutorial, canvasGeneralTutorial;
 
+    private bool isFinished = true;
+
+    public bool IsFinished
+    {
+        get { return isFinished; }
+    }
+
     private void Start()
     {
         instance = this;
         PlayerPrefs.SetInt("crowdTutorial", 0);
         PlayerPrefs.SetInt("generalTutorial", 0);
-        StartTutorial();
+        //StartTutorial();
     }
 
-    private void StartTutorial()
+    public void StartTutorial()
     {
-        if (PlayerPrefs.GetInt("generalTutorial") == 1) return;
+        if (PlayerPrefs.GetInt("generalTutorial") == 1)
+        {
+            return;
+        }
         else
         {
+            isFinished = false;
             canvasGeneralTutorial.SetActive(true);
             PlayerPrefs.SetInt("generalTutorial", 1);
             Time.timeScale = 0f;
@@ -28,6 +39,7 @@ public class Tutorial : MonoBehaviour
 
     public void resumeAfterTutorial()
     {
+        isFinished = true;
         Time.timeScale = 1f;
     }
 

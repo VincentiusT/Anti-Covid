@@ -11,6 +11,14 @@ TagManager:
   - Goverment
   - Crowd
   - Monas
+  - Bandung
+  - Surabaya
+  - Semarang
+  - Jogja
+  - Denpasar
+  - Serang
+  - Makassar
+  - Pekanbaru
   layers:
   - Default
   - TransparentFX
