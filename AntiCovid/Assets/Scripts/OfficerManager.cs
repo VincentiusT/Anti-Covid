@@ -11,6 +11,7 @@ public class OfficerManager : MonoBehaviour
     public GameObject officerPoint;
     public GameObject officerObj;
     public GameObject officerBuyPanel;
+    public GameObject buyMark;
 
     public GameObject buyButton;
 
@@ -64,6 +65,7 @@ public class OfficerManager : MonoBehaviour
         {
             Goverment.instance.Money -= price;
         }
+        buyMark.SetActive(false);
         GameObject go = Instantiate(officerObj, officerPoint.transform.position, officerPoint.transform.rotation) as GameObject;
         go.transform.parent = officerPoint.transform;
         go.name = "Officer";

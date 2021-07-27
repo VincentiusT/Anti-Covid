@@ -12,6 +12,7 @@ public class HospitalManager : MonoBehaviour
     public GameObject hospitalObj;
     public GameObject hospitalBuyPanel;
     public GameObject[] buyButtons;
+    public GameObject buyMark;
 
     private TextMeshProUGUI[] hospitalBuyText ;
     private TextMeshProUGUI[] hospitalLevelText ;
@@ -131,7 +132,7 @@ public class HospitalManager : MonoBehaviour
         if(Goverment.instance.Money < price) return;
         else Goverment.instance.Money -= price;
 
-
+        buyMark.SetActive(false);
         GameObject go = Instantiate(hospitalObj, hospitalPoints[whichHospital].transform.position, hospitalPoints[whichHospital].transform.rotation) as GameObject;
         go.transform.parent = hospitalPoints[whichHospital].transform;
         go.name = "hospital" + whichHospital;

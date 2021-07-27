@@ -1133,15 +1133,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2698321608713810895, guid: 442228d709c7e9f4e8915c5818e51848, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 238.937
+      value: 264.588
       objectReference: {fileID: 0}
     - target: {fileID: 2698321608713810895, guid: 442228d709c7e9f4e8915c5818e51848, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 238.937
+      value: 264.588
       objectReference: {fileID: 0}
     - target: {fileID: 2698321608713810895, guid: 442228d709c7e9f4e8915c5818e51848, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 67
+      value: 82
       objectReference: {fileID: 0}
     - target: {fileID: 7283276531440556492, guid: 442228d709c7e9f4e8915c5818e51848, type: 3}
       propertyPath: m_Sprite
@@ -1851,6 +1851,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 31348159}
     m_Modifications:
+    - target: {fileID: 2698321608713810895, guid: 442228d709c7e9f4e8915c5818e51848, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 321.693
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698321608713810895, guid: 442228d709c7e9f4e8915c5818e51848, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 321.693
+      objectReference: {fileID: 0}
+    - target: {fileID: 7283276531440556492, guid: 442228d709c7e9f4e8915c5818e51848, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3fa2d779435afb14e8d29fba36916ed2, type: 3}
     - target: {fileID: 9013717764186319616, guid: 442228d709c7e9f4e8915c5818e51848, type: 3}
       propertyPath: m_text
       value: 'Makasar

@@ -12,6 +12,7 @@ public class VaksinManager : MonoBehaviour
     public GameObject vaksinPlaceObj;
     public GameObject vaksinPlaceBuyPanel;
     public GameObject[] buyButtons;
+    public GameObject buyMark;
 
     private TextMeshProUGUI[] vaccinePlaceBuyText;
     private TextMeshProUGUI[] vaccinePlaceLevelText;
@@ -86,6 +87,7 @@ public class VaksinManager : MonoBehaviour
         {
             Goverment.instance.Money -= price;
         }
+        buyMark.SetActive(false);
         GameObject go = Instantiate(vaksinPlaceObj, vaksinPlacePoints[whichVaksinPlace].transform.position, vaksinPlacePoints[whichVaksinPlace].transform.rotation) as GameObject;
         go.transform.parent = vaksinPlacePoints[whichVaksinPlace].transform;
         go.name = "vaksinPlace" + whichVaksinPlace;

@@ -17,6 +17,8 @@ public class PharmacyManager : MonoBehaviour
     private TextMeshProUGUI[] transmissionDecreaseRateText;
     private TextMeshProUGUI[] pharmacyPriceText;
 
+    public GameObject buyMark;
+
     private Image[] pharmacySprites;
     [SerializeField] private int price=20;
     private Pharmacy[] pharmacy;
@@ -70,6 +72,7 @@ public class PharmacyManager : MonoBehaviour
         {
             Goverment.instance.Money -= price;
         }
+        buyMark.SetActive(false);
         GameObject go = Instantiate(pharmacyObj, pharmacyPoints[whichPharmacy].transform.position, pharmacyPoints[whichPharmacy].transform.rotation) as GameObject;
         go.transform.parent = pharmacyPoints[whichPharmacy].transform;
         go.name = "pharmacy" + whichPharmacy;
