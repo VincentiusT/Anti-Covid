@@ -10,7 +10,7 @@ public class Tutorial : MonoBehaviour
     private void Start()
     {
         instance = this;
-        
+        PlayerPrefs.SetInt("crowdTutorial", 0);
     }
 
     public void ShowCrowdTutorial(Transform crowdPosition)

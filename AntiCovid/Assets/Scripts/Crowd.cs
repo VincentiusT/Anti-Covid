@@ -36,7 +36,7 @@ public class Crowd : MonoBehaviour
         go.transform.SetParent(transform);
 
         //BUAT TUTORIAL
-        //Tutorial.instance.ShowCrowdTutorial(transform);
+        Tutorial.instance.ShowCrowdTutorial(transform);
     }
 
     public void DestroyCrowd()
