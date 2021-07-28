@@ -7,6 +7,7 @@ public class HospitalLevelSystem : ScriptableObject
 {
     public int level = 0;
     public int price = 0;
+    public int[] prices;
     public int capacity = 0;
     public int outRate = 0;
     public int outSpeed = 0;

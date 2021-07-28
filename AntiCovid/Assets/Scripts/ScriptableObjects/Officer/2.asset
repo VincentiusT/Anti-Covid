@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 2
   price: 40
+  prices: 000000000000000000000000000000000000000000000000000000000000000000000000
   refillTime: 22
   sprite: {fileID: 21300000, guid: c44dcc41bd3c27f479f31c86397337a6, type: 3}

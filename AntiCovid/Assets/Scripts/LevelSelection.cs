@@ -8,9 +8,9 @@ public class LevelSelection : MonoBehaviour
 {
     public void GoToLevel(int level)
     {
-        //SceneManager.LoadScene("level" + level.ToString("0"));
         if (AudioManager.instance != null) AudioManager.instance.Play("tap");
-        SceneManager.LoadScene("main");
+        SceneManager.LoadScene("level" + level.ToString("0"));
+        //SceneManager.LoadScene("main");
     }
 
     public void BackToMenu()

@@ -16,7 +16,7 @@ public class Pharmacy : MonoBehaviour
     private void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
-        upgradePrice = pharmacyLevelSystem[1].price;
+        upgradePrice = pharmacyLevelSystem[1].prices[LevelConverter.ConvertLevelToIndex()];
         transmissionDecreaseRate = pharmacyLevelSystem[0].transmissionDecreaseRate;
         sprite.sprite = pharmacyLevelSystem[0].sprite;
     }
@@ -39,7 +39,7 @@ public class Pharmacy : MonoBehaviour
         sprite.sprite = pharmacyLevelSystem[level -1].sprite;
         DecreaseTransmissionIncreaseRate();
         if (level >= pharmacyLevelSystem.Length) return;
-        upgradePrice = pharmacyLevelSystem[level].price;
+        upgradePrice = pharmacyLevelSystem[level].prices[LevelConverter.ConvertLevelToIndex()];
     }
 
     private void DecreaseTransmissionIncreaseRate()

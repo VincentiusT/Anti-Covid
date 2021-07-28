@@ -23,7 +23,7 @@ public class Ambulance : MonoBehaviour
 
     private void Awake()
     {
-        upgradePrice = ambulanceLevelSystem[1].price;
+        upgradePrice = ambulanceLevelSystem[1].prices[LevelConverter.ConvertLevelToIndex()];
         pickUpTime = ambulanceLevelSystem[0].pickupTime;
         pickUpTimeMax = ambulanceLevelSystem[0].pickupTimeMax;
         pickUpRate = ambulanceLevelSystem[0].pickupRate;
@@ -83,7 +83,7 @@ public class Ambulance : MonoBehaviour
         pickUpTimeMax = ambulanceLevelSystem[level - 1].pickupTimeMax;
         realPickUpTime = Random.Range(pickUpTime, pickUpTimeMax);
         if (level >= ambulanceLevelSystem.Length) return;
-        upgradePrice = ambulanceLevelSystem[level].price;
+        upgradePrice = ambulanceLevelSystem[level].prices[LevelConverter.ConvertLevelToIndex()];
     }
 
     public int Level
