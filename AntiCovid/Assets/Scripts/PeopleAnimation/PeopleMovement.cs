@@ -52,7 +52,8 @@ public class PeopleMovement : MonoBehaviour
             //move towards waypoint
             transform.position = Vector2.MoveTowards(transform.position, waypoint.transform.position, moveSpeed * Time.deltaTime);
             //kalau sudah sampai, break
-            if(Vector3.Distance(transform.position, waypoint.transform.position) < 0.1f)
+            Debug.Log(Vector3.Distance(transform.localPosition, waypoint.transform.position));
+            if(Vector3.Distance(transform.position, waypoint.transform.position) < 0.01f)
             {
                 break;
             }
