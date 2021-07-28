@@ -7,7 +7,7 @@ public class Goverment : MonoBehaviour
 {
     public static Goverment instance;
     [SerializeField] private DayManager dayManager;
-    private int money;
+    [SerializeField] private int money;
     private int moneyRate = 10; //get money per second
     [SerializeField] private PolicyData[] policyDatas;
 
@@ -75,8 +75,6 @@ public class Goverment : MonoBehaviour
         timeToDecreaseLockDownTemp = timeToDecreaseLockDown;
         timeToDecreasePSBBTemp = timeToDecreasePSBB;
         timeToIncreaseSocializationTemp = timeToIncreaseSocialization;
-
-        money = 5000000;
     }
 
     void Update()

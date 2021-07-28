@@ -7,7 +7,7 @@ public class Citizen : MonoBehaviour
 {
     public static Citizen instance;
 
-    private int totalCitizen = 1000;
+    [SerializeField] private int totalCitizen = 1000;
     private int sickPeoples = 0;
     private int healthyPeoples;
     private int hospitalizedPeoples;
@@ -22,11 +22,11 @@ public class Citizen : MonoBehaviour
 
     private int GetVirusRateAfterFirstVaccine = 20; // random 1-20 kalo kena angka 1 kena virus
 
-    private float timeToIncreaseTransmissionRate = 20;
+    [SerializeField] private float timeToIncreaseTransmissionRate = 20;
     private float timeTemp;
-    private int transmissionIncreaseRate = 25;
+    [SerializeField] private int transmissionIncreaseRate = 25;
 
-    private float deathRate = 0.03f; //percentage from sickpeople
+    [SerializeField] [Range(0, 1f)] private float deathRate = 0.03f; //percentage from sickpeople
     private float timeUntilDeath = 30f;
     private float timeUntilDeathTemp;
 
@@ -34,7 +34,7 @@ public class Citizen : MonoBehaviour
     private float crowdSpawnTimeMin = 8f;
     private float crowdSpawnTime;
 
-    private float awareness = 0.1f; //percentage
+    [SerializeField] [Range(0, 1f)] private float awareness = 0.1f; //percentage
 
     public List<Crowd> crowds;
     [SerializeField] private GameObject[] crowdObj;
@@ -103,7 +103,7 @@ public class Citizen : MonoBehaviour
         {
             //orang kena virus
             GetVirus(transmissionRate);
-            second = 1f;
+            second = 2f;
         }
         else
         {

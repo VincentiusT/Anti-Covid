@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: 3
   m_EditorClassIdentifier: 
   level: 3
-  price: 40
-  prices: 000000000000000000000000000000000000000000000000000000000000000000000000
+  price: 6100
   vaksinRate: 25
   vaksinTime: 5

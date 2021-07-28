@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 3
   m_EditorClassIdentifier: 
   level: 3
-  price: 70
+  price: 4200
   refillTime: 7
   sprite: {fileID: 21300000, guid: bce8289d4ead3f64a8d0376965a18493, type: 3}

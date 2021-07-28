@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: 3
   m_EditorClassIdentifier: Assembly-CSharp::SkinPlayer
   level: 3
-  price: 20
-  prices: 380000000b00000016000000210000002c00000037000000420000004d00000058000000
+  price: 5600
   capacity: 1000
   outRate: 100
   outSpeed: 3
