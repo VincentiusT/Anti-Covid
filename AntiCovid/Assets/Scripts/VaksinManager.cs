@@ -82,12 +82,14 @@ public class VaksinManager : MonoBehaviour
 
         if (Goverment.instance.Money < price)
         {
+            UIManager.instance.ShowNotifPanel("you don't have enough money");
             return;
         }
         else
         {
             Goverment.instance.Money -= price;
         }
+        if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         buyMark.SetActive(false);
         GameObject go = Instantiate(vaksinPlaceObj, vaksinPlacePoints[whichVaksinPlace].transform.position, vaksinPlacePoints[whichVaksinPlace].transform.rotation) as GameObject;
         go.transform.parent = vaksinPlacePoints[whichVaksinPlace].transform;
@@ -135,7 +137,11 @@ public class VaksinManager : MonoBehaviour
 
     public void UpgradeVaksinPlace(int whichVaksinPlace)
     {
-        if (vaksinPlace[whichVaksinPlace].CheckMaxLevel()) return;
+        if (vaksinPlace[whichVaksinPlace].CheckMaxLevel())
+        {
+            UIManager.instance.ShowNotifPanel("you don't have enough money");
+            return;
+        }
 
         if (Goverment.instance.Money >= vaksinPlace[whichVaksinPlace].UpgradePrice)
         {
@@ -143,9 +149,10 @@ public class VaksinManager : MonoBehaviour
         }
         else
         {
+            UIManager.instance.ShowNotifPanel("you don't have enough money");
             return;
         }
-
+        if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         vaksinPlace[whichVaksinPlace].UpgradeVaksinPlace();
         UpdateBuyUI(whichVaksinPlace);
     }

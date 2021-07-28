@@ -2604,6 +2604,24 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
+  - name: construct
+    clip: {fileID: 8300000, guid: 6c95abcc0e6320f418852b9f0c7c6a40, type: 3}
+    volume: 0.9
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: notif
+    clip: {fileID: 8300000, guid: c28928482ef276b49b274174f3bb55d2, type: 3}
+    volume: 0.9
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: ambulance
+    clip: {fileID: 8300000, guid: 89024b621114c094eac3444676f30cac, type: 3}
+    volume: 0.26
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
   alreadyMuted: 0
   muteAll: 0
 --- !u!4 &1247380995

@@ -67,6 +67,7 @@ public class OfficerManager : MonoBehaviour
         {
             Goverment.instance.Money -= price;
         }
+        if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         buyMark.SetActive(false);
         GameObject go = Instantiate(officerObj, officerPoint.transform.position, officerPoint.transform.rotation) as GameObject;
         go.transform.parent = officerPoint.transform;
@@ -109,7 +110,7 @@ public class OfficerManager : MonoBehaviour
         {
             return;
         }
-
+        if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         officer.UpgradeOfficer();
         UpdateBuyUI();
     }

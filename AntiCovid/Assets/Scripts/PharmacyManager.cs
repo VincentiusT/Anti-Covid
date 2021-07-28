@@ -74,6 +74,7 @@ public class PharmacyManager : MonoBehaviour
         {
             Goverment.instance.Money -= price;
         }
+        if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         buyMark.SetActive(false);
         GameObject go = Instantiate(pharmacyObj, pharmacyPoints[whichPharmacy].transform.position, pharmacyPoints[whichPharmacy].transform.rotation) as GameObject;
         go.transform.parent = pharmacyPoints[whichPharmacy].transform;
@@ -132,7 +133,7 @@ public class PharmacyManager : MonoBehaviour
         {
             return;
         }
-
+        if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         pharmacy[whichPharmacy].UpgradePharmacy();
         UpdateBuyUI(whichPharmacy);
     }

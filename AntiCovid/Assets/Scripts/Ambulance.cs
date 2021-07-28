@@ -53,11 +53,13 @@ public class Ambulance : MonoBehaviour
 
     private void playAmbulanceAnimation(int index)
     {
+        if (AudioManager.instance != null) AudioManager.instance.Play("ambulance");
         ambulanceAnimations.SetInteger("play", index);
     }
 
     public void resetAnimation()
     {
+        if (AudioManager.instance != null) AudioManager.instance.Stop("ambulance");
         ambulanceAnimations.SetInteger("play", 0);
     }
 

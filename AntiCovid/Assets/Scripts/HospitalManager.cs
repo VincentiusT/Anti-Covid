@@ -134,6 +134,7 @@ public class HospitalManager : MonoBehaviour
         if(Goverment.instance.Money < price) return;
         else Goverment.instance.Money -= price;
 
+        if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         buyMark.SetActive(false);
         GameObject go = Instantiate(hospitalObj, hospitalPoints[whichHospital].transform.position, hospitalPoints[whichHospital].transform.rotation) as GameObject;
         go.transform.parent = hospitalPoints[whichHospital].transform;
@@ -194,7 +195,7 @@ public class HospitalManager : MonoBehaviour
         {
             return;
         }
-
+        if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         hospitals[whichHospital].UpgradeHospital();
         UpdateBuyUI(whichHospital);
 

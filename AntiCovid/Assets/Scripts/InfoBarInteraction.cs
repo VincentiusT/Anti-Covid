@@ -23,6 +23,7 @@ public class InfoBarInteraction : MonoBehaviour
     }
     public void ShowMoreData(bool isShowing)
     {
+        if (AudioManager.instance != null) AudioManager.instance.Play("tap");
         if (isCurrentlyShowing != isShowing)
         {
             anim.SetBool("up", false);

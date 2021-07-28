@@ -98,5 +98,6 @@ public class UIManager : MonoBehaviour
     {
         notifText.text = text;
         notifPanel.GetComponent<Animator>().SetTrigger("show");
+        if (AudioManager.instance != null) AudioManager.instance.Play("notif");
     }
 }

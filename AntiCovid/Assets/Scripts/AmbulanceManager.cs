@@ -67,6 +67,7 @@ public class AmbulanceManager : MonoBehaviour
         }
         if (Goverment.instance.Money < price)
         {
+            UIManager.instance.ShowNotifPanel("you don't have enough money");
             return;
         }
         else
@@ -104,15 +105,19 @@ public class AmbulanceManager : MonoBehaviour
 
     public void UpgradeAmbulance(int whichAmbulance)
     {
-        if (ambulances[whichAmbulance].CheckMaxLevel()) return;
+        if (ambulances[whichAmbulance].CheckMaxLevel())
+        {
+            UIManager.instance.ShowNotifPanel("you don't have enough money");
+            return;
+        }
 
-        Debug.Log("upgrade price: " + ambulances[whichAmbulance].UpgradePrice);
         if (Goverment.instance.Money >= ambulances[whichAmbulance].UpgradePrice)
         {
             Goverment.instance.Money -= ambulances[whichAmbulance].UpgradePrice;
         }
         else
         {
+            UIManager.instance.ShowNotifPanel("you don't have enough money");
             return;
         }
 
