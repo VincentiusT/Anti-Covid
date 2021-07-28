@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08350d64a7f20ed48be05f44181665de, type: 3}
+  m_Script: {fileID: 11500000, guid: a7c7fb81616c07d47aec50af4233cc26, type: 3}
   m_Name: 3
   m_EditorClassIdentifier: 
   level: 3
-  price: 70
-  prices: 000000000000000000000000000000000000000000000000000000000000000000000000
-  refillTime: 7
-  sprite: {fileID: 21300000, guid: bce8289d4ead3f64a8d0376965a18493, type: 3}
+  price: 90
+  pickupRate: 40
+  pickupTime: 10
+  pickupTimeMax: 25

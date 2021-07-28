@@ -26,7 +26,13 @@ public class VaksinPlace : MonoBehaviour
 
     private void Awake()
     {
-        upgradePrice = vaccineLevelSystem[1].prices[LevelConverter.ConvertLevelToIndex()];
+        
+    }
+
+    public void AssignLevelSystem(VaccineLevelSystem[] lvl)
+    {
+        vaccineLevelSystem = lvl;
+        upgradePrice = vaccineLevelSystem[1].price;
         vaksinRate = vaccineLevelSystem[0].vaksinRate;
         vaksinTime = vaccineLevelSystem[0].vaksinTime;
         seccondVaksinTime = vaccineLevelSystem[0].vaksinTime;
@@ -34,6 +40,7 @@ public class VaksinPlace : MonoBehaviour
         seccondVaksinTimeTemp = seccondVaksinTime;
         startSeccondVaccineTimeTemp = startSeccondVaccineTime;
     }
+
     void Start()
     {
 
@@ -124,7 +131,7 @@ public class VaksinPlace : MonoBehaviour
         seccondVaksinTimeTemp = seccondVaksinTime;
 
         if (level >= vaccineLevelSystem.Length) return;
-        upgradePrice = vaccineLevelSystem[level].prices[LevelConverter.ConvertLevelToIndex()];
+        upgradePrice = vaccineLevelSystem[level].price;
     }
 
     public bool CheckMaxLevel()

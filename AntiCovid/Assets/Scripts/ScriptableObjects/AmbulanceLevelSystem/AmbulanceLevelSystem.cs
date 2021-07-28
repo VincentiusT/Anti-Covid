@@ -7,7 +7,6 @@ public class AmbulanceLevelSystem : ScriptableObject
 {
     public int level = 0;
     public int price = 0;
-    public int[] prices;
     public int pickupRate = 0;
     public int pickupTime = 0;
     public int pickupTimeMax = 0;

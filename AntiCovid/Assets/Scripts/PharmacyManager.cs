@@ -16,6 +16,7 @@ public class PharmacyManager : MonoBehaviour
     private TextMeshProUGUI[] pharmacyLevelText;
     private TextMeshProUGUI[] transmissionDecreaseRateText;
     private TextMeshProUGUI[] pharmacyPriceText;
+    [SerializeField] private PharmacyLevelSystem[] pharmacyLevelSystem;
 
     public GameObject buyMark;
 
@@ -77,6 +78,7 @@ public class PharmacyManager : MonoBehaviour
         if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         buyMark.SetActive(false);
         GameObject go = Instantiate(pharmacyObj, pharmacyPoints[whichPharmacy].transform.position, pharmacyPoints[whichPharmacy].transform.rotation) as GameObject;
+        go.GetComponent<Pharmacy>().AssignLevelSystem(pharmacyLevelSystem);
         go.transform.parent = pharmacyPoints[whichPharmacy].transform;
         go.name = "pharmacy" + whichPharmacy;
         if (whichPharmacy == 0)

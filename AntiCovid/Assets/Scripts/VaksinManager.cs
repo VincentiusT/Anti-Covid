@@ -19,6 +19,7 @@ public class VaksinManager : MonoBehaviour
     private TextMeshProUGUI[] vaccineRateText;
     private TextMeshProUGUI[] vaccineTimeText;
     private TextMeshProUGUI[] vaccinePlacePriceText;
+    [SerializeField] private VaccineLevelSystem[] vaccineLevelSystems;
     [SerializeField]private TextMeshProUGUI vaccineStockText;
 
     [SerializeField] private int price = 15;
@@ -93,6 +94,7 @@ public class VaksinManager : MonoBehaviour
         buyMark.SetActive(false);
         GameObject go = Instantiate(vaksinPlaceObj, vaksinPlacePoints[whichVaksinPlace].transform.position, vaksinPlacePoints[whichVaksinPlace].transform.rotation) as GameObject;
         go.transform.parent = vaksinPlacePoints[whichVaksinPlace].transform;
+        go.GetComponent<VaksinPlace>().AssignLevelSystem(vaccineLevelSystems);
         go.name = "vaksinPlace" + whichVaksinPlace;
         if (whichVaksinPlace == 0)
         {

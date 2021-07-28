@@ -2213,6 +2213,22 @@ PrefabInstance:
       propertyPath: buyButtons.Array.data[3]
       value: 
       objectReference: {fileID: 781529885}
+    - target: {fileID: 2372654324451327287, guid: aee35cd9e095c174b99de9c5bd0958ba, type: 3}
+      propertyPath: pharmacyLevelSystem.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372654324451327287, guid: aee35cd9e095c174b99de9c5bd0958ba, type: 3}
+      propertyPath: pharmacyLevelSystem.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 93fd665a4698bd74dab7ebc315b4fcc1, type: 2}
+    - target: {fileID: 2372654324451327287, guid: aee35cd9e095c174b99de9c5bd0958ba, type: 3}
+      propertyPath: pharmacyLevelSystem.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2f24c6cb360bad04bae6d78a73cceaf5, type: 2}
+    - target: {fileID: 2372654324451327287, guid: aee35cd9e095c174b99de9c5bd0958ba, type: 3}
+      propertyPath: pharmacyLevelSystem.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8ba91942f9f33bc47bf47b97af97afb9, type: 2}
     - target: {fileID: 2372654324451327288, guid: aee35cd9e095c174b99de9c5bd0958ba, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2367,6 +2383,22 @@ PrefabInstance:
       propertyPath: buyButtons.Array.data[3]
       value: 
       objectReference: {fileID: 1079538886}
+    - target: {fileID: 3019572075129756198, guid: 09a3fb07c88d7a8408551b9acde1962c, type: 3}
+      propertyPath: ambulanceLevelSystem.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3019572075129756198, guid: 09a3fb07c88d7a8408551b9acde1962c, type: 3}
+      propertyPath: ambulanceLevelSystem.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c560e4c41d975e4b97fe30a8d268e73, type: 2}
+    - target: {fileID: 3019572075129756198, guid: 09a3fb07c88d7a8408551b9acde1962c, type: 3}
+      propertyPath: ambulanceLevelSystem.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4f7efc16d61ed8842b41bc3fcfd4c9b8, type: 2}
+    - target: {fileID: 3019572075129756198, guid: 09a3fb07c88d7a8408551b9acde1962c, type: 3}
+      propertyPath: ambulanceLevelSystem.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e034712d8cdad3438efff2495594b2b, type: 2}
     - target: {fileID: 3019572075129756199, guid: 09a3fb07c88d7a8408551b9acde1962c, type: 3}
       propertyPath: m_Name
       value: AmbulanceManager
@@ -2452,6 +2484,22 @@ PrefabInstance:
       propertyPath: buyButtons.Array.data[3]
       value: 
       objectReference: {fileID: 2144709417}
+    - target: {fileID: 3875071329042015837, guid: e13adc768b862134486f346d0caffcb9, type: 3}
+      propertyPath: vaccineLevelSystems.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875071329042015837, guid: e13adc768b862134486f346d0caffcb9, type: 3}
+      propertyPath: vaccineLevelSystems.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c8940bc0a20727749869436376f3430d, type: 2}
+    - target: {fileID: 3875071329042015837, guid: e13adc768b862134486f346d0caffcb9, type: 3}
+      propertyPath: vaccineLevelSystems.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 94fc9cf05f9834246bd08b72189d4e4b, type: 2}
+    - target: {fileID: 3875071329042015837, guid: e13adc768b862134486f346d0caffcb9, type: 3}
+      propertyPath: vaccineLevelSystems.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ba800b6b8bf8084ea39c089d855ec60, type: 2}
     - target: {fileID: 3875071329995240284, guid: e13adc768b862134486f346d0caffcb9, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.35
@@ -2562,6 +2610,22 @@ PrefabInstance:
       propertyPath: officerBuyPanel
       value: 
       objectReference: {fileID: 408005570}
+    - target: {fileID: 4977180693840193108, guid: d33d5c4fbe4240d44b137800217b0564, type: 3}
+      propertyPath: officerLevelSystem.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4977180693840193108, guid: d33d5c4fbe4240d44b137800217b0564, type: 3}
+      propertyPath: officerLevelSystem.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: ecfee8f977e90a841a5968e7adb8b6f6, type: 2}
+    - target: {fileID: 4977180693840193108, guid: d33d5c4fbe4240d44b137800217b0564, type: 3}
+      propertyPath: officerLevelSystem.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: f49b7d7c4bcd1e94199ae4794af5ce69, type: 2}
+    - target: {fileID: 4977180693840193108, guid: d33d5c4fbe4240d44b137800217b0564, type: 3}
+      propertyPath: officerLevelSystem.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: c3c1417e44d38334eb65535f2b5c548a, type: 2}
     - target: {fileID: 4977180693840193110, guid: d33d5c4fbe4240d44b137800217b0564, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -2747,6 +2811,22 @@ PrefabInstance:
       propertyPath: buyButtons.Array.data[3]
       value: 
       objectReference: {fileID: 235517828}
+    - target: {fileID: 5742956850483651754, guid: 420204f9477bcdc4386cdd9acd18652d, type: 3}
+      propertyPath: hospitalLevelSystem.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742956850483651754, guid: 420204f9477bcdc4386cdd9acd18652d, type: 3}
+      propertyPath: hospitalLevelSystem.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 90733e5a6df373741a8055e069b505d1, type: 2}
+    - target: {fileID: 5742956850483651754, guid: 420204f9477bcdc4386cdd9acd18652d, type: 3}
+      propertyPath: hospitalLevelSystem.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: e5cb4416fee3b524f9a85d8a8405db61, type: 2}
+    - target: {fileID: 5742956850483651754, guid: 420204f9477bcdc4386cdd9acd18652d, type: 3}
+      propertyPath: hospitalLevelSystem.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: f4a7772a487a2024987ad11ce2de981e, type: 2}
     - target: {fileID: 5742956850483651759, guid: 420204f9477bcdc4386cdd9acd18652d, type: 3}
       propertyPath: m_Name
       value: HospitalManager

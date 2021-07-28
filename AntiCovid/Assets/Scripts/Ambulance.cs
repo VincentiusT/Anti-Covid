@@ -10,7 +10,7 @@ public class Ambulance : MonoBehaviour
      *  lvl 3 = 60
      * 
      */
-    [SerializeField] private AmbulanceLevelSystem[] ambulanceLevelSystem;
+    public AmbulanceLevelSystem[] ambulanceLevelSystem;
     private Animator ambulanceAnimations;
     private int pickUpRate = 50; //peoples per pickup
 
@@ -23,17 +23,24 @@ public class Ambulance : MonoBehaviour
 
     private void Awake()
     {
-        upgradePrice = ambulanceLevelSystem[1].prices[LevelConverter.ConvertLevelToIndex()];
+        
+    }
+    public void AssignLevelSystem(AmbulanceLevelSystem[] lvl)
+    {
+        ambulanceLevelSystem = lvl;
+        upgradePrice = ambulanceLevelSystem[1].price;
+        Debug.Log("hahahh : " + upgradePrice);
         pickUpTime = ambulanceLevelSystem[0].pickupTime;
         pickUpTimeMax = ambulanceLevelSystem[0].pickupTimeMax;
         pickUpRate = ambulanceLevelSystem[0].pickupRate;
         realPickUpTime = Random.Range(pickUpTime, pickUpTimeMax);
+        ambulanceAnimations = GetComponent<Animator>();
     }
 
     private void Start()
     {
-        ambulanceAnimations = GetComponent<Animator>();
         
+
     }
 
     private void Update()
@@ -83,7 +90,7 @@ public class Ambulance : MonoBehaviour
         pickUpTimeMax = ambulanceLevelSystem[level - 1].pickupTimeMax;
         realPickUpTime = Random.Range(pickUpTime, pickUpTimeMax);
         if (level >= ambulanceLevelSystem.Length) return;
-        upgradePrice = ambulanceLevelSystem[level].prices[LevelConverter.ConvertLevelToIndex()];
+        upgradePrice = ambulanceLevelSystem[level].price;
     }
 
     public int Level

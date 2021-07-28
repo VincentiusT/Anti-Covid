@@ -7,7 +7,6 @@ public class OfficerLevelSystem : ScriptableObject
 {
     public int level = 0;
     public int price = 0;
-    public int[] prices;
     public int refillTime = 0;
     public Sprite sprite = null;
 }

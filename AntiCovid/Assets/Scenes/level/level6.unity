@@ -2245,6 +2245,22 @@ PrefabInstance:
       propertyPath: buyButtons.Array.data[3]
       value: 
       objectReference: {fileID: 781529885}
+    - target: {fileID: 2372654324451327287, guid: aee35cd9e095c174b99de9c5bd0958ba, type: 3}
+      propertyPath: pharmacyLevelSystem.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372654324451327287, guid: aee35cd9e095c174b99de9c5bd0958ba, type: 3}
+      propertyPath: pharmacyLevelSystem.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5305f302912e38a4ca572d1b5c8230e7, type: 2}
+    - target: {fileID: 2372654324451327287, guid: aee35cd9e095c174b99de9c5bd0958ba, type: 3}
+      propertyPath: pharmacyLevelSystem.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: c93998834964cda468009a4412066679, type: 2}
+    - target: {fileID: 2372654324451327287, guid: aee35cd9e095c174b99de9c5bd0958ba, type: 3}
+      propertyPath: pharmacyLevelSystem.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: c5b34287c8d9c134698c025ee2a51781, type: 2}
     - target: {fileID: 2372654324451327288, guid: aee35cd9e095c174b99de9c5bd0958ba, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2484,6 +2500,22 @@ PrefabInstance:
       propertyPath: buyButtons.Array.data[3]
       value: 
       objectReference: {fileID: 2144709417}
+    - target: {fileID: 3875071329042015837, guid: e13adc768b862134486f346d0caffcb9, type: 3}
+      propertyPath: vaccineLevelSystems.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875071329042015837, guid: e13adc768b862134486f346d0caffcb9, type: 3}
+      propertyPath: vaccineLevelSystems.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b40483f6b740eea42abfb4711713c6fb, type: 2}
+    - target: {fileID: 3875071329042015837, guid: e13adc768b862134486f346d0caffcb9, type: 3}
+      propertyPath: vaccineLevelSystems.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7246515a140a0df44bd0f820e68b0d10, type: 2}
+    - target: {fileID: 3875071329042015837, guid: e13adc768b862134486f346d0caffcb9, type: 3}
+      propertyPath: vaccineLevelSystems.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: fdfd5c77e85819542be85e1879c0efaa, type: 2}
     - target: {fileID: 3875071329995240284, guid: e13adc768b862134486f346d0caffcb9, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.35
@@ -2594,6 +2626,22 @@ PrefabInstance:
       propertyPath: officerBuyPanel
       value: 
       objectReference: {fileID: 408005570}
+    - target: {fileID: 4977180693840193108, guid: d33d5c4fbe4240d44b137800217b0564, type: 3}
+      propertyPath: officerLevelSystem.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4977180693840193108, guid: d33d5c4fbe4240d44b137800217b0564, type: 3}
+      propertyPath: officerLevelSystem.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4ca3664601e0c78429d3a3ae532babf2, type: 2}
+    - target: {fileID: 4977180693840193108, guid: d33d5c4fbe4240d44b137800217b0564, type: 3}
+      propertyPath: officerLevelSystem.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3df040b25c48ce842bf24eb1e43e16f2, type: 2}
+    - target: {fileID: 4977180693840193108, guid: d33d5c4fbe4240d44b137800217b0564, type: 3}
+      propertyPath: officerLevelSystem.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 139abacaf52b3d3448679a7feb10439b, type: 2}
     - target: {fileID: 4977180693840193110, guid: d33d5c4fbe4240d44b137800217b0564, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -2779,6 +2827,22 @@ PrefabInstance:
       propertyPath: buyButtons.Array.data[3]
       value: 
       objectReference: {fileID: 235517828}
+    - target: {fileID: 5742956850483651754, guid: 420204f9477bcdc4386cdd9acd18652d, type: 3}
+      propertyPath: hospitalLevelSystem.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742956850483651754, guid: 420204f9477bcdc4386cdd9acd18652d, type: 3}
+      propertyPath: hospitalLevelSystem.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6c1f243f4d01bed40ab8a35dd621f156, type: 2}
+    - target: {fileID: 5742956850483651754, guid: 420204f9477bcdc4386cdd9acd18652d, type: 3}
+      propertyPath: hospitalLevelSystem.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: a22658a366974c24199c9dd445fa002c, type: 2}
+    - target: {fileID: 5742956850483651754, guid: 420204f9477bcdc4386cdd9acd18652d, type: 3}
+      propertyPath: hospitalLevelSystem.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 83af5cd757767884bb88f5ccc1d34501, type: 2}
     - target: {fileID: 5742956850483651759, guid: 420204f9477bcdc4386cdd9acd18652d, type: 3}
       propertyPath: m_Name
       value: HospitalManager

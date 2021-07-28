@@ -15,7 +15,7 @@ public class AmbulanceManager : MonoBehaviour
     private TextMeshProUGUI[] pickupRate;
     private TextMeshProUGUI[] pickupTime;
     private TextMeshProUGUI[] ambulancePriceText;
-
+    [SerializeField] private AmbulanceLevelSystem[] ambulanceLevelSystem;
 
     //private List<Ambulance> ambulances;
     private Ambulance[] ambulances;
@@ -75,6 +75,7 @@ public class AmbulanceManager : MonoBehaviour
             Goverment.instance.Money -= price;
         }
         GameObject go = Instantiate(ambulanceObj) as GameObject;
+        go.GetComponent<Ambulance>().AssignLevelSystem(ambulanceLevelSystem);
         int randSpawnPoint = Random.Range(0, transform.childCount);
         go.transform.parent = transform;
 

@@ -19,7 +19,7 @@ public class OfficerManager : MonoBehaviour
     private TextMeshProUGUI officerLevelText;
     private TextMeshProUGUI refillTimeText;
     private TextMeshProUGUI officerPriceText;
-
+    [SerializeField] private OfficerLevelSystem[] officerLevelSystem;
     private Image officerSprite;
 
     [SerializeField] private int price = 10;
@@ -67,10 +67,12 @@ public class OfficerManager : MonoBehaviour
         {
             Goverment.instance.Money -= price;
         }
+        
         if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         buyMark.SetActive(false);
         GameObject go = Instantiate(officerObj, officerPoint.transform.position, officerPoint.transform.rotation) as GameObject;
         go.transform.parent = officerPoint.transform;
+        go.GetComponent<Officer>().AssignLevelSystem(officerLevelSystem);
         go.name = "Officer";
 
         officer = go.GetComponent<Officer>();

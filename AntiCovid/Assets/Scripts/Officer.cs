@@ -16,7 +16,12 @@ public class Officer : MonoBehaviour
     private void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
-        upgradePrice = officerLevelSystem[1].prices[LevelConverter.ConvertLevelToIndex()];
+    }
+
+    public void AssignLevelSystem(OfficerLevelSystem[] lvl)
+    {
+        officerLevelSystem = lvl;
+        upgradePrice = officerLevelSystem[1].price;
         sprite.sprite = officerLevelSystem[0].sprite;
     }
 
@@ -65,7 +70,7 @@ public class Officer : MonoBehaviour
         sprite.sprite = officerLevelSystem[level - 1].sprite;
         refillTimeTemp = refillTime;
         if (level >= officerLevelSystem.Length) return;
-        upgradePrice = officerLevelSystem[level].prices[LevelConverter.ConvertLevelToIndex()];
+        upgradePrice = officerLevelSystem[level].price;
     }
 
     public bool CheckMaxLevel()

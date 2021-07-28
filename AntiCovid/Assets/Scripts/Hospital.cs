@@ -34,10 +34,21 @@ public class Hospital : MonoBehaviour
         sprite.sprite = hospitalLevelSystem[0].sprite;
         restTimeOriginal = restTime;
         slider.maxValue = capacity;
-        upgradePrice = hospitalLevelSystem[1].prices[LevelConverter.ConvertLevelToIndex()];
+        upgradePrice = hospitalLevelSystem[1].price;
     }
 
-
+    public void AssignLevelSystem(HospitalLevelSystem[] lvl)
+    {
+        hospitalLevelSystem = lvl;
+        releaseCount = hospitalLevelSystem[0].outRate;
+        restTime = hospitalLevelSystem[0].outSpeed;
+        capacity = hospitalLevelSystem[0].capacity;
+        peopleOutPerTap = hospitalLevelSystem[0].peopleOutPerTap;
+        sprite.sprite = hospitalLevelSystem[0].sprite;
+        restTimeOriginal = restTime;
+        slider.maxValue = capacity;
+        upgradePrice = hospitalLevelSystem[1].price;
+    }
     private void Update()
     {
         if(restTime <= 0 && hospitalizedPeoples > 0)
@@ -153,7 +164,7 @@ public class Hospital : MonoBehaviour
         slider.maxValue = capacity;
         restTimeOriginal = restTime;
         if (level >= hospitalLevelSystem.Length) return;
-        upgradePrice = hospitalLevelSystem[level].prices[LevelConverter.ConvertLevelToIndex()];
+        upgradePrice = hospitalLevelSystem[level].price;
     }
 
     public bool CheckMaxLevel()

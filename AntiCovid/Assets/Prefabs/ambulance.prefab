@@ -96,10 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8d4583a602874043be28e814fd7a7b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ambulanceLevelSystem:
-  - {fileID: 11400000, guid: a7308372a1b719849925a275562e1122, type: 2}
-  - {fileID: 11400000, guid: 8e7f18a56716591438a6c25756e6cc0f, type: 2}
-  - {fileID: 11400000, guid: e38127cf4a3df5b43ae4a6355080f730, type: 2}
+  ambulanceLevelSystem: []
 --- !u!95 &6272372768419788348
 Animator:
   serializedVersion: 3

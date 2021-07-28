@@ -21,6 +21,8 @@ public class HospitalManager : MonoBehaviour
     private TextMeshProUGUI[] hospitalReleaseCountText;
     private TextMeshProUGUI[] hospitalPriceText;
     private Image[] hospitalSprites;
+    [SerializeField] private HospitalLevelSystem[] hospitalLevelSystem;
+
     [SerializeField] private int price = 30;
     //private List<Hospital> hospitals;
     private Hospital[] hospitals;
@@ -137,6 +139,7 @@ public class HospitalManager : MonoBehaviour
         if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         buyMark.SetActive(false);
         GameObject go = Instantiate(hospitalObj, hospitalPoints[whichHospital].transform.position, hospitalPoints[whichHospital].transform.rotation) as GameObject;
+        go.GetComponent<Hospital>().AssignLevelSystem(hospitalLevelSystem);
         go.transform.parent = hospitalPoints[whichHospital].transform;
         go.name = "hospital" + whichHospital;
         if (whichHospital == 0)
