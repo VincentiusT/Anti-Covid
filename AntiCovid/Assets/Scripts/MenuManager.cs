@@ -8,16 +8,19 @@ public class MenuManager : MonoBehaviour
 
     public void Play()
     {
+        AudioManager.instance.Play("tap");
         SceneManager.LoadScene("level");
     }
 
     public void showSetting(bool isShowing)
     {
+        AudioManager.instance.Play("tap");
         SettingPanel.SetActive(isShowing);
     }
 
     public void Quit()
     {
+        AudioManager.instance.Play("tap");
         Application.Quit();
     }
 }

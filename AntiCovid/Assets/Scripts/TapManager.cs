@@ -19,6 +19,7 @@ public class TapManager : MonoBehaviour
 
     public void TapHospitalize()
     {
+        if (AudioManager.instance!=null) AudioManager.instance.Play("tap");
         if (HospitalManager.instance.placeCount() < 1) UIManager.instance.ShowNotifPanel("You don't have any hospital!\nTry to build a hospital first before hospitalize people.");
 
         timeElapsedSinceLastTap = 0f;

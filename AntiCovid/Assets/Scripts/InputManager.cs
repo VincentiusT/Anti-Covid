@@ -44,6 +44,8 @@ public class InputManager : MonoBehaviour
         {
             if (tapTimer > 0f)
             {
+                if (AudioManager.instance != null) AudioManager.instance.Play("tap");
+
                 if (hitPlace == "Hospital")
                 {
                     HospitalManager.instance.ShowBuyHospitalPanel(true);

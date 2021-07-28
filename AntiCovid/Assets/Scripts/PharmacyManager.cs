@@ -53,11 +53,13 @@ public class PharmacyManager : MonoBehaviour
 
     public void ShowBuyPharmacyPanel(bool show) //munculin buy panel
     {
+        if (AudioManager.instance != null) AudioManager.instance.Play("tap");
         pharmacyBuyPanel.SetActive(show);
     }
 
     public void BuyPharmacy(int whichPharmacy)
     {
+        if (AudioManager.instance != null) AudioManager.instance.Play("tap");
         if (alreadyBought[whichPharmacy])
         {
             UpgradePharmacy(whichPharmacy);

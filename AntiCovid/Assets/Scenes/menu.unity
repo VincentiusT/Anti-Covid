@@ -2592,6 +2592,18 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 1
+  - name: tap
+    clip: {fileID: 8300000, guid: 40cc6912613811f4db190dca4b78e91c, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: win
+    clip: {fileID: 8300000, guid: 9f179d4fe66f5d64384f7dd2018d992c, type: 3}
+    volume: 0.86
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
   alreadyMuted: 0
   muteAll: 0
 --- !u!4 &1247380995

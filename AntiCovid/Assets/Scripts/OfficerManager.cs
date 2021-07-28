@@ -43,11 +43,13 @@ public class OfficerManager : MonoBehaviour
 
     public void ShowBuyOfficerPanel(bool show) //munculin buy panel
     {
+        if (AudioManager.instance != null) AudioManager.instance.Play("tap");
         officerBuyPanel.SetActive(show);
     }
 
     public void BuyOfficer()
     {
+        if (AudioManager.instance != null) AudioManager.instance.Play("tap");
         if (alreadyBought)
         {
             UpgradeOfficer();

@@ -34,7 +34,6 @@ public class CameraPan : MonoBehaviour
         {
             Vector3 direction = touchStart - Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Camera.main.transform.position = ClampCamera(cam.transform.position + direction);
-            Debug.Log(direction);
         }
     }
 

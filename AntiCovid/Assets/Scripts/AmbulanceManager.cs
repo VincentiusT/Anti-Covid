@@ -48,11 +48,13 @@ public class AmbulanceManager : MonoBehaviour
 
     public void ShowAmbulanceBuyPanel(bool show)
     {
+        if (AudioManager.instance != null) AudioManager.instance.Play("tap");
         buyAmbulancePanel.SetActive(show);
     }
 
     public void BuyAmbulance(int whichAMbulance)
     {
+        if (AudioManager.instance != null) AudioManager.instance.Play("tap");
         if (HospitalManager.instance.placeCount() < 1)
         {
             UIManager.instance.ShowNotifPanel("you need to have at least 1 hospital to buy ambulance");

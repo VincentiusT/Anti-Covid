@@ -120,11 +120,13 @@ public class HospitalManager : MonoBehaviour
 
     public void ShowBuyHospitalPanel(bool show) //munculin buy panel
     {
+        if (AudioManager.instance != null) AudioManager.instance.Play("tap");
         hospitalBuyPanel.SetActive(show);
     }
 
     public void BuyHospital(int whichHospital)
     {
+        if (AudioManager.instance != null) AudioManager.instance.Play("tap");
         if (alreadyBought[whichHospital]) UpgradeHospital(whichHospital);
         
         if(hospitalPoints[whichHospital].transform.childCount >= 1) return;
