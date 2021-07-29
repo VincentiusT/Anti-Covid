@@ -26,6 +26,8 @@ public class CameraPan : MonoBehaviour
 
     private void Update()
     {
+        if (InputManager.instance.IsPointerOverUIElement()) return;
+
         if (Input.GetMouseButtonDown(0))
         {
             touchStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);

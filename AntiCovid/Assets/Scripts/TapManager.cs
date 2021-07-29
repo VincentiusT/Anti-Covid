@@ -17,6 +17,8 @@ public class TapManager : MonoBehaviour
     private float prevMultiplier = 1.0f;
     public int tapAmount = 0;
 
+   
+
     public void TapHospitalize()
     {
         if (AudioManager.instance!=null) AudioManager.instance.Play("tap");
@@ -55,6 +57,21 @@ public class TapManager : MonoBehaviour
 
     private void Update()
     {
+        for(int i = 0; i < Input.touchCount; i++)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.touches[i].position);
+            RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
+            if (hit.collider != null)
+            {
+                if (hit.collider.name == "hospitalizeButton")
+                {
+                    TapHospitalize();
+                }
+            }
+            //if (Input.touches[i])
+           // TapHospitalize();
+        }
+
         timeElapsedSinceLastTap += Time.deltaTime;
         if(timeElapsedSinceLastTap > timeToKeepMultiplier)
         {

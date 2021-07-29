@@ -625,9 +625,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paragraphs:
-  - Wah, kota apa nich
-  - wadidaw sih
-  - hueheuheuhe
+  - Finally i arrived in this city..
+  - But this is the start, i need to save this city
+  - i need to make people aware of this pandemic, make a policy, build a lot of facilities,
+    and many more
+  - Let's do this!
   canvas: {fileID: 1079393455}
   mainPanel: {fileID: 622069784}
 --- !u!4 &564903308
@@ -2609,30 +2611,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 631541051123494128, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.00024414062
-      objectReference: {fileID: 0}
-    - target: {fileID: 2801870513910496030, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2801870513971400914, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.00024414062
-      objectReference: {fileID: 0}
-    - target: {fileID: 2801870513974424997, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.00024414062
-      objectReference: {fileID: 0}
-    - target: {fileID: 2801870514436972204, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.00024414062
-      objectReference: {fileID: 0}
-    - target: {fileID: 2801870515098043760, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.00024414062
-      objectReference: {fileID: 0}
     - target: {fileID: 6884691658015030296, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -2853,10 +2831,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 108273587}
-    - target: {fileID: 7941377132839033211, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7941377132869747972, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

@@ -22,13 +22,13 @@ public class UIManager : MonoBehaviour
     {
         instance = this;
 
-        textDay = canvas.transform.Find("GamePanel/DayPanel/DayCount").GetComponent<TextMeshProUGUI>();
-        DayPopUpPanel = canvas.transform.Find("GamePanel/DayInformationPanel").gameObject;
+        textDay = canvas.transform.Find("SafeArea/GamePanel/DayPanel/DayCount").GetComponent<TextMeshProUGUI>();
+        DayPopUpPanel = canvas.transform.Find("SafeArea/GamePanel/DayInformationPanel").gameObject;
 
-        multiplierPanel = canvas.transform.Find("GamePanel/MultiplierPanel").gameObject;
-        multiplierText = canvas.transform.Find("GamePanel/MultiplierPanel/multiplier").GetComponent<TextMeshProUGUI>();
+        multiplierPanel = canvas.transform.Find("SafeArea/GamePanel/MultiplierPanel").gameObject;
+        multiplierText = canvas.transform.Find("SafeArea/GamePanel/MultiplierPanel/multiplier").GetComponent<TextMeshProUGUI>();
 
-        notifPanel = canvas.transform.Find("GamePanel/notifPanel").gameObject;
+        notifPanel = canvas.transform.Find("SafeArea/GamePanel/notifPanel").gameObject;
         notifText = notifPanel.transform.Find("info/info").GetComponent<TextMeshProUGUI>();
 
         SubscribeToDayEvent();

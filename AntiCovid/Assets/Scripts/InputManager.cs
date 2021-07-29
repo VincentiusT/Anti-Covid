@@ -5,11 +5,17 @@ using UnityEngine.EventSystems;
 
 public class InputManager : MonoBehaviour
 {
+    public static InputManager instance;
     [SerializeField] private Camera mainCamera;
     float minTimeToOpenMenu = 0.2f, tapTimer;
     string hitPlace;
 
     int UILayer;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
