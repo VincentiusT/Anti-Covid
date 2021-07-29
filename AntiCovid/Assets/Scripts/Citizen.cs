@@ -80,7 +80,6 @@ public class Citizen : MonoBehaviour
         //win codition
         if(vaksinedPeoples2 >= totalCitizen * 0.75)
         {
-            if (AudioManager.instance != null) AudioManager.instance.Play("win");
             GameManager.instance.Win();
         }
         //lose condition

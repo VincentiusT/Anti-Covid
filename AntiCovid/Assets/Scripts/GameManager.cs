@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public GameObject winPanel;
     public GameObject losePanel;
     public GameObject pausePanel;
+
+    bool done;
     private void Awake()
     {
         instance = this;
@@ -29,6 +31,11 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
+        if (!done)
+        {
+            if (AudioManager.instance != null) AudioManager.instance.Play("win");
+            done = true;
+        }
         Time.timeScale = 0f;
         winPanel.SetActive(true);
     }

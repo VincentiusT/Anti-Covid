@@ -70,7 +70,7 @@ public class VaksinManager : MonoBehaviour
     public void BuyVaksinPlace(int whichVaksinPlace)
     {
         if (AudioManager.instance != null) AudioManager.instance.Play("tap");
-        if (HospitalManager.instance.placeCount() < 3 || PharmacyManager.instance.placeCount() < 3)
+        if (HospitalManager.instance.placeCount() < 2 || PharmacyManager.instance.placeCount() < 2)
         {
             UIManager.instance.ShowNotifPanel("You need to have at least 3 hospitals and 3 pharmacy to buy vaccine place");
             return;

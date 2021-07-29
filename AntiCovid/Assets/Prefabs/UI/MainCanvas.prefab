@@ -13150,7 +13150,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Buy 50 Vaccines
+  m_text: Buy 200 Vaccines
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7688a276c4b5a914dacf2c75acbc162b, type: 2}
   m_sharedMaterial: {fileID: -7293397868275134066, guid: 7688a276c4b5a914dacf2c75acbc162b, type: 2}
@@ -13284,8 +13284,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "A Place to vaccine people! \nrequirement : You need to have minimal 3
-    hospitals, 3 pharmacies to build this Place."
+  m_text: "A Place to vaccine people! \nrequirement : You need to have minimal 2
+    hospitals, 2 pharmacies to build this Place."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7688a276c4b5a914dacf2c75acbc162b, type: 2}
   m_sharedMaterial: {fileID: -7293397868275134066, guid: 7688a276c4b5a914dacf2c75acbc162b, type: 2}
@@ -15580,6 +15580,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5695340415269972653, guid: 2e3fdaab1fb38a4419505323d7b6e3c0, type: 3}
+      propertyPath: m_text
+      value: people/sec
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e3fdaab1fb38a4419505323d7b6e3c0, type: 3}
 --- !u!224 &7941377131989877281 stripped
@@ -15795,6 +15799,10 @@ PrefabInstance:
     - target: {fileID: 5695340415254786655, guid: 2e3fdaab1fb38a4419505323d7b6e3c0, type: 3}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695340415269972653, guid: 2e3fdaab1fb38a4419505323d7b6e3c0, type: 3}
+      propertyPath: m_text
+      value: people/minutes
       objectReference: {fileID: 0}
     - target: {fileID: 5695340415965035090, guid: 2e3fdaab1fb38a4419505323d7b6e3c0, type: 3}
       propertyPath: m_text
