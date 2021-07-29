@@ -18,7 +18,7 @@ public class Citizen : MonoBehaviour
     private int deadPeoples;
     private float deadPeopleLimit = 0.5f; // percentage from totalCitizen
 
-    private int transmissionRate = 10; //people per second
+    [SerializeField] private int transmissionRate = 10; //people per second
 
     private int GetVirusRateAfterFirstVaccine = 20; // random 1-20 kalo kena angka 1 kena virus
 
@@ -103,7 +103,7 @@ public class Citizen : MonoBehaviour
         {
             //orang kena virus
             GetVirus(transmissionRate);
-            second = 2f;
+            second = 1f;
         }
         else
         {
