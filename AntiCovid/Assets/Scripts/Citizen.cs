@@ -20,7 +20,7 @@ public class Citizen : MonoBehaviour
 
     [SerializeField] private int transmissionRate = 10; //people per second
 
-    private int GetVirusRateAfterFirstVaccine = 20; // random 1-20 kalo kena angka 1 kena virus
+    private int GetVirusRateAfterFirstVaccine = 2000; // random 1-20 kalo kena angka 1 kena virus
 
     [SerializeField] private float timeToIncreaseTransmissionRate = 20;
     private float timeTemp;
@@ -178,7 +178,13 @@ public class Citizen : MonoBehaviour
     }
     public void GetVirus(int total)
     {
-        if(vaksinedPeoples>0) GetVirusAfterFirstVaccine(total);
+        //orang udah vaksin pertama bisa kena lagi
+        if (vaksinedPeoples > 0)
+        {
+            Debug.Log("mampus kena");
+            int randSickVaccinatedPeople = Random.Range(1, (int)(total * 0.5f));
+            GetVirusAfterFirstVaccine(randSickVaccinatedPeople);
+        }
 
         if (total > healthyPeoples)
         {

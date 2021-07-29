@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   price: 1500
-  pickupRate: 20
+  pickupRate: 50
   pickupTime: 20
   pickupTimeMax: 30

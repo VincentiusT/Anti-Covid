@@ -10,7 +10,7 @@ public class Crowd : MonoBehaviour
 
     private int transmissionIncreaseRate = 10;
 
-    float timeToIncreaseTransmissionRate = 5f;
+    float timeToIncreaseTransmissionRate = 10f;
     float temp;
     private void Start()
     {
