@@ -50,4 +50,6 @@ public class GameManager : MonoBehaviour
 
         pausePanel.SetActive(pause);
     }
+
+
 }

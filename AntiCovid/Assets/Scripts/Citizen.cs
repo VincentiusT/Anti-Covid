@@ -142,19 +142,39 @@ public class Citizen : MonoBehaviour
 
     void UpdateUIText()
     {
-        sickPeopleText.text = sickPeoples.ToString("0");
-        healthyPeopleText.text = healthyPeoples.ToString("0");
-        transmissionRateText.text = transmissionRate.ToString("0");
-        hospitalizedPeopleText.text = HospitalManager.instance.GetAllHospitalizePeople().ToString("0");
-        vaccinatedPeopleText.text = vaksinedPeoples.ToString("0");
-        deadPeopleText.text = deadPeoples.ToString("0");
-        citizenAliveText.text = totalCitizen.ToString("0");
+        if(sickPeoples<10) sickPeopleText.text = sickPeoples.ToString("0");
+        else sickPeopleText.text = sickPeoples.ToString("#,#");
+
+        if(healthyPeoples<10) healthyPeopleText.text = healthyPeoples.ToString("0");
+        else healthyPeopleText.text = healthyPeoples.ToString("#,#");
+        
+        if(transmissionRate <10) transmissionRateText.text = transmissionRate.ToString("0");
+        else transmissionRateText.text = transmissionRate.ToString("#,#");
+
+        if(HospitalManager.instance.GetAllHospitalizePeople() <10) hospitalizedPeopleText.text = HospitalManager.instance.GetAllHospitalizePeople().ToString("0");
+        else hospitalizedPeopleText.text = HospitalManager.instance.GetAllHospitalizePeople().ToString("#,#");
+
+        if(vaksinedPeoples<10) vaccinatedPeopleText.text = vaksinedPeoples.ToString("0");
+        else vaccinatedPeopleText.text = vaksinedPeoples.ToString("#,#");
+
+        if(deadPeoples <10) deadPeopleText.text = deadPeoples.ToString("0");
+        else deadPeopleText.text = deadPeoples.ToString("#,#");
+
+        if(totalCitizen<10) citizenAliveText.text = totalCitizen.ToString("0");
+        else citizenAliveText.text = totalCitizen.ToString("#,#");
+
         deathRateText.text = (deathRate*100).ToString();
-        transmissionIncreaseRateText.text = transmissionIncreaseRate.ToString("0");
+        transmissionIncreaseRateText.text = transmissionIncreaseRate.ToString("#,#");
         AwarenessText.text = (awareness*100).ToString(".0"); 
-        unvaccinatedPeopleText.text = unvaccinatedPeoples.ToString("0");
-        vaccinatedPeople2Text.text = vaksinedPeoples2.ToString("0");
-        unvaccinatedPeople2Text.text = unvaccinatedPeoples2.ToString("0");
+
+        if(unvaccinatedPeoples<10) unvaccinatedPeopleText.text = unvaccinatedPeoples.ToString("0");
+        else unvaccinatedPeopleText.text = unvaccinatedPeoples.ToString("#,#");
+
+        if(vaksinedPeoples2<10) vaccinatedPeople2Text.text = vaksinedPeoples2.ToString("0");
+        else vaccinatedPeople2Text.text = vaksinedPeoples2.ToString("#,#");
+
+        if(unvaccinatedPeoples2<10) unvaccinatedPeople2Text.text = unvaccinatedPeoples2.ToString("0");
+        else unvaccinatedPeople2Text.text = unvaccinatedPeoples2.ToString("#,#");
     }
     public void GetVirus(int total)
     {

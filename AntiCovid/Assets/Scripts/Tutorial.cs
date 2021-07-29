@@ -17,8 +17,8 @@ public class Tutorial : MonoBehaviour
     private void Start()
     {
         instance = this;
-        PlayerPrefs.SetInt("crowdTutorial", 0);
-        PlayerPrefs.SetInt("generalTutorial", 0);
+        //PlayerPrefs.SetInt("crowdTutorial", 0);
+        //PlayerPrefs.SetInt("generalTutorial", 0);
         //StartTutorial();
     }
 

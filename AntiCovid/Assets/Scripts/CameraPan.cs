@@ -34,7 +34,7 @@ public class CameraPan : MonoBehaviour
         }
         if (Input.GetMouseButton(0))
         {
-            Vector3 direction = touchStart - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 direction = touchStart - cam.ScreenToWorldPoint(Input.mousePosition);
             Camera.main.transform.position = ClampCamera(cam.transform.position + direction);
         }
     }
@@ -52,6 +52,6 @@ public class CameraPan : MonoBehaviour
         float newX = Mathf.Clamp(targetPostion.x, minX, maxX);
         float newY = Mathf.Clamp(targetPostion.y, minY, maxY);
 
-        return new Vector3(newX, newY, targetPostion.z);
+        return new Vector3(newX, newY, -20f);
     }
 }

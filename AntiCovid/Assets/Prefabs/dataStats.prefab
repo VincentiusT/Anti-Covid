@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5695340415254786648}
   - component: {fileID: 5695340415254786655}
   m_Layer: 5
-  m_Name: transmissionRate
+  m_Name: dataStats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: people/sec
+  m_text: people/20sec
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 32ad3bf9cc36ebb4f9f9718af2021335, type: 2}
   m_sharedMaterial: {fileID: 376246204777172783, guid: 32ad3bf9cc36ebb4f9f9718af2021335, type: 2}

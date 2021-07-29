@@ -710,9 +710,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paragraphs:
-  - Wah, kota apa nich
-  - wadidaw sih
-  - hueheuheuhe
+  - Finally i'm arrived in Makassar
+  - It's time to build some buildings to finish the pandemic in here!
+  - Let's go!
   canvas: {fileID: 1079393455}
   mainPanel: {fileID: 622069784}
 --- !u!4 &564903308

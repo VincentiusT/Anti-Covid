@@ -32,7 +32,7 @@ public class Goverment : MonoBehaviour
 
     private float PSBBdecreaseRate = 0.2f;
     private float lockDownDecreaseRate = 0.5f;
-    private float socializationIncreaseRate = 0.3f;
+    private float socializationIncreaseRate = 0.1f;
 
     [SerializeField] private int PSBBprice = 100;
     [SerializeField] private int lockDownPrice = 300;
@@ -90,7 +90,8 @@ public class Goverment : MonoBehaviour
             timeToGetMoney -= Time.deltaTime;
         }
 
-        moneyText.text = money.ToString("0");
+        if(money < 10) moneyText.text = money.ToString("0");
+        else moneyText.text = money.ToString("#,#");
 
 
         RunPolicies();
@@ -166,7 +167,8 @@ public class Goverment : MonoBehaviour
                 if (timeToIncreaseSocialization <= 0)
                 {
                     float rate = Citizen.instance.Awareness * socializationIncreaseRate / socializationDuration;
-                    Citizen.instance.Awareness += rate;
+                    if (Citizen.instance.Awareness + rate == 100) Citizen.instance.Awareness = 100;
+                    else Citizen.instance.Awareness += rate;
                     timeToIncreaseSocialization = timeToIncreaseSocializationTemp;
                 }
                 else

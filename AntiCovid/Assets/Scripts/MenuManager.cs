@@ -6,6 +6,11 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject SettingPanel;
 
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
+
     public void Play()
     {
         AudioManager.instance.Play("tap");

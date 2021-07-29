@@ -47,10 +47,10 @@ public class Ambulance : MonoBehaviour
     {
         if (realPickUpTime <= 0)
         {
-            Debug.Log("pickup time: " + realPickUpTime);
             playAmbulanceAnimation(Random.Range(1, 4));
             //PickUpSickPeoples();
             realPickUpTime = Random.Range(pickUpTime, pickUpTimeMax);
+            Debug.Log("pickup time: " + realPickUpTime);
         }
         else
         {
@@ -66,6 +66,7 @@ public class Ambulance : MonoBehaviour
 
     public void resetAnimation()
     {
+        Debug.Log("why ga stop");
         if (AudioManager.instance != null) AudioManager.instance.Stop("ambulance");
         ambulanceAnimations.SetInteger("play", 0);
     }
