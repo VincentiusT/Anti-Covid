@@ -1929,6 +1929,10 @@ PrefabInstance:
       value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 2372654324451327287, guid: aee35cd9e095c174b99de9c5bd0958ba, type: 3}
+      propertyPath: upgradePanel
+      value: 
+      objectReference: {fileID: 7941377133326356838}
+    - target: {fileID: 2372654324451327287, guid: aee35cd9e095c174b99de9c5bd0958ba, type: 3}
       propertyPath: pharmacyBuyPanel
       value: 
       objectReference: {fileID: 1960744290}
@@ -2103,6 +2107,10 @@ PrefabInstance:
       value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 3019572075129756198, guid: 09a3fb07c88d7a8408551b9acde1962c, type: 3}
+      propertyPath: upgradePanel
+      value: 
+      objectReference: {fileID: 7941377133326356839}
+    - target: {fileID: 3019572075129756198, guid: 09a3fb07c88d7a8408551b9acde1962c, type: 3}
       propertyPath: buyAmbulancePanel
       value: 
       objectReference: {fileID: 1357629390}
@@ -2203,6 +2211,10 @@ PrefabInstance:
       propertyPath: price
       value: 4800
       objectReference: {fileID: 0}
+    - target: {fileID: 3875071329042015837, guid: e13adc768b862134486f346d0caffcb9, type: 3}
+      propertyPath: upgradePanel
+      value: 
+      objectReference: {fileID: 7941377133326356837}
     - target: {fileID: 3875071329042015837, guid: e13adc768b862134486f346d0caffcb9, type: 3}
       propertyPath: vaccineStockText
       value: 
@@ -2353,6 +2365,10 @@ PrefabInstance:
       propertyPath: buyButton
       value: 
       objectReference: {fileID: 384203634}
+    - target: {fileID: 4977180693840193108, guid: d33d5c4fbe4240d44b137800217b0564, type: 3}
+      propertyPath: upgradePanel
+      value: 
+      objectReference: {fileID: 7941377133326356836}
     - target: {fileID: 4977180693840193108, guid: d33d5c4fbe4240d44b137800217b0564, type: 3}
       propertyPath: officerBuyPanel
       value: 
@@ -2542,6 +2558,10 @@ PrefabInstance:
       propertyPath: price
       value: 3200
       objectReference: {fileID: 0}
+    - target: {fileID: 5742956850483651754, guid: 420204f9477bcdc4386cdd9acd18652d, type: 3}
+      propertyPath: upgradePanel
+      value: 
+      objectReference: {fileID: 7941377133326356840}
     - target: {fileID: 5742956850483651754, guid: 420204f9477bcdc4386cdd9acd18652d, type: 3}
       propertyPath: hospitalBuyPanel
       value: 
@@ -2955,6 +2975,31 @@ PrefabInstance:
       objectReference: {fileID: 826509205}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
+--- !u!1 &7941377133326356836 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7100342737290305217, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
+  m_PrefabInstance: {fileID: 7941377133326356835}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7941377133326356837 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2581252352317270820, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
+  m_PrefabInstance: {fileID: 7941377133326356835}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7941377133326356838 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7071260429419819126, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
+  m_PrefabInstance: {fileID: 7941377133326356835}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7941377133326356839 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2261267733264438038, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
+  m_PrefabInstance: {fileID: 7941377133326356835}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7941377133326356840 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4292177688826322149, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
+  m_PrefabInstance: {fileID: 7941377133326356835}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8053372233403042632
 PrefabInstance:
   m_ObjectHideFlags: 0

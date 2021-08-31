@@ -113,4 +113,9 @@ public class Ambulance : MonoBehaviour
     {
         get { return pickUpTime; }
     }
+
+    public AmbulanceLevelSystem GetNextValue(int x)
+    {
+        return ambulanceLevelSystem[x];
+    }
 }

@@ -8,6 +8,12 @@ public class VaksinManager : MonoBehaviour
 {
     public static VaksinManager instance;
 
+    public GameObject upgradePanel;
+    private GameObject upgradeButton;
+    private TextMeshProUGUI upgradeLevelText, upgradeVaccineRate, upgradeVaccineTime, upgradePriceText;
+    private Image upgradeSprite;
+    private int currentSelected;
+
     public GameObject[] vaksinPlacePoints;
     public GameObject vaksinPlaceObj;
     public GameObject vaksinPlaceBuyPanel;
@@ -36,6 +42,15 @@ public class VaksinManager : MonoBehaviour
     }
     private void Start()
     {
+        /*ini buat panel upgrade-------*/
+        upgradeButton = upgradePanel.transform.GetChild(1).GetChild(1).gameObject;
+        upgradeLevelText = upgradeButton.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        upgradeVaccineRate = upgradeButton.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        upgradeVaccineTime = upgradeButton.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        upgradePriceText = upgradeButton.transform.GetChild(5).GetComponent<TextMeshProUGUI>();
+        upgradeSprite = upgradeButton.transform.GetChild(6).GetComponent<Image>();
+        /*-----------------------------*/
+
         vaccinePlaceBuyText = new TextMeshProUGUI[buyButtons.Length];
         vaccinePlaceLevelText = new TextMeshProUGUI[buyButtons.Length];
         vaccineRateText = new TextMeshProUGUI[buyButtons.Length];
@@ -72,7 +87,7 @@ public class VaksinManager : MonoBehaviour
         if (AudioManager.instance != null) AudioManager.instance.Play("tap");
         if (HospitalManager.instance.placeCount() < 2 || PharmacyManager.instance.placeCount() < 2)
         {
-            UIManager.instance.ShowNotifPanel("You need to have at least 3 hospitals and 3 pharmacy to buy vaccine place");
+            UIManager.instance.ShowNotifPanel("You need to have at least 2 hospitals and 2 pharmacy to buy vaccine place");
             return;
         }
         if (alreadyBought[whichVaksinPlace])
@@ -137,8 +152,9 @@ public class VaksinManager : MonoBehaviour
         vaccinePlacePriceText[index].text = "Price: " + vaksinPlace[index].UpgradePrice;
     }
 
-    public void UpgradeVaksinPlace(int whichVaksinPlace)
+    public void UpgradeAllAttribute()
     {
+        int whichVaksinPlace = currentSelected;
         if (vaksinPlace[whichVaksinPlace].CheckMaxLevel())
         {
             UIManager.instance.ShowNotifPanel("you don't have enough money");
@@ -157,6 +173,21 @@ public class VaksinManager : MonoBehaviour
         if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         vaksinPlace[whichVaksinPlace].UpgradeVaksinPlace();
         UpdateBuyUI(whichVaksinPlace);
+        upgradePanel.SetActive(false);
+    }
+    public void UpgradeVaksinPlace(int whichVaksinPlace)
+    {
+        if (vaksinPlace[whichVaksinPlace].CheckMaxLevel()) return;
+
+        int lvl = vaksinPlace[whichVaksinPlace].Level;
+        currentSelected = whichVaksinPlace;
+        upgradePanel.SetActive(true);
+
+        upgradeLevelText.text = "level: " + ((int)vaksinPlace[whichVaksinPlace].Level + 1);
+
+        upgradeVaccineRate.text = "Vaccination Rate: " + vaksinPlace[whichVaksinPlace].GetNextValue(lvl).vaksinRate;
+        upgradeVaccineTime.text = "Vaccination Time: " + vaksinPlace[whichVaksinPlace].GetNextValue(lvl).vaksinTime;
+        upgradePriceText.text = "Price: " + vaksinPlace[whichVaksinPlace].GetNextValue(lvl).price;
     }
 
     public int placeCount()

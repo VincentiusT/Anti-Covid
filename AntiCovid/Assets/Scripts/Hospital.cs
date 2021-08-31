@@ -214,4 +214,9 @@ public class Hospital : MonoBehaviour
     {
         return sprite.sprite;
     }
+
+    public HospitalLevelSystem GetNextValue(int x)
+    {
+        return hospitalLevelSystem[x];
+    }
 }

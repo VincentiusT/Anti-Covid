@@ -8,6 +8,12 @@ public class OfficerManager : MonoBehaviour
 {
     public static OfficerManager instance;
 
+    public GameObject upgradePanel;
+    private GameObject upgradeButton;
+    private TextMeshProUGUI upgradeLevelText, upgradeRefillRateText, upgradePriceText;
+    private Image upgradeSprite;
+    private int currentSelected;
+
     public GameObject officerPoint;
     public GameObject officerObj;
     public GameObject officerBuyPanel;
@@ -33,6 +39,14 @@ public class OfficerManager : MonoBehaviour
     }
     private void Start()
     {
+        /*ini buat panel upgrade-------*/
+        upgradeButton = upgradePanel.transform.GetChild(1).GetChild(1).gameObject;
+        upgradeLevelText = upgradeButton.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        upgradeRefillRateText = upgradeButton.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        upgradePriceText = upgradeButton.transform.GetChild(5).GetComponent<TextMeshProUGUI>();
+        upgradeSprite = upgradeButton.transform.GetChild(6).GetComponent<Image>();
+        /*-----------------------------*/
+
         officerBuyText = buyButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         officerLevelText = buyButton.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         refillTimeText = buyButton.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
@@ -99,7 +113,7 @@ public class OfficerManager : MonoBehaviour
         officerSprite.sprite = officer.GetSprite();
     }
 
-    public void UpgradeOfficer()
+    public void UpgradeAllAttribute()
     {
         if (officer.CheckMaxLevel()) return;
 
@@ -115,5 +129,20 @@ public class OfficerManager : MonoBehaviour
         if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         officer.UpgradeOfficer();
         UpdateBuyUI();
+        upgradePanel.SetActive(false);
+    }
+
+    public void UpgradeOfficer()
+    {
+        if (officer.CheckMaxLevel()) return;
+
+        int lvl = officer.Level;
+        upgradePanel.SetActive(true);
+
+        upgradeLevelText.text = "level: " + ((int)officer.Level + 1);
+
+        upgradeRefillRateText.text = "Refill Rate: " + officer.GetNextValue(lvl).refillTime;
+        upgradePriceText.text = "Price: " + officer.GetNextValue(lvl).price;
+        upgradeSprite.sprite = officer.GetNextValue(lvl).sprite;
     }
 }

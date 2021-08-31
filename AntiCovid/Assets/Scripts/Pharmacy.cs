@@ -76,4 +76,9 @@ public class Pharmacy : MonoBehaviour
     {
         return sprite.sprite;
     }
+
+    public PharmacyLevelSystem GetNextValue(int x)
+    {
+        return pharmacyLevelSystem[x];
+    }
 }

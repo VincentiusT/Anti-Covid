@@ -7,6 +7,12 @@ public class PharmacyManager : MonoBehaviour
 {
     public static PharmacyManager instance;
 
+    public GameObject upgradePanel;
+    private GameObject upgradeButton;
+    private TextMeshProUGUI upgradeLevelText, upgradeTDRText, upgradePriceText;
+    private Image upgradeSprite;
+    private int currentSelected;
+
     public GameObject[] pharmacyPoints;
     public GameObject pharmacyObj;
     public GameObject pharmacyBuyPanel;
@@ -32,6 +38,14 @@ public class PharmacyManager : MonoBehaviour
     }
     private void Start()
     {
+        /*ini buat panel upgrade-------*/
+        upgradeButton = upgradePanel.transform.GetChild(1).GetChild(1).gameObject;
+        upgradeLevelText = upgradeButton.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        upgradeTDRText = upgradeButton.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        upgradePriceText = upgradeButton.transform.GetChild(5).GetComponent<TextMeshProUGUI>();
+        upgradeSprite = upgradeButton.transform.GetChild(6).GetComponent<Image>();
+        /*-----------------------------*/
+
         pharmacyBuyText = new TextMeshProUGUI[buyButtons.Length];
         pharmacyLevelText = new TextMeshProUGUI[buyButtons.Length];
         transmissionDecreaseRateText = new TextMeshProUGUI[buyButtons.Length];
@@ -122,8 +136,9 @@ public class PharmacyManager : MonoBehaviour
         pharmacySprites[index].sprite = pharmacy[index].GetSprite();
     }
 
-    public void UpgradePharmacy(int whichPharmacy)
+    public void UpgradeAllAttribute()
     {
+        int whichPharmacy = currentSelected;
         if (pharmacy[whichPharmacy].CheckMaxLevel()) return;
 
         Debug.Log("upgrade price: " + pharmacy[whichPharmacy].UpgradePrice);
@@ -138,6 +153,21 @@ public class PharmacyManager : MonoBehaviour
         if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         pharmacy[whichPharmacy].UpgradePharmacy();
         UpdateBuyUI(whichPharmacy);
+        upgradePanel.SetActive(false);
+    }
+    public void UpgradePharmacy(int whichPharmacy)
+    {
+        if (pharmacy[whichPharmacy].CheckMaxLevel()) return;
+
+        int lvl = pharmacy[whichPharmacy].Level;
+        currentSelected = whichPharmacy;
+        upgradePanel.SetActive(true);
+
+        upgradeLevelText.text = "level: " + ((int)pharmacy[whichPharmacy].Level + 1);
+
+        upgradeTDRText.text = "Transmission\n Decrease Rate: " + pharmacy[whichPharmacy].GetNextValue(lvl).transmissionDecreaseRate;
+        upgradePriceText.text = "Price: " + pharmacy[whichPharmacy].GetNextValue(lvl).price;
+        upgradeSprite.sprite = pharmacy[whichPharmacy].GetNextValue(lvl).sprite;
     }
 
     public int placeCount()

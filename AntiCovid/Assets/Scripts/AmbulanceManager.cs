@@ -6,6 +6,14 @@ using UnityEngine.UI;
 
 public class AmbulanceManager : MonoBehaviour
 {
+    public static AmbulanceManager instance;
+
+    public GameObject upgradePanel;
+    private GameObject upgradeButton;
+    private TextMeshProUGUI upgradeLevelText, upgradePickUpRateText, upgradeRPickUpTimeText, upgradePriceText;
+    private Image upgradeSprite;
+    private int currentSelected;
+
     public GameObject ambulanceObj;
     public GameObject buyAmbulancePanel;
     public GameObject[] buyButtons;
@@ -24,8 +32,22 @@ public class AmbulanceManager : MonoBehaviour
 
     private bool[] alreadyBought ;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
+        /*ini buat panel upgrade-------*/
+        upgradeButton = upgradePanel.transform.GetChild(1).GetChild(1).gameObject;
+        upgradeLevelText = upgradeButton.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        upgradePickUpRateText = upgradeButton.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        upgradeRPickUpTimeText = upgradeButton.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        upgradePriceText = upgradeButton.transform.GetChild(5).GetComponent<TextMeshProUGUI>();
+        upgradeSprite = upgradeButton.transform.GetChild(6).GetComponent<Image>();
+        /*-----------------------------*/
+
         ambulanceBuyText = new TextMeshProUGUI[buyButtons.Length];
         ambulanceLevelText = new TextMeshProUGUI[buyButtons.Length];
         pickupRate = new TextMeshProUGUI[buyButtons.Length];
@@ -104,8 +126,9 @@ public class AmbulanceManager : MonoBehaviour
         ambulancePriceText[index].text = "Price: " + ambulances[index].UpgradePrice;
     }
 
-    public void UpgradeAmbulance(int whichAmbulance)
+    public void UpgradeAllAttribute()
     {
+        int whichAmbulance = currentSelected;
         if (ambulances[whichAmbulance].CheckMaxLevel())
         {
             UIManager.instance.ShowNotifPanel("you don't have enough money");
@@ -124,5 +147,21 @@ public class AmbulanceManager : MonoBehaviour
 
         ambulances[whichAmbulance].UpgradePharmacy();
         UpdateBuyUI(whichAmbulance);
+        upgradePanel.SetActive(false);
+    }
+
+    public void UpgradeAmbulance(int whichAmbulance)
+    {
+        if (ambulances[whichAmbulance].CheckMaxLevel()) return;
+
+        int lvl = ambulances[whichAmbulance].Level;
+        currentSelected = whichAmbulance;
+        upgradePanel.SetActive(true);
+
+        upgradeLevelText.text = "level: " + ((int)ambulances[whichAmbulance].Level + 1);
+
+        upgradePickUpRateText.text = "Pickup Rate: " + ambulances[whichAmbulance].GetNextValue(lvl).pickupRate;
+        upgradeRPickUpTimeText.text = "Pickup Time: " + ambulances[whichAmbulance].GetNextValue(lvl).pickupTime + " ~ " + ambulances[whichAmbulance].GetNextValue(lvl).pickupTimeMax;
+        upgradePriceText.text = "Price: " + ambulances[whichAmbulance].GetNextValue(lvl).price;
     }
 }

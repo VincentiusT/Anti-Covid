@@ -94,6 +94,32 @@ public class UIManager : MonoBehaviour
 
     #endregion
 
+    public void UpgradeHospitalButton()
+    {
+        HospitalManager.instance.UpgradeAllAttribute();
+    }
+
+    public void UpgradeAmbulanceButton()
+    {
+        AmbulanceManager.instance.UpgradeAllAttribute();
+    }
+
+    public void UpgradeVaccinePlaceButton()
+    {
+        VaksinManager.instance.UpgradeAllAttribute();
+    }
+
+    public void UpgradeOfficerPlaceButton()
+    {
+        OfficerManager.instance.UpgradeAllAttribute();
+    }
+
+    public void UpgradePharmacyButton()
+    {
+        PharmacyManager.instance.UpgradeAllAttribute();
+    }
+
+
     public void ShowNotifPanel(string text)
     {
         notifText.text = text;

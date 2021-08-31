@@ -155,4 +155,9 @@ public class VaksinPlace : MonoBehaviour
     {
         get { return vaksinTime; }
     }
+
+    public VaccineLevelSystem GetNextValue(int x)
+    {
+        return vaccineLevelSystem[x];
+    }
 }

@@ -8,6 +8,12 @@ public class HospitalManager : MonoBehaviour
 {
     public static HospitalManager instance;
 
+    public GameObject upgradePanel;
+    private GameObject upgradeButton;
+    private TextMeshProUGUI upgradeLevelText, upgradeCapacityText, upgradeReleaseTimeText, upgradeRestTimeText, upgradePriceText;
+    private Image upgradeSprite;
+    private int currentSelected;
+
     public GameObject[] hospitalPoints;
     public GameObject hospitalObj;
     public GameObject hospitalBuyPanel;
@@ -37,6 +43,17 @@ public class HospitalManager : MonoBehaviour
     }
     private void Start()
     {
+        /*ini buat panel upgrade-------*/
+        upgradeButton = upgradePanel.transform.GetChild(1).GetChild(1).gameObject;
+        upgradeLevelText = upgradeButton.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        upgradeCapacityText = upgradeButton.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        upgradeReleaseTimeText = upgradeButton.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        upgradeRestTimeText = upgradeButton.transform.GetChild(4).GetComponent<TextMeshProUGUI>();
+        upgradePriceText = upgradeButton.transform.GetChild(5).GetComponent<TextMeshProUGUI>();
+        upgradeSprite = upgradeButton.transform.GetChild(6).GetComponent<Image>();
+        /*-----------------------------*/
+
+
         //hospitals = new List<Hospital>();
         hospitalBuyText = new TextMeshProUGUI[buyButtons.Length];
         hospitalLevelText = new TextMeshProUGUI[buyButtons.Length];
@@ -186,8 +203,9 @@ public class HospitalManager : MonoBehaviour
         hospitalSprites[index].sprite = hospitals[index].GetSprite();
     }
 
-    public void UpgradeHospital(int whichHospital)
+    public void UpgradeAllAttribute()
     {
+        int whichHospital = currentSelected;
         if (hospitals[whichHospital].CheckMaxLevel()) return;
 
         if (Goverment.instance.Money >= hospitals[whichHospital].UpgradePrice)
@@ -201,8 +219,24 @@ public class HospitalManager : MonoBehaviour
         if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         hospitals[whichHospital].UpgradeHospital();
         UpdateBuyUI(whichHospital);
+        upgradePanel.SetActive(false);
+    }
 
+    public void UpgradeHospital(int whichHospital)
+    {
+        if (hospitals[whichHospital].CheckMaxLevel()) return;
 
+        int lvl = hospitals[whichHospital].Level;
+        currentSelected = whichHospital;
+        upgradePanel.SetActive(true);
+
+        upgradeLevelText.text = "level: " + ((int)hospitals[whichHospital].Level+1);
+        
+        upgradeCapacityText.text = "Capacity: " + hospitals[whichHospital].GetNextValue(lvl).capacity;
+        upgradeReleaseTimeText.text = "Release Count: " + hospitals[whichHospital].GetNextValue(lvl).outRate;
+        upgradeRestTimeText.text = "Rest Time: " + hospitals[whichHospital].GetNextValue(lvl).outSpeed;
+        upgradePriceText.text = "Price: " + hospitals[whichHospital].GetNextValue(lvl).price;
+        upgradeSprite.sprite = hospitals[whichHospital].GetNextValue(lvl).sprite;
     }
 
     public int placeCount()

@@ -22,12 +22,13 @@ public class Officer : MonoBehaviour
     {
         officerLevelSystem = lvl;
         upgradePrice = officerLevelSystem[1].price;
+        refillTime = officerLevelSystem[0].refillTime;
         sprite.sprite = officerLevelSystem[0].sprite;
     }
 
     private void Start()
     {
-        refillTime = officerLevelSystem[0].refillTime;
+        
         refillTimeTemp = refillTime;
         slider.maxValue = refillTime;
     }
@@ -95,5 +96,10 @@ public class Officer : MonoBehaviour
     public Sprite GetSprite()
     {
         return sprite.sprite;
+    }
+
+    public OfficerLevelSystem GetNextValue(int x)
+    {
+        return officerLevelSystem[x];
     }
 }
