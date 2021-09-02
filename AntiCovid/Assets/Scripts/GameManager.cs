@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
+        PlayerPrefs.SetInt("MaxLevel", PlayerPrefs.GetInt("MaxLevel") + 1);
         if (!done)
         {
             if (AudioManager.instance != null) AudioManager.instance.Play("win");
