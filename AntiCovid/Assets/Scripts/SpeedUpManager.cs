@@ -30,4 +30,9 @@ public class SpeedUpManager : MonoBehaviour
         Debug.Log("change speedup time to: " + timeMultiplier);
         Time.timeScale = timeMultiplier;
     }
+
+    public float GetTimeMultiplier()
+    {
+        return timeMultiplier;
+    }
 }

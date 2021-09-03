@@ -14,6 +14,7 @@ public class TapManager : MonoBehaviour
     private float timeElapsedSinceLastTap = 0f;
 
     [SerializeField] private float multiplier = 1.0f;
+    [SerializeField] private SpeedUpManager speedUpManager;
     private float prevMultiplier = 1.0f;
     public int tapAmount = 0;
 
@@ -29,7 +30,7 @@ public class TapManager : MonoBehaviour
 
         CalculateMultiplier();
 
-        HospitalManager.instance.HospitalizePeople(multiplier);
+        HospitalManager.instance.HospitalizePeople(multiplier, speedUpManager.GetTimeMultiplier());
     }
 
     private void CalculateMultiplier()
