@@ -15,7 +15,7 @@ public class CollectableHouse : MonoBehaviour
     private void Start()
     {
         collectableHouseNotification = GetComponentInChildren<CollectableHouseNotification>();
-        collectableHouseNotification.gameObject.SetActive(false);
+        SetHouseNotification(false);
     }
 
     private void Update()
@@ -25,7 +25,7 @@ public class CollectableHouse : MonoBehaviour
             if (!isReadyToBeCollected)
             {
                 isReadyToBeCollected = true;
-                collectableHouseNotification.gameObject.SetActive(true);
+                SetHouseNotification(true);
             }
         }
         else
@@ -44,13 +44,22 @@ public class CollectableHouse : MonoBehaviour
         if (isReadyToBeCollected)
         {
             Goverment.instance.Money += RandomizeMoneyGet();
-            isReadyToBeCollected = false;
-            timeElapsed = 0f;
+            ResetHouseAttribute();
+            SetHouseNotification(false);
+        }
+    }
 
-            if (collectableHouseNotification.gameObject.activeSelf)
-            {
-                collectableHouseNotification.gameObject.SetActive(false);
-            }
+    private void ResetHouseAttribute()
+    {
+        isReadyToBeCollected = false;
+        timeElapsed = 0f;
+    }
+
+    private void SetHouseNotification(bool isActive)
+    {
+        if (collectableHouseNotification.gameObject.activeSelf != isActive)
+        {
+            collectableHouseNotification.gameObject.SetActive(isActive);
         }
     }
 
