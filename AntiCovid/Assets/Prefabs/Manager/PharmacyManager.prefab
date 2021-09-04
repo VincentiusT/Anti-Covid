@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68da1d457f5078d41b755f872dd09dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradePanel: {fileID: 0}
   pharmacyPoints:
   - {fileID: 2372654324449381056}
   - {fileID: 2372654325476789181}
@@ -88,6 +89,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  pharmacyLevelSystem: []
   buyMark: {fileID: 2372654324885708718}
   price: 6250
 --- !u!60 &2372654324451327289
@@ -115,12 +117,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -2.9952252, y: 2.3721504}
-      - {x: -3.0420346, y: 1.164417}
-      - {x: -3.0132735, y: 1.128267}
-      - {x: -3.0036361, y: 1.142756}
+    - - {x: -5.9243336, y: 1.7489359}
+      - {x: -5.950369, y: 0.25036895}
+      - {x: -5.942382, y: 0.04802847}
+      - {x: -5.9950666, y: -0.3945067}
       - {x: -0.48426342, y: 2.39567}
-      - {x: -2.9831643, y: 3.6565454}
+      - {x: -2.484593, y: 3.3241642}
 --- !u!1 &2372654324783994242
 GameObject:
   m_ObjectHideFlags: 0

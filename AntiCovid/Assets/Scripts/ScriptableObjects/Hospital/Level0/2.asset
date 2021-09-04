@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0db210edbad65a4a949f6898ca16e1a, type: 3}
+  m_Script: {fileID: 11500000, guid: b73ef54983e96c343a99a8e0e8e0f734, type: 3}
   m_Name: 2
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkinPlayer
   level: 2
-  price: 3500
-  vaksinRate: 50
-  vaksinTime: 8
+  price: 1600
+  capacity: 700
+  outRate: 75
+  outSpeed: 5
+  peopleOutPerTap: 5
+  sprite: {fileID: 21300000, guid: d865cb1db0dc2114c84b7843bf397f45, type: 3}

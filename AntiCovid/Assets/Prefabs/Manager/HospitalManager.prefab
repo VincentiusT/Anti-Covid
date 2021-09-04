@@ -252,6 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddb451239f5886c4dbf0ce455c89c807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradePanel: {fileID: 0}
   hospitalPoints:
   - {fileID: 5742956849737302652}
   - {fileID: 5742956850174415917}
@@ -265,6 +266,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   buyMark: {fileID: 5742956849553660374}
+  hospitalLevelSystem: []
   price: 5000
 --- !u!60 &5742956850483651753
 PolygonCollider2D:
@@ -291,11 +293,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 3.0316901, y: 3.6034856}
+    - - {x: 3.2041304, y: 3.6404371}
       - {x: -1.9102348, y: 1.1482984}
       - {x: 0.20011169, y: 0.081649184}
       - {x: 0.22809333, y: 0.09877741}
-      - {x: 2.9893115, y: 1.4566064}
+      - {x: 5.2926216, y: 2.589786}
 --- !u!1 &5742956850541275021
 GameObject:
   m_ObjectHideFlags: 0

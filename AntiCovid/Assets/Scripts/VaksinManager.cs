@@ -8,6 +8,8 @@ public class VaksinManager : MonoBehaviour
 {
     public static VaksinManager instance;
 
+    public int hospitalNeeded=1, pharmacyNeeded=1;
+
     public GameObject upgradePanel;
     private GameObject upgradeButton;
     private TextMeshProUGUI upgradeLevelText, upgradeVaccineRate, upgradeVaccineTime, upgradePriceText;
@@ -85,9 +87,13 @@ public class VaksinManager : MonoBehaviour
     public void BuyVaksinPlace(int whichVaksinPlace)
     {
         if (AudioManager.instance != null) AudioManager.instance.Play("tap");
-        if (HospitalManager.instance.placeCount() < 2 || PharmacyManager.instance.placeCount() < 2)
+
+        if (HospitalManager.instance.placeCount() < hospitalNeeded || (PharmacyManager.instance!=null && PharmacyManager.instance.placeCount() < pharmacyNeeded))
         {
-            UIManager.instance.ShowNotifPanel("You need to have at least 2 hospitals and 2 pharmacy to buy vaccine place");
+            string msg;
+            if (PharmacyManager.instance == null) msg = "You need to have at least " + hospitalNeeded + " hospitals to buy vaccine place";
+            else msg = "You need to have at least " + hospitalNeeded + " hospitals and " + pharmacyNeeded + " pharmacy to buy vaccine place";
+            UIManager.instance.ShowNotifPanel(msg);
             return;
         }
         if (alreadyBought[whichVaksinPlace])

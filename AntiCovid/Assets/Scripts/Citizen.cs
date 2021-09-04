@@ -6,7 +6,7 @@ using TMPro;
 public class Citizen : MonoBehaviour
 {
     public static Citizen instance;
-
+    [SerializeField] private bool deleteCrowd;
     [SerializeField] private int totalCitizen = 1000;
     private int sickPeoples = 0;
     private int healthyPeoples;
@@ -119,16 +119,19 @@ public class Citizen : MonoBehaviour
         {
             timeUntilDeath -= Time.deltaTime;
         }
-        
-        if(crowdSpawnTime <= 0)
+
+        if (!deleteCrowd)
         {
-            SpawnCrowd();
-            crowdSpawnTime = Random.Range(crowdSpawnTimeMin, crowdSpawnTimeMax);
-            crowdSpawnTime += crowdSpawnTime * awareness;
-        }
-        else
-        {
-            crowdSpawnTime -= Time.deltaTime;
+            if(crowdSpawnTime <= 0)
+            {
+                SpawnCrowd();
+                crowdSpawnTime = Random.Range(crowdSpawnTimeMin, crowdSpawnTimeMax);
+                crowdSpawnTime += crowdSpawnTime * awareness;
+            }
+            else
+            {
+                crowdSpawnTime -= Time.deltaTime;
+            }
         }
 
         //debug

@@ -8,7 +8,8 @@ public class Goverment : MonoBehaviour
     public static Goverment instance;
     [SerializeField] private DayManager dayManager;
     [SerializeField] private int money;
-    private int moneyRate = 10; //get money per second
+    [SerializeField] private float populationDivision = 10000f;
+    private int moneyRate = 5; //get money per second
     [SerializeField] private PolicyData[] policyDatas;
 
     [SerializeField] private GameObject PSBBPanel;
@@ -81,7 +82,7 @@ public class Goverment : MonoBehaviour
     {
         if (timeToGetMoney <= 0)
         {
-            moneyRate = Mathf.RoundToInt(Citizen.instance.HealthyPeoples / 10000f);
+            moneyRate = Mathf.RoundToInt(Citizen.instance.HealthyPeoples / populationDivision);
             money += moneyRate;
             timeToGetMoney = timeToGetMoneyTemp;
         }
