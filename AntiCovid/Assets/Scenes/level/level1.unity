@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1008978}
   - component: {fileID: 1008977}
+  - component: {fileID: 1008979}
   m_Layer: 0
   m_Name: DayManager
   m_TagString: Untagged
@@ -170,6 +171,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1008979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f74d5759133fda348aa2f08b792a45c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomEventChance: 10
+  randomEvents:
+  - id: 1
+    eventName: 123
+    randomEventType: 1
+    ammount: 5
+    dialogueID: RandomEventMoney
+    donor:
+      donorName: aa
+      donorSprite: {fileID: 21300000, guid: 942d8cb3d4b22ee45b3995d17ff68861, type: 3}
+      stories: aaaaa
+  dialogueSystem: {fileID: 564903307}
 --- !u!114 &1815840 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7941377133325608003, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
@@ -658,6 +683,7 @@ GameObject:
   m_Component:
   - component: {fileID: 564903308}
   - component: {fileID: 564903307}
+  - component: {fileID: 564903309}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -699,6 +725,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &564903309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564903306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3602b198c844342951853ccfbd7450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &571407896 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2394957893151395018, guid: 88ca05200a577024fa0e9fabca797983, type: 3}

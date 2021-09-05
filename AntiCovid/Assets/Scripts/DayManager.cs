@@ -21,17 +21,22 @@ public class DayManager : MonoBehaviour
         timeElapsed += Time.deltaTime;
         if(timeElapsed > secondsPerDay) //ganti hari
         {
-            day++;
-            DetermineRainDay();
-            UpdateDayUI();
-            timeElapsed = 0f;
-            StartCoroutine(ChangeLightGradually(-2f));
+            ChangeDay();
         }
         if(timeElapsed > secondsPerDay / 2f && !isChangingLight) //ganti jadi malem
         {
             isChangingLight = true;
             StartCoroutine(ChangeLightGradually(2f));
         }
+    }
+
+    private void ChangeDay()
+    {
+        day++;
+        DetermineRainDay();
+        UpdateDayUI();
+        timeElapsed = 0f;
+        StartCoroutine(ChangeLightGradually(-2f));
     }
 
     public void UpdateDayUI()

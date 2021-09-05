@@ -28,7 +28,7 @@ public class PeopleMovement : MonoBehaviour
         {
             NeighbourWaypointWrapper nextWaypointWrapper = nextWaypointVisited.Dequeue();
 
-            Debug.Log("Heading to " + nextWaypointWrapper.waypoint.transform.name);
+            //Debug.Log("Heading to " + nextWaypointWrapper.waypoint.transform.name);
 
             StartCoroutine(StartMoving(nextWaypointWrapper.waypoint, nextWaypointWrapper.arahJalan, nextWaypointWrapper.orderLayer));
 

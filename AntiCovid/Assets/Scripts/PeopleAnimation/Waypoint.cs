@@ -12,7 +12,7 @@ public class Waypoint : MonoBehaviour
             return neighbourWaypointTwo;
         else if (neighbourWaypointTwo.waypoint == null)
         {
-            Debug.Log("Null");
+            //Debug.Log("Null");
             return neighbourWaypointOne;
         }
 

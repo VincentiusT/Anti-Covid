@@ -14,6 +14,6 @@ public class CollectableHouseNotification : MonoBehaviour
     private void OnEnable()
     {
         //play animator
-        Debug.Log("Hai");
+        //Debug.Log("Hai");
     }
 }
