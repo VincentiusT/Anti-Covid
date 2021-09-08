@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Crowd : MonoBehaviour
 {
+    public bool inMall;
     private Animator anim;
     [SerializeField] private GameObject tandaSeru;
     private List<Animator> peopleAnims;
@@ -16,23 +17,33 @@ public class Crowd : MonoBehaviour
     {
         temp = timeToIncreaseTransmissionRate;
 
-        anim = GetComponent<Animator>();
-
-        peopleAnims = new List<Animator>();
-        for(int i = 0; i < transform.childCount; i++)
+        if (!inMall)
         {
-            peopleAnims.Add(transform.GetChild(i).GetComponent<Animator>());
+            anim = GetComponent<Animator>();
+
+            peopleAnims = new List<Animator>();
+            for(int i = 0; i < transform.GetChild(0).childCount; i++)
+            {
+                peopleAnims.Add(transform.GetChild(0).GetChild(i).GetComponent<Animator>());
+            }
+        }
+        else
+        {
+            StopCrowdWalking();
         }
     }
 
     public void StopCrowdWalking()
     {
-        for (int i = 0; i < peopleAnims.Count; i++)
+        if (!inMall)
         {
-            peopleAnims[i].SetTrigger("stop");
+            for (int i = 0; i < peopleAnims.Count; i++)
+            {
+                peopleAnims[i].SetTrigger("stop");
+            }
         }
         GameObject go = Instantiate(tandaSeru, transform.position, transform.rotation);
-        go.transform.position += new Vector3(0, -0.5f, 0);
+        go.transform.position += new Vector3(0, 0.5f, 0);
         go.transform.SetParent(transform);
 
         //BUAT TUTORIAL
@@ -48,11 +59,12 @@ public class Crowd : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
             if (hit.collider != null)
             {
-                if (hit.collider.tag == "Crowd" && hit.collider.gameObject.name==gameObject.name)
+                if (hit.collider.tag == "Crowd" && hit.collider.gameObject.transform.parent.name==gameObject.name)
                 {
                     DestroyCrowd();
                 }

@@ -19,6 +19,9 @@ TagManager:
   - Serang
   - Makassar
   - Pekanbaru
+  - spawnPointLU
+  - spawnPointRU
+  - spawnPointMall
   layers:
   - Default
   - TransparentFX

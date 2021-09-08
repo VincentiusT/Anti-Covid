@@ -282,21 +282,32 @@ public class Citizen : MonoBehaviour
         int limit =0;
         int idx = Random.Range(0, crowdObj.Length);
 
-        if (PlayerPrefs.GetInt("crowdTutorial") == 0)
-            idx = 0;
+        if (PlayerPrefs.GetInt("crowdTutorial") == 0) idx = 0;
 
         while(crowdSpawnPoint[idx].childCount != 0)
-            {
+        {
             idx++;
-            if (idx >= crowdObj.Length) idx = 0;
+            if (idx >= crowdSpawnPoint.Length) idx = 0;
             limit++;
-            if (limit >= crowdObj.Length)
+            if (limit >= crowdSpawnPoint.Length)
             {
                 return;
             }
         }
-
-        GameObject go = Instantiate(crowdObj[idx], transform.position, transform.rotation) as GameObject;
+        GameObject go=null;
+        if(crowdSpawnPoint[idx].tag == "spawnPointLU")
+        {
+           go = Instantiate(crowdObj[0], crowdSpawnPoint[idx].position, transform.rotation) as GameObject;
+        }
+        else if(crowdSpawnPoint[idx].tag == "spawnPointRU")
+        {
+            go = Instantiate(crowdObj[1], crowdSpawnPoint[idx].position, transform.rotation) as GameObject;
+        }
+        else if(crowdSpawnPoint[idx].tag == "spawnPointMall")
+        {
+            go = Instantiate(crowdObj[2], crowdSpawnPoint[idx].position, transform.rotation) as GameObject;
+        }
+        
         crowds.Add(go.GetComponent<Crowd>());
         go.name = "crowd" + idx;
         go.transform.parent = crowdSpawnPoint[idx];
