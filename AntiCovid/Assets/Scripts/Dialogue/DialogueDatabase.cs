@@ -6,7 +6,7 @@ public class DialogueDatabase : MonoBehaviour
 {
     public Dictionary<string, string[]> dialogue = new Dictionary<string, string[]>();
 
-    void Start()
+    void Awake()
     {
         //Door
         dialogue.Add("Beginning", new string[] {

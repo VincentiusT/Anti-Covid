@@ -48,6 +48,10 @@ public class DayManager : MonoBehaviour
     {
         return day;
     }
+    public void setDay(int _day)
+    {
+        day = _day;
+    }
 
     private IEnumerator ChangeLightGradually(float speed)
     {

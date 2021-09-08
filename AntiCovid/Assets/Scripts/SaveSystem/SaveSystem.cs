@@ -7,7 +7,7 @@ public static class SaveSystem
     public static void SavePlayer(Inventory inventory)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/meliorate.save";
+        string path = Application.persistentDataPath + "/covidheroes.save";
         FileStream stream = new FileStream(path, FileMode.Create);
 
         PlayerData data = new PlayerData(inventory);
@@ -18,7 +18,7 @@ public static class SaveSystem
 
     public static PlayerData LoadPlayer()
     {
-        string path = Application.persistentDataPath + "/meliorate.save";
+        string path = Application.persistentDataPath + "/covidheroes.save";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();

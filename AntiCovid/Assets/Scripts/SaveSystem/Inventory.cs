@@ -1,25 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
 
-    public int coin = 0;
-    public int kaki = 0, tangan = 0, mata = 0, pieceHati = 0;
-    public int biji = 0, batu = 0;
-
     private bool load = true;
+
+    public LevelData levelData;
+
+    [SerializeField] DayManager dayManager;
 
     private void Awake()
     {
-        if (load)
-        {
-            Load();
-            load = false;
-        }
+        //if (load)
+        //{
+        //    Load();
+        //    load = false;
+        //}
     }
 
     private void Start()
@@ -28,9 +27,43 @@ public class Inventory : MonoBehaviour
             instance = this;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Save();
+        }
+        else if (Input.GetKeyDown(KeyCode.L))
+        {
+            Load();
+        }
+    }
+
     public void Save()
     {
+        levelData = GetLevelDataNow();
         SaveSystem.SavePlayer(instance);
+    }
+
+    private LevelData GetLevelDataNow()
+    {
+        LevelData thisLevelData = new LevelData();
+        thisLevelData.Day = dayManager.getDay();
+        thisLevelData.Money = Goverment.instance.Money;
+        thisLevelData.TotalCitizen = Citizen.instance.TotalCitizen;
+        thisLevelData.TransmissionRate = Citizen.instance.TransmissionRateTotal;
+        thisLevelData.SickPeoples = Citizen.instance.SickPeoples;
+        thisLevelData.HealthyPeoples = Citizen.instance.HealthyPeoples;
+        thisLevelData.HospitalizedPeoples = Citizen.instance.HospitalizedPeoples;
+        thisLevelData.VaksinedPeoples = Citizen.instance.VaksinedPeoples;
+        thisLevelData.VaksinedPeoples2 = Citizen.instance.VaksinedPeoples2;
+        thisLevelData.UnvaccinatedPeoples = Citizen.instance.UnvaccinatedPeoples;
+        thisLevelData.UnvaccinatedPeoples2 = Citizen.instance.UnvaccinatedPeoples2;
+        thisLevelData.DeadPeoples = Citizen.instance.DeadPeoples;
+        thisLevelData.TransmissionIncreaseRate = Citizen.instance.TransmissionIncreaseRate;
+        thisLevelData.Awareness = Citizen.instance.Awareness;
+
+        return thisLevelData;
     }
 
     public void Load()
@@ -40,13 +73,23 @@ public class Inventory : MonoBehaviour
         {
             return;
         }
-        
-        coin = data.coin;
-        kaki = data.kaki;
-        tangan = data.tangan;
-        mata = data.mata; 
-        pieceHati = data.pieceHati;
-        biji = data.biji;
-        batu = data.batu;
+
+        levelData = data.levelData;
+
+        Debug.Log(levelData.Money);
+        dayManager.setDay(levelData.Day);
+        Goverment.instance.Money = levelData.Money;
+        Citizen.instance.TotalCitizen = levelData.TotalCitizen;
+        Citizen.instance.TransmissionRateTotal = levelData.TransmissionRate;
+        Citizen.instance.SickPeoples = levelData.SickPeoples;
+        Citizen.instance.HealthyPeoples = levelData.HealthyPeoples;
+        Citizen.instance.HospitalizedPeoples = levelData.HospitalizedPeoples;
+        Citizen.instance.VaksinedPeoples = levelData.VaksinedPeoples;
+        Citizen.instance.VaksinedPeoples2 = levelData.VaksinedPeoples2;
+        Citizen.instance.UnvaccinatedPeoples = levelData.UnvaccinatedPeoples;
+        Citizen.instance.UnvaccinatedPeoples2 = levelData.UnvaccinatedPeoples2;
+        Citizen.instance.DeadPeoples = levelData.DeadPeoples;
+        Citizen.instance.TransmissionIncreaseRate = levelData.TransmissionIncreaseRate;
+        Citizen.instance.Awareness = levelData.Awareness;
     }
 }
