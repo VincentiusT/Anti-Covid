@@ -39,6 +39,14 @@ public class LevelData
     #endregion
 
     #region bangunan
+    //private Hospital[] hospitals;
+    //private Pharmacy[] pharmacies;
+    //private Officer officer;
+    //private VaksinPlace[] vaksinPlaces;
 
+    //public Hospital[] Hospitals { get => hospitals; set => hospitals = value; }
+    //public Pharmacy[] Pharmacies { get => pharmacies; set => pharmacies = value; }
+    //public Officer Officer { get => officer; set => officer = value; }
+    //public VaksinPlace[] VaksinPlaces { get => vaksinPlaces; set => vaksinPlaces = value; }
     #endregion
 }

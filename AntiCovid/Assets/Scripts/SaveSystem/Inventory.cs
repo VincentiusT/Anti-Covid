@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Inventory : MonoBehaviour
 {
@@ -8,12 +9,13 @@ public class Inventory : MonoBehaviour
 
     private bool load = true;
 
-    public LevelData levelData;
+    public LevelData[] levelData;
 
     [SerializeField] DayManager dayManager;
 
     private void Awake()
     {
+        levelData = new LevelData[SceneManager.sceneCountInBuildSettings - 2];
         //if (load)
         //{
         //    Load();
@@ -31,17 +33,19 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
+            Debug.Log("save");
             Save();
         }
         else if (Input.GetKeyDown(KeyCode.L))
         {
+            Debug.Log("load");
             Load();
         }
     }
 
     public void Save()
     {
-        levelData = GetLevelDataNow();
+        levelData[GetSceneIndex()] = GetLevelDataNow();
         SaveSystem.SavePlayer(instance);
     }
 
@@ -62,6 +66,7 @@ public class Inventory : MonoBehaviour
         thisLevelData.DeadPeoples = Citizen.instance.DeadPeoples;
         thisLevelData.TransmissionIncreaseRate = Citizen.instance.TransmissionIncreaseRate;
         thisLevelData.Awareness = Citizen.instance.Awareness;
+        //thisLevelData.Hospitals = HospitalManager.instance.Hospitals;
 
         return thisLevelData;
     }
@@ -75,21 +80,28 @@ public class Inventory : MonoBehaviour
         }
 
         levelData = data.levelData;
+        LevelData thisLevelData = levelData[GetSceneIndex()];
+        if (thisLevelData == null) return;
 
-        Debug.Log(levelData.Money);
-        dayManager.setDay(levelData.Day);
-        Goverment.instance.Money = levelData.Money;
-        Citizen.instance.TotalCitizen = levelData.TotalCitizen;
-        Citizen.instance.TransmissionRateTotal = levelData.TransmissionRate;
-        Citizen.instance.SickPeoples = levelData.SickPeoples;
-        Citizen.instance.HealthyPeoples = levelData.HealthyPeoples;
-        Citizen.instance.HospitalizedPeoples = levelData.HospitalizedPeoples;
-        Citizen.instance.VaksinedPeoples = levelData.VaksinedPeoples;
-        Citizen.instance.VaksinedPeoples2 = levelData.VaksinedPeoples2;
-        Citizen.instance.UnvaccinatedPeoples = levelData.UnvaccinatedPeoples;
-        Citizen.instance.UnvaccinatedPeoples2 = levelData.UnvaccinatedPeoples2;
-        Citizen.instance.DeadPeoples = levelData.DeadPeoples;
-        Citizen.instance.TransmissionIncreaseRate = levelData.TransmissionIncreaseRate;
-        Citizen.instance.Awareness = levelData.Awareness;
+        Debug.Log(thisLevelData.Money);
+        dayManager.setDay(thisLevelData.Day);
+        Goverment.instance.Money = thisLevelData.Money;
+        Citizen.instance.TotalCitizen = thisLevelData.TotalCitizen;
+        Citizen.instance.TransmissionRateTotal = thisLevelData.TransmissionRate;
+        Citizen.instance.SickPeoples = thisLevelData.SickPeoples;
+        Citizen.instance.HealthyPeoples = thisLevelData.HealthyPeoples;
+        Citizen.instance.HospitalizedPeoples = thisLevelData.HospitalizedPeoples;
+        Citizen.instance.VaksinedPeoples = thisLevelData.VaksinedPeoples;
+        Citizen.instance.VaksinedPeoples2 = thisLevelData.VaksinedPeoples2;
+        Citizen.instance.UnvaccinatedPeoples = thisLevelData.UnvaccinatedPeoples;
+        Citizen.instance.UnvaccinatedPeoples2 = thisLevelData.UnvaccinatedPeoples2;
+        Citizen.instance.DeadPeoples = thisLevelData.DeadPeoples;
+        Citizen.instance.TransmissionIncreaseRate = thisLevelData.TransmissionIncreaseRate;
+        Citizen.instance.Awareness = thisLevelData.Awareness;
+    }
+
+    private int GetSceneIndex()
+    {
+        return SceneManager.GetActiveScene().buildIndex - 2;
     }
 }

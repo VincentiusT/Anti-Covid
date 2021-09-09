@@ -6,7 +6,7 @@ using System;
 [System.Serializable]
 public class PlayerData
 {
-    public LevelData levelData;
+    public LevelData[] levelData;
 
     public PlayerData(Inventory inventory)
     {
