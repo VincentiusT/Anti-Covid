@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 115ef8c922ce055439e9f619b46a40ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsPerDay: 30
+  secondsPerDay: 300
   overlayLight: {fileID: 2119264185}
   rainChance: 20
   rainParticleSystem: {fileID: 1371764573}
@@ -183,16 +183,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f74d5759133fda348aa2f08b792a45c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomEventChance: 100
+  randomEventChance: 15
   randomEvents:
   - id: 1
-    eventName: 123
-    randomEventType: 1
-    ammount: 5
+    eventName: Foreign
+    randomEventType: 0
+    ammount: 500
     dialogueID: RandomEventForeign
     donor:
       donorName: Jack
       donorSprite: {fileID: 21300000, guid: 9b00426679e5e4e48bcdc33c81f3d6f6, type: 3}
+      stories: huehehe
+  - id: 2
+    eventName: Otomotif
+    randomEventType: 1
+    ammount: 5000
+    dialogueID: RandomEventOtomotif
+    donor:
+      donorName: Kris
+      donorSprite: {fileID: 21300000, guid: 9c837174adf7b8a47b8e5c47c1598371, type: 3}
+      stories: huehehe
+  - id: 3
+    eventName: Lembaga
+    randomEventType: 1
+    ammount: 6000
+    dialogueID: RandomEventLembaga
+    donor:
+      donorName: David
+      donorSprite: {fileID: 21300000, guid: 1c023271a7cb1e64982106b1e74b93e6, type: 3}
+      stories: huehehe
+  - id: 4
+    eventName: ECommerce
+    randomEventType: 1
+    ammount: 4500
+    dialogueID: RandomEventECommerce
+    donor:
+      donorName: Danny
+      donorSprite: {fileID: 21300000, guid: e2054e4bbb8ae964c8a1933f33d85d4c, type: 3}
       stories: huehehe
   dialogueSystem: {fileID: 564903307}
 --- !u!114 &1815840 stripped
@@ -3874,6 +3901,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 81092287092806836, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 1852301168977456787, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4146,6 +4177,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 826509205}
+    - target: {fileID: 8700185978772304415, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
 --- !u!1 &7941377133326356836 stripped

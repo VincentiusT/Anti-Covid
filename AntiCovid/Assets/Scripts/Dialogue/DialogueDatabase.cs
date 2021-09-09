@@ -25,5 +25,33 @@ public class DialogueDatabase : MonoBehaviour
             "See you later!"
         });
 
+        dialogue.Add("RandomEventOtomotif", new string[] {
+            "Good Morning!",
+            "I heard that you have a problem in handling covid here!",
+            "well.. in that case, i have something for you!",
+            "here is some vaccines to help you vaccinate all of your citizen!",
+            "i hope that help!",
+            "See you later!"
+        });
+
+        dialogue.Add("RandomEventLembaga", new string[] {
+            "Good Morning!",
+            "I heard that you have a problem in handling covid here!",
+            "well.. in that case, i have something for you!",
+            "here is some vaccines to help you vaccinate all of your citizen!",
+            "i hope that help!",
+            "See you later!"
+        });
+
+        dialogue.Add("RandomEventECommerce", new string[] {
+            "Good Morning!",
+            "I heard that you have a problem in handling covid here!",
+            "well.. in that case, i have something for you!",
+            "here is some vaccines to help you vaccinate all of your citizen!",
+            "i hope that help!",
+            "See you later!"
+        });
+
+
     }
 }

@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1008978}
   - component: {fileID: 1008977}
+  - component: {fileID: 1008979}
   m_Layer: 0
   m_Name: DayManager
   m_TagString: Untagged
@@ -170,6 +171,57 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1008979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f74d5759133fda348aa2f08b792a45c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomEventChance: 15
+  randomEvents:
+  - id: 1
+    eventName: Foreign
+    randomEventType: 0
+    ammount: 500
+    dialogueID: RandomEventForeign
+    donor:
+      donorName: Jack
+      donorSprite: {fileID: 21300000, guid: 9b00426679e5e4e48bcdc33c81f3d6f6, type: 3}
+      stories: huehehe
+  - id: 2
+    eventName: Otomotif
+    randomEventType: 1
+    ammount: 5000
+    dialogueID: RandomEventOtomotif
+    donor:
+      donorName: Kris
+      donorSprite: {fileID: 21300000, guid: 9c837174adf7b8a47b8e5c47c1598371, type: 3}
+      stories: huehehe
+  - id: 3
+    eventName: Lembaga
+    randomEventType: 1
+    ammount: 6000
+    dialogueID: RandomEventLembaga
+    donor:
+      donorName: David
+      donorSprite: {fileID: 21300000, guid: 1c023271a7cb1e64982106b1e74b93e6, type: 3}
+      stories: huehehe
+  - id: 4
+    eventName: ECommerce
+    randomEventType: 1
+    ammount: 4500
+    dialogueID: RandomEventECommerce
+    donor:
+      donorName: Danny
+      donorSprite: {fileID: 21300000, guid: e2054e4bbb8ae964c8a1933f33d85d4c, type: 3}
+      stories: huehehe
+  dialogueSystem: {fileID: 0}
 --- !u!114 &1815840 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7941377133325608003, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
