@@ -16,9 +16,13 @@ public class DialogueDatabase : MonoBehaviour
             "Let's do this!"
         });
 
-        dialogue.Add("RandomEventMoney", new string[] {
-            "hehe boi",
-            "hehe boi boi"
+        dialogue.Add("RandomEventForeign", new string[] {
+            "Good Morning!",
+            "I heard that you have a problem in handling covid here!",
+            "well.. in that case, i have something for you!",
+            "here is some vaccines to help you vaccinate all of your citizen!",
+            "i hope that help!",
+            "See you later!"
         });
 
     }

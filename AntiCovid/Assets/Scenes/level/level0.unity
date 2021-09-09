@@ -605,6 +605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 564903308}
   - component: {fileID: 564903307}
+  - component: {fileID: 564903309}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -632,7 +633,7 @@ MonoBehaviour:
   - Let's do this!
   canvas: {fileID: 1079393455}
   mainPanel: {fileID: 622069784}
-  defaultCharacterSprite: {fileID: 0}
+  defaultCharacterSprite: {fileID: 21300000, guid: e36ef6f46f0c1bb44a52e62ef4fa2697, type: 3}
 --- !u!4 &564903308
 Transform:
   m_ObjectHideFlags: 0
@@ -647,6 +648,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &564903309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564903306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3602b198c844342951853ccfbd7450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &571407896 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2394957893151395018, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
@@ -2559,6 +2572,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1422975539}
+    - target: {fileID: 1852301168977456787, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1358056989}
+    - target: {fileID: 1852301168977456787, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoneyBoost
+      objectReference: {fileID: 0}
     - target: {fileID: 4913469561225845121, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2879,6 +2900,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2581252352317270820, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
   m_PrefabInstance: {fileID: 7941377133326356835}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7941377133326356842 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3127854538972944162, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
+  m_PrefabInstance: {fileID: 7941377133326356835}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8053372233403042632
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2974,6 +3000,10 @@ PrefabInstance:
       propertyPath: govermentPanel
       value: 
       objectReference: {fileID: 58053606}
+    - target: {fileID: 8053372234729375061, guid: 8ddd9a3ccae1f9a49b9bb009f203e6df, type: 3}
+      propertyPath: moneyBoostPanel
+      value: 
+      objectReference: {fileID: 7941377133326356842}
     - target: {fileID: 8053372234729375061, guid: 8ddd9a3ccae1f9a49b9bb009f203e6df, type: 3}
       propertyPath: populationDivision
       value: 1000

@@ -22,6 +22,8 @@ public class VaksinManager : MonoBehaviour
     public GameObject[] buyButtons;
     public GameObject buyMark;
 
+    private TextMeshProUGUI infoText;
+
     private TextMeshProUGUI[] vaccinePlaceBuyText;
     private TextMeshProUGUI[] vaccinePlaceLevelText;
     private TextMeshProUGUI[] vaccineRateText;
@@ -52,6 +54,9 @@ public class VaksinManager : MonoBehaviour
         upgradePriceText = upgradeButton.transform.GetChild(5).GetComponent<TextMeshProUGUI>();
         upgradeSprite = upgradeButton.transform.GetChild(6).GetComponent<Image>();
         /*-----------------------------*/
+
+        infoText = vaksinPlaceBuyPanel.transform.Find("centerPanel/vaccinePanel/info/info").GetComponent<TextMeshProUGUI>();
+        infoText.text = "A Place to vaccinate people! \nrequirement: You need to have minimal "+hospitalNeeded+" hospitals, "+pharmacyNeeded+" pharmacies to build this Place.";
 
         vaccinePlaceBuyText = new TextMeshProUGUI[buyButtons.Length];
         vaccinePlaceLevelText = new TextMeshProUGUI[buyButtons.Length];
