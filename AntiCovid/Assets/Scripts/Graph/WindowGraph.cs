@@ -140,7 +140,7 @@ public class WindowGraph : MonoBehaviour
     {
         GameObject go = new GameObject("pointConnector", typeof(Image));
         go.transform.SetParent(graphContainer, false);
-        go.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
+        go.GetComponent<Image>().color = Color.red;
         RectTransform goRectTransform = go.GetComponent<RectTransform>();
 
         //Vector2 pointDirection = (pointB - pointA).normalized;
