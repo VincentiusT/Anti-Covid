@@ -16018,7 +16018,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Congrats! 80% Citizens have been Vaccinated!
+  m_text: Congrats! 75% Citizens have been Vaccinated!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7688a276c4b5a914dacf2c75acbc162b, type: 2}
   m_sharedMaterial: {fileID: -7293397868275134066, guid: 7688a276c4b5a914dacf2c75acbc162b, type: 2}

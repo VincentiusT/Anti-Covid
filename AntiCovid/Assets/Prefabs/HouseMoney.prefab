@@ -123,9 +123,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c3ea131af8a7f4493df4d133086baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lowerLimitMoney: 1
-  upperLimitMoney: 10
-  cooldownTimeToGenerateMoney: 2
+  lowerLimitMoney: 80
+  upperLimitMoney: 200
+  cooldownTimeToGenerateMoney: 10
   timeElapsed: 0
   collectableHouseNotification: {fileID: 0}
 --- !u!1 &6066237098645877106

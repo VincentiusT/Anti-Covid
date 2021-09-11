@@ -6,6 +6,7 @@ using TMPro;
 
 public class DialogueSystem : MonoBehaviour
 {
+    public string BeginningStoryID;
     [SerializeField] private string[] paragraphs;
     private TextMeshProUGUI dialogueText;
     private Image dialogueCharacterSprite;
@@ -23,7 +24,7 @@ public class DialogueSystem : MonoBehaviour
         dialogueText = canvas.transform.Find("DialoguePanel/DialogueBox/DialogueText").GetComponent<TextMeshProUGUI>();
         dialogueCharacterSprite = canvas.transform.Find("DialoguePanel/char").GetComponent<Image>();
 
-        SetUpDialoguePanel("Beginning", null);
+        SetUpDialoguePanel(BeginningStoryID, null);
     }
 
     private void SetUpDialoguePanel(string dialogueName, Sprite charSprite)

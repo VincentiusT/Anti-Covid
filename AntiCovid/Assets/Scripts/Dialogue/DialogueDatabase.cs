@@ -8,13 +8,9 @@ public class DialogueDatabase : MonoBehaviour
 
     void Awake()
     {
-        //Door
-        dialogue.Add("Beginning", new string[] {
-            "Finally i arrived in this city.. Serang!",
-            "But this is the start, i need to save this city",
-            "i need to make people aware of this pandemic, make a policy, build a lot of facilities, and many more",
-            "Let's do this!"
-        });
+
+        Beginning();
+        
 
         dialogue.Add("RandomEventForeign", new string[] {
             "Good Morning!",
@@ -53,5 +49,23 @@ public class DialogueDatabase : MonoBehaviour
         });
 
 
+    }
+
+    void Beginning()
+    {
+        dialogue.Add("test", new string[] {
+            "Finally i arrived in this city!",
+            "But this is only the start, i need to save this city",
+            "i need to make people aware of this pandemic, make a policy, build a lot of facilities, and many more",
+            "well, i will do my best! Let's do this!"
+        });
+
+        dialogue.Add("serang", new string[] {
+            "Woaahh..",
+            "Finally i arrived in this city.. Serang!",
+            "But this is only the start, i need to save this city",
+            "i need to make people aware of this pandemic, make a policy, build a lot of facilities, and many more",
+            "well, i will do my best! Let's do this!"
+        });
     }
 }

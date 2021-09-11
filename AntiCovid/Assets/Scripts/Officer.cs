@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class Officer : MonoBehaviour
 {
-    private int level=1;
-    private float refillTime = 15f;
+    public OfficerData officerData;
+    //private int level=1;
+    //private float refillTime = 15f;
     private float refillTimeTemp;
     private int upgradePrice;
     [SerializeField] private Slider slider;
@@ -15,6 +16,7 @@ public class Officer : MonoBehaviour
     private SpriteRenderer sprite;
     private void Awake()
     {
+        officerData.level = 1;
         sprite = GetComponent<SpriteRenderer>();
     }
 
@@ -22,28 +24,28 @@ public class Officer : MonoBehaviour
     {
         officerLevelSystem = lvl;
         upgradePrice = officerLevelSystem[1].price;
-        refillTime = officerLevelSystem[0].refillTime;
+        officerData.refillTime = officerLevelSystem[0].refillTime;
         sprite.sprite = officerLevelSystem[0].sprite;
     }
 
     private void Start()
     {
         
-        refillTimeTemp = refillTime;
-        slider.maxValue = refillTime;
+        refillTimeTemp = officerData.refillTime;
+        slider.maxValue = officerData.refillTime;
     }
 
     private void Update()
     {
-        if (refillTime <= 0)
+        if (officerData.refillTime <= 0)
         {
             disbandCrowd();
         }
         else
         {
-            refillTime -= Time.deltaTime;
+            officerData.refillTime -= Time.deltaTime;
         }
-        slider.value = refillTime; 
+        slider.value = officerData.refillTime; 
     }
 
     private void disbandCrowd()
@@ -56,7 +58,7 @@ public class Officer : MonoBehaviour
                 if (Citizen.instance.crowds[i] != null)
                 {
                     Citizen.instance.crowds[i].DestroyCrowd();
-                    refillTime = refillTimeTemp;
+                    officerData.refillTime = refillTimeTemp;
                     break;
                 }
             }
@@ -65,24 +67,24 @@ public class Officer : MonoBehaviour
     }
     public void UpgradeOfficer()
     {
-        level++;
+        officerData.level++;
 
-        refillTime = officerLevelSystem[level - 1].refillTime;
-        sprite.sprite = officerLevelSystem[level - 1].sprite;
-        refillTimeTemp = refillTime;
-        if (level >= officerLevelSystem.Length) return;
-        upgradePrice = officerLevelSystem[level].price;
+        officerData.refillTime = officerLevelSystem[officerData.level - 1].refillTime;
+        sprite.sprite = officerLevelSystem[officerData.level - 1].sprite;
+        refillTimeTemp = officerData.refillTime;
+        if (officerData.level >= officerLevelSystem.Length) return;
+        upgradePrice = officerLevelSystem[officerData.level].price;
     }
 
     public bool CheckMaxLevel()
     {
-        return level >= officerLevelSystem.Length;
+        return officerData.level >= officerLevelSystem.Length;
     }
 
     public int Level
     {
-        set { level = value; }
-        get { return level; }
+        set { officerData.level = value; }
+        get { return officerData.level; }
     }
     public int UpgradePrice
     {
@@ -91,7 +93,7 @@ public class Officer : MonoBehaviour
 
     public float RefillTime
     {
-        get { return refillTime; }
+        get { return officerData.refillTime; }
     }
     public Sprite GetSprite()
     {

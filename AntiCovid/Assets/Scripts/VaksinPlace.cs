@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class VaksinPlace : MonoBehaviour
 {
-    private int level = 1;
 
-    private int vaksinRate = 5; //people per vaksinTime
+    public VaccinePlaceData vaccinePlaceData;
+    //private int level = 1;
+
+    //private int vaksinRate = 5; //people per vaksinTime
 
     [SerializeField] private VaccineLevelSystem[] vaccineLevelSystem;
 
-    private float vaksinTime = 10;
+    //private float vaksinTime = 10;
     private float vaksinTimeTemp;
 
     private float startSeccondVaccineTime = 50f;
@@ -26,17 +28,17 @@ public class VaksinPlace : MonoBehaviour
 
     private void Awake()
     {
-        
+        vaccinePlaceData.level = 1;
     }
 
     public void AssignLevelSystem(VaccineLevelSystem[] lvl)
     {
         vaccineLevelSystem = lvl;
         upgradePrice = vaccineLevelSystem[1].price;
-        vaksinRate = vaccineLevelSystem[0].vaksinRate;
-        vaksinTime = vaccineLevelSystem[0].vaksinTime;
+        vaccinePlaceData.vaksinRate = vaccineLevelSystem[0].vaksinRate;
+        vaccinePlaceData.vaksinTime = vaccineLevelSystem[0].vaksinTime;
         seccondVaksinTime = vaccineLevelSystem[0].vaksinTime;
-        vaksinTimeTemp = vaksinTime;
+        vaksinTimeTemp = vaccinePlaceData.vaksinTime;
         seccondVaksinTimeTemp = seccondVaksinTime;
         startSeccondVaccineTimeTemp = startSeccondVaccineTime;
     }
@@ -48,14 +50,14 @@ public class VaksinPlace : MonoBehaviour
 
     void Update()
     {
-        if(vaksinTime <= 0)
+        if(vaccinePlaceData.vaksinTime <= 0)
         {
-            FirstVaccine(vaksinRate);
-            vaksinTime = vaksinTimeTemp;
+            FirstVaccine(vaccinePlaceData.vaksinRate);
+            vaccinePlaceData.vaksinTime = vaksinTimeTemp;
         }
         else
         {
-            vaksinTime -= Time.deltaTime;
+            vaccinePlaceData.vaksinTime -= Time.deltaTime;
         }
 
         if (Citizen.instance.VaksinedPeoples > 0 && !done)
@@ -79,7 +81,7 @@ public class VaksinPlace : MonoBehaviour
                 //start seccond vaccine
                 if (seccondVaksinTime <= 0)
                 {
-                    SeccondVaccine(vaksinRate);
+                    SeccondVaccine(vaccinePlaceData.vaksinRate);
                     seccondVaksinTime = seccondVaksinTimeTemp;
                 }
                 else
@@ -122,26 +124,26 @@ public class VaksinPlace : MonoBehaviour
 
     public void UpgradeVaksinPlace()
     {
-        level++;
+        vaccinePlaceData.level++;
 
-        vaksinRate = vaccineLevelSystem[level - 1].vaksinRate;
-        vaksinTime = vaccineLevelSystem[level - 1].vaksinTime;
-        seccondVaksinTime = vaccineLevelSystem[level - 1].vaksinTime;
-        vaksinTimeTemp = vaksinTime;
+        vaccinePlaceData.vaksinRate = vaccineLevelSystem[vaccinePlaceData.level - 1].vaksinRate;
+        vaccinePlaceData.vaksinTime = vaccineLevelSystem[vaccinePlaceData.level - 1].vaksinTime;
+        seccondVaksinTime = vaccineLevelSystem[vaccinePlaceData.level - 1].vaksinTime;
+        vaksinTimeTemp = vaccinePlaceData.vaksinTime;
         seccondVaksinTimeTemp = seccondVaksinTime;
 
-        if (level >= vaccineLevelSystem.Length) return;
-        upgradePrice = vaccineLevelSystem[level].price;
+        if (vaccinePlaceData.level >= vaccineLevelSystem.Length) return;
+        upgradePrice = vaccineLevelSystem[vaccinePlaceData.level].price;
     }
 
     public bool CheckMaxLevel()
     {
-        return level >= vaccineLevelSystem.Length;
+        return vaccinePlaceData.level >= vaccineLevelSystem.Length;
     }
     public int Level
     {
-        set { level = value; }
-        get { return level; }
+        set { vaccinePlaceData.level = value; }
+        get { return vaccinePlaceData.level; }
     }
     public int UpgradePrice
     {
@@ -149,11 +151,11 @@ public class VaksinPlace : MonoBehaviour
     }
     public int VaksinRate
     {
-        get { return vaksinRate; }
+        get { return vaccinePlaceData.vaksinRate; }
     }
     public float VaksinTime
     {
-        get { return vaksinTime; }
+        get { return vaccinePlaceData.vaksinTime; }
     }
 
     public VaccineLevelSystem GetNextValue(int x)

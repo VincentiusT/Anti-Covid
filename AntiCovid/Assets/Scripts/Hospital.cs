@@ -6,8 +6,10 @@ using TMPro;
 
 public class Hospital : MonoBehaviour
 {
-    private int level=1;
-    private int capacity = 100;
+    public HospitalData hospitalData;
+
+    //private int level=1;
+    //private int capacity = 100;
     [SerializeField] private Slider slider;
     [SerializeField] private HospitalLevelSystem[] hospitalLevelSystem;
     [SerializeField] private GameObject peopleIn;
@@ -17,48 +19,49 @@ public class Hospital : MonoBehaviour
     private SpriteRenderer sprite;
 
     private int hospitalizedPeoples;
-    private int releaseCount = 5; //berapa orang yang keluar dari rumah sakit
+    //private int releaseCount = 5; //berapa orang yang keluar dari rumah sakit
 
-    private float restTime = 20f; //berapa waktu yg dibutuhin sebelom orang keluar dari rumah sakit
+    //private float restTime = 20f; //berapa waktu yg dibutuhin sebelom orang keluar dari rumah sakit
     private float restTimeOriginal;
 
-    private int peopleOutPerTap;
+    //private int peopleOutPerTap;
 
     private void Awake()
     {
+        hospitalData.level = 1;
         sprite = GetComponent<SpriteRenderer>();
-        releaseCount = hospitalLevelSystem[0].outRate;
-        restTime = hospitalLevelSystem[0].outSpeed;
-        capacity = hospitalLevelSystem[0].capacity;
-        peopleOutPerTap = hospitalLevelSystem[0].peopleOutPerTap;
+        hospitalData.releaseCount = hospitalLevelSystem[0].outRate;
+        hospitalData.restTime = hospitalLevelSystem[0].outSpeed;
+        hospitalData.capacity = hospitalLevelSystem[0].capacity;
+        hospitalData.peopleOutPerTap = hospitalLevelSystem[0].peopleOutPerTap;
         sprite.sprite = hospitalLevelSystem[0].sprite;
-        restTimeOriginal = restTime;
-        slider.maxValue = capacity;
+        restTimeOriginal = hospitalData.restTime;
+        slider.maxValue = hospitalData.capacity;
         upgradePrice = hospitalLevelSystem[1].price;
     }
 
     public void AssignLevelSystem(HospitalLevelSystem[] lvl)
     {
         hospitalLevelSystem = lvl;
-        releaseCount = hospitalLevelSystem[0].outRate;
-        restTime = hospitalLevelSystem[0].outSpeed;
-        capacity = hospitalLevelSystem[0].capacity;
-        peopleOutPerTap = hospitalLevelSystem[0].peopleOutPerTap;
+        hospitalData.releaseCount = hospitalLevelSystem[0].outRate;
+        hospitalData.restTime = hospitalLevelSystem[0].outSpeed;
+        hospitalData.capacity = hospitalLevelSystem[0].capacity;
+        hospitalData.peopleOutPerTap = hospitalLevelSystem[0].peopleOutPerTap;
         sprite.sprite = hospitalLevelSystem[0].sprite;
-        restTimeOriginal = restTime;
-        slider.maxValue = capacity;
+        restTimeOriginal = hospitalData.restTime;
+        slider.maxValue = hospitalData.capacity;
         upgradePrice = hospitalLevelSystem[1].price;
     }
     private void Update()
     {
-        if(restTime <= 0 && hospitalizedPeoples > 0)
+        if(hospitalData.restTime <= 0 && hospitalizedPeoples > 0)
         {
             ReleaseHealthyPeople();
-            restTime = restTimeOriginal;
+           hospitalData.restTime = restTimeOriginal;
         }
         else
         {
-            restTime -= Time.deltaTime;
+            hospitalData.restTime -= Time.deltaTime;
         }
 
         updateSlider();
@@ -70,16 +73,16 @@ public class Hospital : MonoBehaviour
         {
             return;
         }
-        if (hospitalizedPeoples >= capacity)
+        if (hospitalizedPeoples >= hospitalData.capacity)
         {
             Debug.Log("Hospital " + name + " is full!");
             return;
         }
 
-        if(hospitalizedPeoples+peoples >= capacity)
+        if(hospitalizedPeoples+peoples >= hospitalData.capacity)
         {
-            hospitalizedPeoples = capacity;
-            Citizen.instance.SickPeoples -= hospitalizedPeoples + peoples - capacity;
+            hospitalizedPeoples = hospitalData.capacity;
+            Citizen.instance.SickPeoples -= hospitalizedPeoples + peoples - hospitalData.capacity;
         }
         else
         {
@@ -104,7 +107,7 @@ public class Hospital : MonoBehaviour
 
     public void ReleaseHealthyPeople()
     {
-        if (hospitalizedPeoples < releaseCount)
+        if (hospitalizedPeoples < hospitalData.releaseCount)
         {
             Citizen.instance.HealthyPeoples += hospitalizedPeoples;
             //Citizen.instance.UnvaccinatedPeoples += hospitalizedPeoples;
@@ -115,12 +118,12 @@ public class Hospital : MonoBehaviour
         }
         else
         {
-            hospitalizedPeoples -= releaseCount;
-            Citizen.instance.HealthyPeoples += releaseCount;
+            hospitalizedPeoples -= hospitalData.releaseCount;
+            Citizen.instance.HealthyPeoples += hospitalData.releaseCount;
             //Citizen.instance.UnvaccinatedPeoples += releaseCount;
             //Citizen.instance.UnvaccinatedPeoples2 += releaseCount;
-            Debug.Log("release from " + name + "  " + releaseCount);
-            ShowPeopleText(-releaseCount);
+            Debug.Log("release from " + name + "  " + hospitalData.releaseCount);
+            ShowPeopleText(-hospitalData.releaseCount);
         }
 
         if (Citizen.instance.HealthyPeoples >= Citizen.instance.TotalCitizen)
@@ -154,22 +157,22 @@ public class Hospital : MonoBehaviour
 
     public void UpgradeHospital()
     {
-        level++;
+        hospitalData.level++;
 
-        capacity = hospitalLevelSystem[level - 1].capacity;
-        releaseCount = hospitalLevelSystem[level - 1].outRate;
-        restTime = hospitalLevelSystem[level - 1].outSpeed;
-        peopleOutPerTap = hospitalLevelSystem[level - 1].peopleOutPerTap;
-        sprite.sprite = hospitalLevelSystem[level -1].sprite;
-        slider.maxValue = capacity;
-        restTimeOriginal = restTime;
-        if (level >= hospitalLevelSystem.Length) return;
-        upgradePrice = hospitalLevelSystem[level].price;
+        hospitalData.capacity = hospitalLevelSystem[hospitalData.level - 1].capacity;
+        hospitalData.releaseCount = hospitalLevelSystem[hospitalData.level - 1].outRate;
+        hospitalData.restTime = hospitalLevelSystem[hospitalData.level - 1].outSpeed;
+        hospitalData.peopleOutPerTap = hospitalLevelSystem[hospitalData.level - 1].peopleOutPerTap;
+        sprite.sprite = hospitalLevelSystem[hospitalData.level -1].sprite;
+        slider.maxValue = hospitalData.capacity;
+        restTimeOriginal = hospitalData.restTime;
+        if (hospitalData.level >= hospitalLevelSystem.Length) return;
+        upgradePrice = hospitalLevelSystem[hospitalData.level].price;
     }
 
     public bool CheckMaxLevel()
     {
-        return level >= hospitalLevelSystem.Length;
+        return hospitalData.level >= hospitalLevelSystem.Length;
     }
 
     private void updateSlider()
@@ -184,8 +187,8 @@ public class Hospital : MonoBehaviour
 
     public int Level
     {
-        set { level = value; }
-        get { return level; }
+        set { hospitalData.level = value; }
+        get { return hospitalData.level; }
     }
 
     public int UpgradePrice
@@ -194,20 +197,20 @@ public class Hospital : MonoBehaviour
     }
     public int Capacity
     {
-        get { return capacity; }
+        get { return hospitalData.capacity; }
     }
     public float RestTime
     {
-        get { return restTime; }
+        get { return hospitalData.restTime; }
     }
     public int ReleaseCount
     {
-        get { return releaseCount; }
+        get { return hospitalData.releaseCount; }
     }
     
     public int PeopleOutPerTap
     {
-        get { return peopleOutPerTap; }
+        get { return hospitalData.peopleOutPerTap; }
     }
 
     public Sprite GetSprite()

@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Pharmacy : MonoBehaviour
 {
-    private int level = 1;
+    public PharmacyData pharmacyData;
 
-    private int transmissionDecreaseRate = 5;
+    //private int level = 1;
+
+    //private int transmissionDecreaseRate = 5;
 
     private SpriteRenderer sprite;
    
@@ -15,6 +17,7 @@ public class Pharmacy : MonoBehaviour
 
     private void Awake()
     {
+        pharmacyData.level = 1;
         sprite = GetComponent<SpriteRenderer>();
     }
 
@@ -22,7 +25,7 @@ public class Pharmacy : MonoBehaviour
     {
         pharmacyLevelSystem = lvl;
         upgradePrice = pharmacyLevelSystem[1].price;
-        transmissionDecreaseRate = pharmacyLevelSystem[0].transmissionDecreaseRate;
+        pharmacyData.transmissionDecreaseRate = pharmacyLevelSystem[0].transmissionDecreaseRate;
         sprite.sprite = pharmacyLevelSystem[0].sprite;
     }
 
@@ -33,35 +36,35 @@ public class Pharmacy : MonoBehaviour
 
     public bool CheckMaxLevel()
     {
-        return level >= pharmacyLevelSystem.Length;
+        return pharmacyData.level >= pharmacyLevelSystem.Length;
     }
 
     public void UpgradePharmacy()
     {
-        level++;
+        pharmacyData.level++;
 
-        transmissionDecreaseRate = pharmacyLevelSystem[level - 1].transmissionDecreaseRate;
-        sprite.sprite = pharmacyLevelSystem[level -1].sprite;
+        pharmacyData.transmissionDecreaseRate = pharmacyLevelSystem[pharmacyData.level - 1].transmissionDecreaseRate;
+        sprite.sprite = pharmacyLevelSystem[pharmacyData.level -1].sprite;
         DecreaseTransmissionIncreaseRate();
-        if (level >= pharmacyLevelSystem.Length) return;
-        upgradePrice = pharmacyLevelSystem[level].price;
+        if (pharmacyData.level >= pharmacyLevelSystem.Length) return;
+        upgradePrice = pharmacyLevelSystem[pharmacyData.level].price;
     }
 
     private void DecreaseTransmissionIncreaseRate()
     {
-        if(Citizen.instance.TransmissionIncreaseRate  - transmissionDecreaseRate <= 5)
+        if(Citizen.instance.TransmissionIncreaseRate  - pharmacyData.transmissionDecreaseRate <= 5)
         {
             Citizen.instance.TransmissionIncreaseRate = 5;
             return;
         }
 
-        Citizen.instance.TransmissionIncreaseRate -= transmissionDecreaseRate;
+        Citizen.instance.TransmissionIncreaseRate -= pharmacyData.transmissionDecreaseRate;
     }
 
     public int Level
     {
-        set { level = value; }
-        get { return level; }
+        set { pharmacyData.level = value; }
+        get { return pharmacyData.level; }
     }
     public int UpgradePrice
     {
@@ -70,7 +73,7 @@ public class Pharmacy : MonoBehaviour
 
     public int TransmissionDecreaseRate
     {
-        get { return transmissionDecreaseRate; }
+        get { return pharmacyData.transmissionDecreaseRate; }
     }
     public Sprite GetSprite()
     {
