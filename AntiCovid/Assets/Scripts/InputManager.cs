@@ -7,7 +7,7 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager instance;
     [SerializeField] private Camera mainCamera;
-    float minTimeToOpenMenu = 0.2f, tapTimer;
+    Vector2 firstMousePosition, lastMousePosition;
     string hitPlace;
 
     int UILayer;
@@ -30,10 +30,6 @@ public class InputManager : MonoBehaviour
         {
             return;
         }
-        if (Input.GetMouseButton(0))
-        {
-            tapTimer -= Time.deltaTime;
-        }
         if (Input.GetMouseButtonDown(0) && !IsPointerOverUIElement() /* !PharmacyManager.instance.pharmacyBuyPanel.activeSelf && !VaksinManager.instance.vaksinPlaceBuyPanel.activeSelf 
             && !HospitalManager.instance.hospitalBuyPanel.activeSelf && !OfficerManager.instance.officerBuyPanel.activeSelf && !Goverment.instance.govermentPanel.activeSelf
             && !GameManager.instance.pausePanel.activeSelf*/)
@@ -42,13 +38,14 @@ public class InputManager : MonoBehaviour
             RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
             if (hit.collider != null)
             {
-                tapTimer = minTimeToOpenMenu;
+                firstMousePosition = mainCamera.WorldToScreenPoint(Input.mousePosition);
                 hitPlace = hit.collider.tag;
             }
         }
         if (Input.GetMouseButtonUp(0))
         {
-            if (tapTimer > 0f)
+            //if (tapTimer > 0f)
+            if(Vector2.Distance(firstMousePosition, mainCamera.WorldToScreenPoint(Input.mousePosition)) < 0.5f)
             {
                 if (AudioManager.instance != null) AudioManager.instance.Play("tap");
 
