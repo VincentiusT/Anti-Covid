@@ -78,9 +78,10 @@ public class VaksinManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         vaccineStockText.text = vaccineStock.ToString("0");
+        UIManager.instance.UpdateVaccineStockUI(vaccineStock);
     }
 
     public void ShowBuyVaksinPlacePanel(bool show) //munculin buy panel

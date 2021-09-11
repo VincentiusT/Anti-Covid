@@ -324,6 +324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1704462871}
+  vaccineStockText: {fileID: 0}
 --- !u!4 &27336881
 Transform:
   m_ObjectHideFlags: 0
@@ -794,6 +795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4428ffdfbf70db849a21553917175083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BeginningStoryID: serang
   paragraphs:
   - Wow, so this is  Semarang..
   - This is a cool city, but i need to get rid of the virus now!

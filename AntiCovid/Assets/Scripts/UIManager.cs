@@ -6,11 +6,12 @@ using System;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance;
     [SerializeField] private GameObject canvas;
+    private TextMeshProUGUI vaccineStockText;
 
     private TextMeshProUGUI textDay;
     private GameObject DayPopUpPanel;
-    public static UIManager instance;
 
     private TextMeshProUGUI multiplierText;
     private GameObject multiplierPanel;
@@ -18,9 +19,15 @@ public class UIManager : MonoBehaviour
     private GameObject notifPanel;
     private TextMeshProUGUI notifText;
 
-    private void Start()
+    private void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
+
+        vaccineStockText = canvas.transform.Find("SafeArea/GamePanel/vaccineCountPanel/vaccineCount").GetComponent<TextMeshProUGUI>();
 
         textDay = canvas.transform.Find("SafeArea/GamePanel/DayPanel/DayCount").GetComponent<TextMeshProUGUI>();
         DayPopUpPanel = canvas.transform.Find("SafeArea/GamePanel/DayInformationPanel").gameObject;
@@ -34,8 +41,6 @@ public class UIManager : MonoBehaviour
         SubscribeToDayEvent();
         SubscribeToMultiplierEvent();
     }
-
-    
 
     #region DayRegion
 
@@ -119,7 +124,18 @@ public class UIManager : MonoBehaviour
         PharmacyManager.instance.UpgradeAllAttribute();
     }
 
-
+    public void UpdateVaccineStockUI(int stock)
+    {
+        if (vaccineStockText == null)
+        {
+            Debug.Log("WHY");
+        }
+        else
+        {
+            Debug.Log("WHYsdasda");
+            vaccineStockText.text = stock.ToString("0");
+        }
+    }
     public void ShowNotifPanel(string text)
     {
         notifText.text = text;
