@@ -30,8 +30,8 @@ public class Citizen : MonoBehaviour
     private float timeUntilDeath = 30f;
     private float timeUntilDeathTemp;
 
-    private float crowdSpawnTimeMax = 30f;
-    private float crowdSpawnTimeMin = 8f;
+    [SerializeField]private float crowdSpawnTimeMax = 30f;
+    [SerializeField]private float crowdSpawnTimeMin = 8f;
     private float crowdSpawnTime;
 
     [SerializeField] [Range(0, 1f)] private float awareness = 0.1f; //percentage

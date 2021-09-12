@@ -22,30 +22,31 @@ public class DialogueDatabase : MonoBehaviour
         });
 
         dialogue.Add("RandomEventOtomotif", new string[] {
-            "Good Morning!",
-            "I heard that you have a problem in handling covid here!",
-            "well.. in that case, i have something for you!",
-            "here is some vaccines to help you vaccinate all of your citizen!",
-            "i hope that help!",
-            "See you later!"
+            "Good Morning Sir!",
+            "I really want you to finish this COVID problem",
+            "a lot of people had a really hard time fighting this",
+            "but i believe you can do this",
+            "so these are some money for you!",
+            "hope it will help you to go through this!",
+            "Bye!"
         });
 
         dialogue.Add("RandomEventLembaga", new string[] {
-            "Good Morning!",
-            "I heard that you have a problem in handling covid here!",
-            "well.. in that case, i have something for you!",
-            "here is some vaccines to help you vaccinate all of your citizen!",
-            "i hope that help!",
+            "Hello Sir!",
+            "You are really a good person!",
+            "You keep fighting and fighting again to beat this pandemic",
+            "i really hope you can do that, so this is some money for you",
+            "keep fighting and i hope you can beat this covid soon!",
             "See you later!"
         });
 
         dialogue.Add("RandomEventECommerce", new string[] {
-            "Good Morning!",
-            "I heard that you have a problem in handling covid here!",
-            "well.. in that case, i have something for you!",
-            "here is some vaccines to help you vaccinate all of your citizen!",
-            "i hope that help!",
-            "See you later!"
+            "Hello, excuse me!",
+            "Are you fighting COVID in this city?",
+            "wow, thats a really hard job!",
+            "well in that case, i have something for you..",
+            "here is some money to help you fight COVID in this city!",
+            "Good luck and see you later!"
         });
 
 

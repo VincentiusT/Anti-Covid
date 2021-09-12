@@ -32,6 +32,13 @@ public class RandomEventManager : MonoBehaviour
         StartCoroutine(RunRandomEvent(selectedRandomEvent));
     }
 
+    public void RunFixedEvent(int index)
+    {
+        RandomEvent selectedRandomEvent = randomEvents[index];
+
+        StartCoroutine(RunRandomEvent(selectedRandomEvent));
+    }
+
     private IEnumerator RunRandomEvent(RandomEvent selectedRandomEvent)
     {
         Debug.Log("Running random event: " + selectedRandomEvent.eventName);

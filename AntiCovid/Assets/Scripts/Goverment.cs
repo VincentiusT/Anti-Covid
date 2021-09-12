@@ -31,7 +31,7 @@ public class Goverment : MonoBehaviour
     private Button moneyBoostButton;
 
     public GameObject govermentPanel;
-    private float timeToGetMoney = 5f;
+    private float timeToGetMoney = 2f;
     private float timeToGetMoneyTemp;
 
     private float PSBBdecreaseRate = 0.2f;

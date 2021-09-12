@@ -222,6 +222,7 @@ MonoBehaviour:
       donorSprite: {fileID: 21300000, guid: e2054e4bbb8ae964c8a1933f33d85d4c, type: 3}
       stories: huehehe
   dialogueSystem: {fileID: 0}
+  rewardClaimPanel: {fileID: 0}
 --- !u!114 &1815840 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7941377133325608003, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
@@ -292,8 +293,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba0492fae88114e47b0cde80b4f84124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorialLevel: 0
   canvasTutorial: {fileID: 2048530947}
   canvasGeneralTutorial: {fileID: 989965780}
+  objectTutorial: {fileID: 0}
 --- !u!1 &27336879
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,6 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4428ffdfbf70db849a21553917175083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BeginningStoryID: 
   paragraphs:
   - Surabayaaaa! City of Heroes!
   - i'm gonna be the heroes to fight covid-19 here!
@@ -2939,6 +2943,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SpeedUpButtonPress
       objectReference: {fileID: 0}
+    - target: {fileID: 1279980730, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 7941377133326356842}
     - target: {fileID: 1852301168977456787, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3319,6 +3327,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3127854538972944162, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
   m_PrefabInstance: {fileID: 7941377133326356835}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7941377133326356842 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1383241026102391931, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
+  m_PrefabInstance: {fileID: 7941377133326356835}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8053372233403042632
 PrefabInstance:
   m_ObjectHideFlags: 0

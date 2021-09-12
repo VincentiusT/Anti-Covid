@@ -37,7 +37,7 @@ public class Tutorial : MonoBehaviour
         governmentPanel = canvasGeneralTutorial.transform.Find("Tutorial Government").gameObject;
         tutorialLastPanel = canvasGeneralTutorial.transform.Find("Tutorial Last").gameObject;
 
-        PlayerPrefs.SetInt("crowdTutorial", 0);
+        //PlayerPrefs.SetInt("crowdTutorial", 0);
         PlayerPrefs.SetInt("generalTutorial", 0);
         //StartTutorial();
     }

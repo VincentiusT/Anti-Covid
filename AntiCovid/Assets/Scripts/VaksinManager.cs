@@ -10,6 +10,7 @@ public class VaksinManager : MonoBehaviour
 
     public int hospitalNeeded=1, pharmacyNeeded=1;
 
+    [SerializeField]private GameObject outOfStockUI;
     public GameObject upgradePanel;
     private GameObject upgradeButton;
     private TextMeshProUGUI upgradeLevelText, upgradeVaccineRate, upgradeVaccineTime, upgradePriceText;
@@ -82,6 +83,18 @@ public class VaksinManager : MonoBehaviour
     {
         vaccineStockText.text = vaccineStock.ToString("0");
         UIManager.instance.UpdateVaccineStockUI(vaccineStock);
+        if (placeCount()>0)
+        {
+            if (vaccineStock <= 0)
+            {
+                outOfStockUI.SetActive(true);
+            }
+            else
+            {
+                outOfStockUI.SetActive(false);
+            }
+
+        }
     }
 
     public void ShowBuyVaksinPlacePanel(bool show) //munculin buy panel
