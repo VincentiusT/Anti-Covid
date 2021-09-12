@@ -8,6 +8,7 @@ public class RandomEventManager : MonoBehaviour
     [SerializeField] [Range(0, 100)] private int randomEventChance;
     [SerializeField] private List<RandomEvent> randomEvents;
     [SerializeField] private DialogueSystem dialogueSystem;
+    [SerializeField] private GameObject rewardClaimPanel;
 
     private void Start()
     {
@@ -28,12 +29,15 @@ public class RandomEventManager : MonoBehaviour
         int randomEventIndex = UnityEngine.Random.Range(0, randomEvents.Count);
         RandomEvent selectedRandomEvent = randomEvents[randomEventIndex];
 
-        RunRandomEvent(selectedRandomEvent);
+        StartCoroutine(RunRandomEvent(selectedRandomEvent));
     }
 
-    private void RunRandomEvent(RandomEvent selectedRandomEvent)
+    private IEnumerator RunRandomEvent(RandomEvent selectedRandomEvent)
     {
         Debug.Log("Running random event: " + selectedRandomEvent.eventName);
+        dialogueSystem.PlayNewDialogue(selectedRandomEvent.dialogueID, selectedRandomEvent.donor.donorSprite);
+
+        yield return new WaitForSeconds(0.1f);
 
         switch (selectedRandomEvent.randomEventType)
         {
@@ -48,7 +52,7 @@ public class RandomEventManager : MonoBehaviour
                 break;
         }
 
-        dialogueSystem.PlayNewDialogue(selectedRandomEvent.dialogueID, selectedRandomEvent.donor.donorSprite);
+        UIManager.instance.OpenRandomEventRewardClaimPanel(selectedRandomEvent.randomEventType);
     }
 
     private bool isRandomEventHappening()

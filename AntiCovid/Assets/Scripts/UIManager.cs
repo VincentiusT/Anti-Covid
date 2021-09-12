@@ -19,6 +19,8 @@ public class UIManager : MonoBehaviour
     private GameObject notifPanel;
     private TextMeshProUGUI notifText;
 
+    private GameObject rewardClaimPanel;
+
     private void Awake()
     {
         instance = this;
@@ -37,6 +39,8 @@ public class UIManager : MonoBehaviour
 
         notifPanel = canvas.transform.Find("SafeArea/GamePanel/notifPanel").gameObject;
         notifText = notifPanel.transform.Find("info/info").GetComponent<TextMeshProUGUI>();
+
+        rewardClaimPanel = canvas.transform.Find("ConfirmRewardPanel").gameObject;
 
         SubscribeToDayEvent();
         SubscribeToMultiplierEvent();
@@ -141,5 +145,23 @@ public class UIManager : MonoBehaviour
         notifText.text = text;
         notifPanel.GetComponent<Animator>().SetTrigger("show");
         if (AudioManager.instance != null) AudioManager.instance.Play("notif");
+    }
+
+    public void OpenRandomEventRewardClaimPanel(RandomEventType randomEventType)
+    {
+        rewardClaimPanel.SetActive(true);
+        Time.timeScale = 0f;
+        RewardParticleManager.Instance.PlayRewardParticle(randomEventType);
+    }
+
+    public void CloseRewardClaimPanel()
+    {
+        rewardClaimPanel.SetActive(false);
+        ResumeGame();
+    }
+
+    private void ResumeGame()
+    {
+        Time.timeScale = 1f;
     }
 }
