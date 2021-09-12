@@ -148,7 +148,7 @@ public class Hospital : MonoBehaviour
         {
             GameObject go = Instantiate(peopleOut, transform.position, transform.rotation) as GameObject;
             go.transform.SetParent(transform);
-            go.GetComponentInChildren<TextMeshProUGUI>().text = "-" + total;
+            go.GetComponentInChildren<TextMeshProUGUI>().text = total.ToString();
             Destroy(go, 0.5f);
         }
     }

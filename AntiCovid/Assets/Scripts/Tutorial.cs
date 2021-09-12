@@ -5,25 +5,47 @@ using UnityEngine;
 public class Tutorial : MonoBehaviour
 {
     public static Tutorial instance;
-    [SerializeField] private GameObject canvasTutorial, canvasGeneralTutorial;
-
+    public bool tutorialLevel = false;
+    public GameObject canvasTutorial, canvasGeneralTutorial, objectTutorial;
+    private bool isBuyTutorial = true;
     private bool isFinished = true;
+
+    private GameObject tutorialHospitalBuyPanel, tutorialVaccinationBuyPanel, governmentPanel, tutorialLastPanel;
+
+    public bool IsBuyTutorial
+    {
+        set { isBuyTutorial = value; }
+        get { return isBuyTutorial; }
+    }
 
     public bool IsFinished
     {
         get { return isFinished; }
     }
 
-    private void Start()
+    private void Awake()
     {
         instance = this;
-        //PlayerPrefs.SetInt("crowdTutorial", 0);
-        //PlayerPrefs.SetInt("generalTutorial", 0);
+    }
+
+    private void Start()
+    {
+        if (!tutorialLevel) isBuyTutorial = false;
+
+        tutorialHospitalBuyPanel = canvasGeneralTutorial.transform.Find("Tutorial Hospital Buy").gameObject;
+        tutorialVaccinationBuyPanel = canvasGeneralTutorial.transform.Find("Tutorial Vaccination Buy").gameObject;
+        governmentPanel = canvasGeneralTutorial.transform.Find("Tutorial Government").gameObject;
+        tutorialLastPanel = canvasGeneralTutorial.transform.Find("Tutorial Last").gameObject;
+
+        PlayerPrefs.SetInt("crowdTutorial", 0);
+        PlayerPrefs.SetInt("generalTutorial", 0);
         //StartTutorial();
     }
 
     public void StartTutorial()
     {
+        if (!tutorialLevel) return;
+
         if (PlayerPrefs.GetInt("generalTutorial") == 1)
         {
             return;
@@ -39,6 +61,7 @@ public class Tutorial : MonoBehaviour
 
     public void resumeAfterTutorial()
     {
+        HospitalTutorial();
         isFinished = true;
         Time.timeScale = 1f;
     }
@@ -53,5 +76,52 @@ public class Tutorial : MonoBehaviour
         tutorialPanelGO.SetActive(true);
         tutorialPanelGO.transform.position = crowdPosition.localPosition;
         //CrowdTutorialPanel.SetActive(true);
+    }
+
+    public void HospitalTutorial()
+    {
+        //yield return new WaitForSeconds(2f);
+        objectTutorial.SetActive(true);
+    }
+
+    public IEnumerator StopHospitalTutorial()
+    {
+        tutorialHospitalBuyPanel.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        
+        VaccinationPlaceTutorial();
+    }
+
+    public void VaccinationPlaceTutorial()
+    {
+        isBuyTutorial = true;
+        objectTutorial.transform.Find("Tutorial VaccinationPlace").gameObject.SetActive(true);
+    }
+
+    public IEnumerator StopVaccinationTutorial()
+    {
+        tutorialVaccinationBuyPanel.SetActive(false);
+        yield return new WaitForSeconds(1f);
+
+        GovernmentTutorial();
+    }
+
+    public void GovernmentTutorial()
+    {
+        isBuyTutorial = true;
+        objectTutorial.transform.Find("Tutorial Government").gameObject.SetActive(true);
+    }
+
+    public IEnumerator StopGovernmentTutorial()
+    {
+        governmentPanel.SetActive(false);
+        yield return new WaitForSeconds(1f);
+
+        TutorialLast();
+    }
+
+    public void TutorialLast()
+    {
+        tutorialLastPanel.SetActive(true);
     }
 }

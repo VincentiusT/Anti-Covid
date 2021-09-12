@@ -130,15 +130,8 @@ public class UIManager : MonoBehaviour
 
     public void UpdateVaccineStockUI(int stock)
     {
-        if (vaccineStockText == null)
-        {
-            Debug.Log("WHY");
-        }
-        else
-        {
-            Debug.Log("WHYsdasda");
-            vaccineStockText.text = stock.ToString("0");
-        }
+
+        vaccineStockText.text = stock.ToString("0");
     }
     public void ShowNotifPanel(string text)
     {

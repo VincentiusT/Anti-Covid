@@ -124,8 +124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lowerLimitMoney: 80
-  upperLimitMoney: 200
-  cooldownTimeToGenerateMoney: 10
+  upperLimitMoney: 180
+  cooldownTimeToGenerateMoney: 15
   timeElapsed: 0
   collectableHouseNotification: {fileID: 0}
 --- !u!1 &6066237098645877106

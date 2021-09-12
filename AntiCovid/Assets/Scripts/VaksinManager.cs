@@ -86,12 +86,18 @@ public class VaksinManager : MonoBehaviour
 
     public void ShowBuyVaksinPlacePanel(bool show) //munculin buy panel
     {
+        if (!show && Tutorial.instance.IsBuyTutorial) return;
         if (AudioManager.instance != null) AudioManager.instance.Play("tap");
         vaksinPlaceBuyPanel.SetActive(show);
     }
 
     public void BuyVaksinPlace(int whichVaksinPlace)
     {
+        if (Tutorial.instance.IsBuyTutorial)
+        {
+            Tutorial.instance.IsBuyTutorial = false;
+            StartCoroutine(Tutorial.instance.StopVaccinationTutorial());
+        }
         if (AudioManager.instance != null) AudioManager.instance.Play("tap");
 
         if (HospitalManager.instance.placeCount() < hospitalNeeded || (PharmacyManager.instance!=null && PharmacyManager.instance.placeCount() < pharmacyNeeded))

@@ -58,7 +58,7 @@ public class DayManager : MonoBehaviour
         while (true)
         {
             Color color = overlayLight.GetComponent<SpriteRenderer>().color;
-            if ((speed > 0 && color.a >= 0.58f) || (speed < 0 && color.a <= 0f))
+            if ((speed > 0 && color.a >= 0.38f) || (speed < 0 && color.a <= 0f))
                 break;
             
             color.a += speed * Time.deltaTime;

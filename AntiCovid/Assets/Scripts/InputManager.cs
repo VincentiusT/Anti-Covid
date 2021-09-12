@@ -25,7 +25,7 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Tutorial.instance.IsFinished) return;
+        if (Tutorial.instance !=null && !Tutorial.instance.IsFinished) return;
         if(Input.GetMouseButtonDown(0) && IsPointerOverUIElement())
         {
             return;

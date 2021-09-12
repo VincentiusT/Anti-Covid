@@ -75,6 +75,7 @@ public class OfficerManager : MonoBehaviour
         }
         if (Goverment.instance.Money < price)
         {
+            UIManager.instance.ShowNotifPanel("you don't have enough money");
             return;
         }
         else
@@ -124,6 +125,7 @@ public class OfficerManager : MonoBehaviour
         }
         else
         {
+            UIManager.instance.ShowNotifPanel("you don't have enough money");
             return;
         }
         if (AudioManager.instance != null) AudioManager.instance.Play("construct");

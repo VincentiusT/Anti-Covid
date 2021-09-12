@@ -139,18 +139,28 @@ public class HospitalManager : MonoBehaviour
 
     public void ShowBuyHospitalPanel(bool show) //munculin buy panel
     {
+        if (!show && Tutorial.instance.IsBuyTutorial) return;
         if (AudioManager.instance != null) AudioManager.instance.Play("tap");
         hospitalBuyPanel.SetActive(show);
     }
 
     public void BuyHospital(int whichHospital)
     {
+        if (Tutorial.instance.IsBuyTutorial)
+        {
+            Tutorial.instance.IsBuyTutorial = false;
+            StartCoroutine(Tutorial.instance.StopHospitalTutorial());
+        }
         if (AudioManager.instance != null) AudioManager.instance.Play("tap");
         if (alreadyBought[whichHospital]) UpgradeHospital(whichHospital);
         
         if(hospitalPoints[whichHospital].transform.childCount >= 1) return;
-        
-        if(Goverment.instance.Money < price) return;
+
+        if (Goverment.instance.Money < price)
+        {
+            UIManager.instance.ShowNotifPanel("you don't have enough money");
+            return;
+        }
         else Goverment.instance.Money -= price;
 
         if (AudioManager.instance != null) AudioManager.instance.Play("construct");
@@ -214,6 +224,7 @@ public class HospitalManager : MonoBehaviour
         }
         else
         {
+            UIManager.instance.ShowNotifPanel("you don't have enough money");
             return;
         }
         if (AudioManager.instance != null) AudioManager.instance.Play("construct");
@@ -247,5 +258,10 @@ public class HospitalManager : MonoBehaviour
             if (hospitals[i] != null) counter++;
         }
         return counter;
+    }
+
+    public void BuyTutorial()
+    {
+
     }
 }

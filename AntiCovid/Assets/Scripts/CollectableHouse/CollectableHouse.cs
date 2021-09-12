@@ -14,6 +14,7 @@ public class CollectableHouse : MonoBehaviour
 
     private void Start()
     {
+        cooldownTimeToGenerateMoney = Random.Range(cooldownTimeToGenerateMoney, cooldownTimeToGenerateMoney + 15);
         collectableHouseNotification = GetComponentInChildren<CollectableHouseNotification>();
         SetHouseNotification(false);
     }

@@ -111,6 +111,8 @@ public class Goverment : MonoBehaviour
     }
     public void ShowGovermentPanel(bool show)
     {
+        if (!show && Tutorial.instance.IsBuyTutorial) return;
+        if (AudioManager.instance != null) AudioManager.instance.Play("tap");
         govermentPanel.SetActive(show);
     }
 
@@ -206,8 +208,11 @@ public class Goverment : MonoBehaviour
 
     public void PSBB()
     {
-        if (money < PSBBprice)return;
-        
+        if (money < PSBBprice)
+        {
+            UIManager.instance.ShowNotifPanel("you don't have enough money");
+            return;
+        }
         else money -= PSBBprice;
 
         isPSBB = true;
@@ -219,8 +224,12 @@ public class Goverment : MonoBehaviour
 
     public void LockDown()
     {
-        if (money < lockDownPrice)return;
-        else  money -= lockDownPrice;
+        if (money < lockDownPrice)
+        {
+            UIManager.instance.ShowNotifPanel("you don't have enough money");
+            return;
+        }
+        else money -= lockDownPrice;
         
         isLockDown = true;
         lockDownStartDay = dayManager.getDay();
@@ -230,7 +239,11 @@ public class Goverment : MonoBehaviour
 
     public void Socialization()
     {
-        if (money < socializationPrice)return;
+        if (money < socializationPrice)
+        {
+            UIManager.instance.ShowNotifPanel("you don't have enough money");
+            return;
+        }
         else money -= socializationPrice;
         
         isSocialization = true;
@@ -241,7 +254,11 @@ public class Goverment : MonoBehaviour
 
     public void MoneyBoost()
     {
-        if (money < moneyBoostPrice) return;
+        if (money < moneyBoostPrice)
+        {
+            UIManager.instance.ShowNotifPanel("you don't have enough money");
+            return;
+        }
         else money -= moneyBoostPrice;
 
         isMoneyBoost = true;
@@ -253,10 +270,22 @@ public class Goverment : MonoBehaviour
 
     public void BuyVaccineStock()
     {
-        if (money < vaccinePrice) return;
+        
+
+        if (money < vaccinePrice)
+        {
+            UIManager.instance.ShowNotifPanel("you don't have enough money");
+            return;
+        }
         else money -= vaccinePrice;
 
         VaksinManager.instance.VaccineStock += vaccineStock;
+        if (Tutorial.instance.IsBuyTutorial)
+        {
+            Tutorial.instance.IsBuyTutorial = false;
+            ShowGovermentPanel(false);
+            StartCoroutine(Tutorial.instance.StopGovernmentTutorial());
+        }
     }
     public int Money
     {
