@@ -19,11 +19,11 @@ public class Goverment : MonoBehaviour
     [SerializeField] private GameObject buyVaksinPanel;
 
     [SerializeField] private TextMeshProUGUI moneyText;
-    private TextMeshProUGUI PSBBpriceText;
-    private TextMeshProUGUI lockDownPriceText;
-    private TextMeshProUGUI socializationPriceText;
-    private TextMeshProUGUI moneyBoostPriceText;
-    private TextMeshProUGUI buyVaccineText;
+    private TextMeshProUGUI PSBBpriceText, PSBBDesc;
+    private TextMeshProUGUI lockDownPriceText, lockDownDesc;
+    private TextMeshProUGUI socializationPriceText, socializationDesc;
+    private TextMeshProUGUI moneyBoostPriceText, moneyBoostDesc;
+    private TextMeshProUGUI buyVaccineText, buyVaccineDesc;
 
     private Button PSBBButton;
     private Button lockDownButton;
@@ -31,7 +31,7 @@ public class Goverment : MonoBehaviour
     private Button moneyBoostButton;
 
     public GameObject govermentPanel;
-    private float timeToGetMoney = 2f;
+    private float timeToGetMoney = 1f;
     private float timeToGetMoneyTemp;
 
     private float PSBBdecreaseRate = 0.2f;
@@ -71,6 +71,18 @@ public class Goverment : MonoBehaviour
         socializationPriceText = socializationPanel.transform.Find("price").GetComponent<TextMeshProUGUI>();
         moneyBoostPriceText = moneyBoostPanel.transform.Find("price").GetComponent<TextMeshProUGUI>();
         buyVaccineText = buyVaksinPanel.transform.Find("price").GetComponent<TextMeshProUGUI>();
+
+        PSBBDesc = PSBBPanel.transform.Find("desc").GetComponent<TextMeshProUGUI>();
+        lockDownDesc = lockDownPanel.transform.Find("desc").GetComponent<TextMeshProUGUI>();
+        socializationDesc = socializationPanel.transform.Find("desc").GetComponent<TextMeshProUGUI>();
+        moneyBoostDesc = moneyBoostPanel.transform.Find("desc").GetComponent<TextMeshProUGUI>();
+        buyVaccineDesc = buyVaksinPanel.transform.Find("desc").GetComponent<TextMeshProUGUI>();
+
+        PSBBDesc.text = "decrease transmission rate " + PSBBdecreaseRate*100 + "% every " + timeToDecreasePSBB + " seconds for " + PSBBDuration + " days";
+        lockDownDesc.text = "decrease transmission rate " + lockDownDecreaseRate * 100 + "% every " + timeToDecreaseLockDown + " seconds for " + lockDownDuration + " days";
+        socializationDesc.text = "Increase mass awareness up to " + socializationIncreaseRate*100 + "% every " + timeToIncreaseSocialization + " seconds for " + socializationDuration + " days";
+        moneyBoostDesc.text = "Increase income by 30% for "+moneyBoostDuration+ " days";
+        buyVaccineDesc.text = "Buy " +vaccineStock+ " Vaccines";
 
         PSBBButton = PSBBPanel.GetComponent<Button>();
         lockDownButton = lockDownPanel.GetComponent<Button>();

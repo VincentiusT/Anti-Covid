@@ -137,16 +137,17 @@ public class Hospital : MonoBehaviour
 
     private void ShowPeopleText(int total)
     {
+        Vector3 offset = new Vector3(0.1f, 0, 0);
         if (total > 0)
         {
-            GameObject go = Instantiate(peopleIn, transform.position, transform.rotation) as GameObject;
+            GameObject go = Instantiate(peopleIn, transform.position - offset, transform.rotation) as GameObject;
             go.transform.SetParent(transform);
             go.GetComponentInChildren<TextMeshProUGUI>().text = "+" + total;
             Destroy(go, 0.5f);
         }
         else
         {
-            GameObject go = Instantiate(peopleOut, transform.position, transform.rotation) as GameObject;
+            GameObject go = Instantiate(peopleOut, transform.position - offset, transform.rotation) as GameObject;
             go.transform.SetParent(transform);
             go.GetComponentInChildren<TextMeshProUGUI>().text = total.ToString();
             Destroy(go, 0.5f);

@@ -11,7 +11,7 @@ public class DialogueSystem : MonoBehaviour
     private TextMeshProUGUI dialogueText;
     private Image dialogueCharacterSprite;
     [SerializeField] private GameObject canvas;
-    [SerializeField] private GameObject mainPanel;
+    [SerializeField] private GameObject mainPanel, extraPanel;
     [SerializeField] private Sprite defaultCharacterSprite;
     private DialogueDatabase dialogueDatabase;
     private int paragraphIndex = 0;
@@ -34,6 +34,7 @@ public class DialogueSystem : MonoBehaviour
 
         canvas.SetActive(true);
         mainPanel.SetActive(false);
+        if(extraPanel!=null)extraPanel.SetActive(false);
         Time.timeScale = 0f;
         isDoneShowing = false;
 
@@ -54,6 +55,7 @@ public class DialogueSystem : MonoBehaviour
                 Time.timeScale = 1f;
                 Tutorial.instance.StartTutorial();
                 mainPanel.SetActive(true);
+                if (extraPanel != null) extraPanel.SetActive(true);
                 return;
             }
             ShowNextSentence();

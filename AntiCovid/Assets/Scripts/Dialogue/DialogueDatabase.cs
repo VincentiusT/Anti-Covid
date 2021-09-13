@@ -68,5 +68,12 @@ public class DialogueDatabase : MonoBehaviour
             "i need to make people aware of this pandemic, make a policy, build a lot of facilities, and many more",
             "well, i will do my best! Let's do this!"
         });
+
+        dialogue.Add("semarang", new string[] {
+            "My job is not over yet",
+            "After Serang, i still have 8 cities left to save!",
+            "Now it's time to save this city.. Semarang!",
+            "Let's go!"
+        });
     }
 }
