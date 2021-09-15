@@ -67,6 +67,7 @@ public class Hospital : MonoBehaviour
         updateSlider();
     }
 
+
     public void ReceiveSickPeople(int peoples)
     {
         if(Citizen.instance.SickPeoples < 1)

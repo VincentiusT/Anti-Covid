@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class UIManager : MonoBehaviour
     private TextMeshProUGUI notifText;
 
     private GameObject rewardClaimPanel;
+    private Button hospitalizedButton;
+    bool done;
 
     private void Awake()
     {
@@ -41,9 +44,27 @@ public class UIManager : MonoBehaviour
         notifText = notifPanel.transform.Find("info/info").GetComponent<TextMeshProUGUI>();
 
         rewardClaimPanel = canvas.transform.Find("ConfirmRewardPanel").gameObject;
+        hospitalizedButton = canvas.transform.Find("SafeArea/GamePanel/hospitalizeButton").GetComponent<Button>();
 
         SubscribeToDayEvent();
         SubscribeToMultiplierEvent();
+    }
+
+    private void FixedUpdate()
+    {
+        if (Citizen.instance.SickPeoples < 1)
+        {
+            hospitalizedButton.interactable = false;
+            done = false;
+        }
+        else
+        {
+            if (!done)
+            {
+                hospitalizedButton.interactable = true;
+                done = true;
+            }
+        }
     }
 
     #region DayRegion

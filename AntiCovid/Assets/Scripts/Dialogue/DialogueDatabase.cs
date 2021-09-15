@@ -75,5 +75,35 @@ public class DialogueDatabase : MonoBehaviour
             "Now it's time to save this city.. Semarang!",
             "Let's go!"
         });
+
+        dialogue.Add("makassar", new string[] {
+            "My job is not over yet",
+            "Now it's time to save this city.. Makassar!",
+            "Let's go!"
+        });
+
+        dialogue.Add("bandung", new string[] {
+            "My job is not over yet",
+            "Now it's time to save this city.. Bandung!",
+            "Let's go!"
+        });
+
+        dialogue.Add("denpasar", new string[] {
+            "My job is not over yet",
+            "Now it's time to save this city.. Denpasar!",
+            "Let's go!"
+        });
+
+        dialogue.Add("surabaya", new string[] {
+            "My job is not over yet",
+            "Now it's time to save this city.. Surabaya!",
+            "Let's go!"
+        });
+
+        dialogue.Add("jogja", new string[] {
+            "My job is not over yet",
+            "Now it's time to save this city.. Jogjakarta!",
+            "Let's go!"
+        });
     }
 }
