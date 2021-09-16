@@ -29,7 +29,7 @@ public class OfficerManager : MonoBehaviour
     private Image officerSprite;
 
     [SerializeField] private int price = 10;
-    private Officer officer;
+    public Officer officer;
     private bool alreadyBought;
 
     int index = 0;
@@ -61,6 +61,18 @@ public class OfficerManager : MonoBehaviour
         officerBuyPanel.SetActive(show);
     }
 
+    public void RebuildOfficerPlace(int _level)
+    {
+        if (_level == 0) return;
+
+        BuildOfficerPlace(true);
+        for (int i = 0; i < _level - 1; i++)
+        {
+            UpgradeOfficer();
+            UpgradeAllAttribute(true);
+        }
+    }
+
     public void BuyOfficer()
     {
         if (AudioManager.instance != null) AudioManager.instance.Play("tap");
@@ -73,17 +85,26 @@ public class OfficerManager : MonoBehaviour
         {
             return;
         }
-        if (Goverment.instance.Money < price)
+        BuildOfficerPlace();
+    }
+
+    private void BuildOfficerPlace(bool isRebuilding = false)
+    {
+        if (!isRebuilding)
         {
-            UIManager.instance.ShowNotifPanel("you don't have enough money");
-            return;
-        }
-        else
-        {
-            Goverment.instance.Money -= price;
+            if (Goverment.instance.Money < price)
+            {
+                UIManager.instance.ShowNotifPanel("you don't have enough money");
+                return;
+            }
+            else
+            {
+                Goverment.instance.Money -= price;
+            }
+
+            if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         }
         
-        if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         buyMark.SetActive(false);
         GameObject go = Instantiate(officerObj, officerPoint.transform.position, officerPoint.transform.rotation) as GameObject;
         go.transform.parent = officerPoint.transform;
@@ -114,21 +135,25 @@ public class OfficerManager : MonoBehaviour
         officerSprite.sprite = officer.GetSprite();
     }
 
-    public void UpgradeAllAttribute()
+    public void UpgradeAllAttribute(bool isRebuilding = false)
     {
         if (officer.CheckMaxLevel()) return;
 
-        Debug.Log("upgrade price: " + officer.UpgradePrice);
-        if (Goverment.instance.Money >= officer.UpgradePrice)
+        if (!isRebuilding)
         {
-            Goverment.instance.Money -= officer.UpgradePrice;
+            Debug.Log("upgrade price: " + officer.UpgradePrice);
+            if (Goverment.instance.Money >= officer.UpgradePrice)
+            {
+                Goverment.instance.Money -= officer.UpgradePrice;
+            }
+            else
+            {
+                UIManager.instance.ShowNotifPanel("you don't have enough money");
+                return;
+            }
+            if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         }
-        else
-        {
-            UIManager.instance.ShowNotifPanel("you don't have enough money");
-            return;
-        }
-        if (AudioManager.instance != null) AudioManager.instance.Play("construct");
+        
         officer.UpgradeOfficer();
         UpdateBuyUI();
         upgradePanel.SetActive(false);

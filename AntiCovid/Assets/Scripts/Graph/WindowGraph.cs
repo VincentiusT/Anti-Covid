@@ -20,6 +20,7 @@ public class WindowGraph : MonoBehaviour
     private List<RectTransform> labelYContainer;
 
     public float yMax = 100f;
+    public float initialYMax = 1000;
     public float xGapSize = 5f;
     float graphHeight;
     List<int> valueList = new List<int>();
@@ -158,7 +159,7 @@ public class WindowGraph : MonoBehaviour
 
     private void UpdateGraph()
     {
-        yMax = valueList.Max();
+        yMax = Mathf.Max(initialYMax, valueList.Max());
 
         for (int i = 0; i < dotPointList.Count; i++)
         {
@@ -202,12 +203,14 @@ public class WindowGraph : MonoBehaviour
     private string ConvertToNumberFormat(int value)
     {
         int num = 0;
+        int lastThreeNumber = 0;
         while (value >= 1000)
         {
             num++;
+            lastThreeNumber = value % 1000;
             value /= 1000;
         }
 
-        return value.ToString() + formatList[num];
+        return $"{value.ToString()}.{lastThreeNumber} {formatList[num]}";
     }
 }
