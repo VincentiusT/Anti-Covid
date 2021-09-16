@@ -38,7 +38,7 @@ public class VaksinManager : MonoBehaviour
     private int vaccineStock = 0;
 
     private bool[] alreadyBought;
-    private VaksinPlace[] vaksinPlace;
+    public VaksinPlace[] vaksinPlace;
 
     int index = 0;
     private void Awake()
@@ -104,6 +104,18 @@ public class VaksinManager : MonoBehaviour
         vaksinPlaceBuyPanel.SetActive(show);
     }
 
+    public void RebuildVaccinePlace(int whichVaksinPlace, int _level)
+    {
+        if (_level == 0) return;
+
+        BuildVaccinePlace(whichVaksinPlace, true);
+        for (int i = 0; i < _level - 1; i++)
+        {
+            UpgradeVaksinPlace(whichVaksinPlace);
+            UpgradeAllAttribute(true);
+        }
+    }
+
     public void BuyVaksinPlace(int whichVaksinPlace)
     {
         if (Tutorial.instance.IsBuyTutorial)
@@ -127,16 +139,25 @@ public class VaksinManager : MonoBehaviour
             return;
         }
 
-        if (Goverment.instance.Money < price)
+        BuildVaccinePlace(whichVaksinPlace);
+    }
+
+    private void BuildVaccinePlace(int whichVaksinPlace, bool isRebuilding = false)
+    {
+        if (!isRebuilding)
         {
-            UIManager.instance.ShowNotifPanel("you don't have enough money");
-            return;
+            if (Goverment.instance.Money < price)
+            {
+                UIManager.instance.ShowNotifPanel("you don't have enough money");
+                return;
+            }
+            else
+            {
+                Goverment.instance.Money -= price;
+            }
+            if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         }
-        else
-        {
-            Goverment.instance.Money -= price;
-        }
-        if (AudioManager.instance != null) AudioManager.instance.Play("construct");
+        
         buyMark.SetActive(false);
         GameObject go = Instantiate(vaksinPlaceObj, vaksinPlacePoints[whichVaksinPlace].transform.position, vaksinPlacePoints[whichVaksinPlace].transform.rotation) as GameObject;
         go.transform.parent = vaksinPlacePoints[whichVaksinPlace].transform;
@@ -183,7 +204,7 @@ public class VaksinManager : MonoBehaviour
         vaccinePlacePriceText[index].text = "Price: " + vaksinPlace[index].UpgradePrice;
     }
 
-    public void UpgradeAllAttribute()
+    public void UpgradeAllAttribute(bool isRebuilding = false)
     {
         int whichVaksinPlace = currentSelected;
         if (vaksinPlace[whichVaksinPlace].CheckMaxLevel())
@@ -192,16 +213,20 @@ public class VaksinManager : MonoBehaviour
             return;
         }
 
-        if (Goverment.instance.Money >= vaksinPlace[whichVaksinPlace].UpgradePrice)
+        if (!isRebuilding)
         {
-            Goverment.instance.Money -= vaksinPlace[whichVaksinPlace].UpgradePrice;
+            if (Goverment.instance.Money >= vaksinPlace[whichVaksinPlace].UpgradePrice)
+            {
+                Goverment.instance.Money -= vaksinPlace[whichVaksinPlace].UpgradePrice;
+            }
+            else
+            {
+                UIManager.instance.ShowNotifPanel("you don't have enough money");
+                return;
+            }
+            if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         }
-        else
-        {
-            UIManager.instance.ShowNotifPanel("you don't have enough money");
-            return;
-        }
-        if (AudioManager.instance != null) AudioManager.instance.Play("construct");
+        
         vaksinPlace[whichVaksinPlace].UpgradeVaksinPlace();
         UpdateBuyUI(whichVaksinPlace);
         upgradePanel.SetActive(false);

@@ -31,7 +31,7 @@ public class HospitalManager : MonoBehaviour
 
     [SerializeField] private int price = 30;
     //private List<Hospital> hospitals;
-    private Hospital[] hospitals;
+    public Hospital[] hospitals;
     private int totalHospitalizedPeoples;
     private bool[] alreadyBought;
 
@@ -143,6 +143,18 @@ public class HospitalManager : MonoBehaviour
         if (AudioManager.instance != null) AudioManager.instance.Play("tap");
         hospitalBuyPanel.SetActive(show);
     }
+    
+    public void RebuildHospital(int whichHospital, int _level)
+    {
+        if (_level == 0) return;
+
+        BuildHospital(whichHospital, true);
+        for (int i = 0; i < _level - 1; i++)
+        {
+            UpgradeHospital(whichHospital);
+            UpgradeAllAttribute(true);
+        }
+    }
 
     public void BuyHospital(int whichHospital)
     {
@@ -152,16 +164,26 @@ public class HospitalManager : MonoBehaviour
             StartCoroutine(Tutorial.instance.StopHospitalTutorial());
         }
         if (AudioManager.instance != null) AudioManager.instance.Play("tap");
-        if (alreadyBought[whichHospital]) UpgradeHospital(whichHospital);
         
-        if(hospitalPoints[whichHospital].transform.childCount >= 1) return;
 
-        if (Goverment.instance.Money < price)
+        BuildHospital(whichHospital);
+    }
+
+    private void BuildHospital(int whichHospital, bool rebuild = false)
+    {
+        if (alreadyBought[whichHospital]) UpgradeHospital(whichHospital);
+
+        if (hospitalPoints[whichHospital].transform.childCount >= 1) return;
+
+        if (!rebuild)
         {
-            UIManager.instance.ShowNotifPanel("you don't have enough money");
-            return;
+            if (Goverment.instance.Money < price)
+            {
+                UIManager.instance.ShowNotifPanel("you don't have enough money");
+                return;
+            }
+            else Goverment.instance.Money -= price;
         }
-        else Goverment.instance.Money -= price;
 
         if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         buyMark.SetActive(false);
@@ -213,21 +235,25 @@ public class HospitalManager : MonoBehaviour
         hospitalSprites[index].sprite = hospitals[index].GetSprite();
     }
 
-    public void UpgradeAllAttribute()
+    public void UpgradeAllAttribute(bool rebuild = false)
     {
         int whichHospital = currentSelected;
         if (hospitals[whichHospital].CheckMaxLevel()) return;
 
-        if (Goverment.instance.Money >= hospitals[whichHospital].UpgradePrice)
+        if (!rebuild)
         {
-            Goverment.instance.Money -= hospitals[whichHospital].UpgradePrice;
+            if (Goverment.instance.Money >= hospitals[whichHospital].UpgradePrice)
+            {
+                Goverment.instance.Money -= hospitals[whichHospital].UpgradePrice;
+            }
+            else
+            {
+                UIManager.instance.ShowNotifPanel("you don't have enough money");
+                return;
+            }
+            if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         }
-        else
-        {
-            UIManager.instance.ShowNotifPanel("you don't have enough money");
-            return;
-        }
-        if (AudioManager.instance != null) AudioManager.instance.Play("construct");
+
         hospitals[whichHospital].UpgradeHospital();
         UpdateBuyUI(whichHospital);
         upgradePanel.SetActive(false);

@@ -21,6 +21,7 @@ public class LevelData
     private int unvaccinatedPeoples2;
     private int deadPeoples;
     private int transmissionIncreaseRate;
+    private int vaccineStock;
 
     public int TotalCitizen { get => totalCitizen; set => totalCitizen = value; }
     public int TransmissionRate { get => transmissionRate; set => transmissionRate = value; }
@@ -36,6 +37,7 @@ public class LevelData
     public int Day { get => day; set => day = value; }
     public int Money { get => money; set => money = value; }
     public float Awareness { get => awareness; set => awareness = value; }
+    public int VaccineStock { get => vaccineStock; set => vaccineStock = value; }
     #endregion
 
     #region bangunan
@@ -43,6 +45,11 @@ public class LevelData
     //private Pharmacy[] pharmacies;
     //private Officer officer;
     //private VaksinPlace[] vaksinPlaces;
+    public List<AmbulanceData> ambulanceDatas = new List<AmbulanceData>();
+    public List<HospitalData> hospitalDatas = new List<HospitalData>();
+    public OfficerData officerData;
+    public List<PharmacyData> pharmacyDatas = new List<PharmacyData>();
+    public List<VaccinePlaceData> vaccinePlaceDatas = new List<VaccinePlaceData>();
 
     //public Hospital[] Hospitals { get => hospitals; set => hospitals = value; }
     //public Pharmacy[] Pharmacies { get => pharmacies; set => pharmacies = value; }

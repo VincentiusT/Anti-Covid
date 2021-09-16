@@ -26,7 +26,7 @@ public class AmbulanceManager : MonoBehaviour
     [SerializeField] private AmbulanceLevelSystem[] ambulanceLevelSystem;
 
     //private List<Ambulance> ambulances;
-    private Ambulance[] ambulances;
+    public Ambulance[] ambulances;
 
     [SerializeField] private int price = 15;
 
@@ -74,6 +74,18 @@ public class AmbulanceManager : MonoBehaviour
         buyAmbulancePanel.SetActive(show);
     }
 
+    public void RebuildAmbulance(int whichAmbulance, int _level)
+    {
+        if (_level == 0) return;
+
+        CreateNewAmbulance(whichAmbulance, true);
+        for (int i = 0; i < _level - 1; i++)
+        {
+            UpgradeAmbulance(whichAmbulance);
+            UpgradeAllAttribute(true);
+        }
+    }
+
     public void BuyAmbulance(int whichAMbulance)
     {
         if (AudioManager.instance != null) AudioManager.instance.Play("tap");
@@ -87,15 +99,24 @@ public class AmbulanceManager : MonoBehaviour
             UpgradeAmbulance(whichAMbulance);
             return;
         }
-        if (Goverment.instance.Money < price)
+        CreateNewAmbulance(whichAMbulance);
+    }
+
+    private void CreateNewAmbulance(int whichAMbulance, bool isRebuilding = false)
+    {
+        if (!isRebuilding)
         {
-            UIManager.instance.ShowNotifPanel("you don't have enough money");
-            return;
+            if (Goverment.instance.Money < price)
+            {
+                UIManager.instance.ShowNotifPanel("you don't have enough money");
+                return;
+            }
+            else
+            {
+                Goverment.instance.Money -= price;
+            }
         }
-        else
-        {
-            Goverment.instance.Money -= price;
-        }
+        
         GameObject go = Instantiate(ambulanceObj) as GameObject;
         go.GetComponent<Ambulance>().AssignLevelSystem(ambulanceLevelSystem);
         int randSpawnPoint = Random.Range(0, transform.childCount);
@@ -126,7 +147,7 @@ public class AmbulanceManager : MonoBehaviour
         ambulancePriceText[index].text = "Price: " + ambulances[index].UpgradePrice;
     }
 
-    public void UpgradeAllAttribute()
+    public void UpgradeAllAttribute(bool isRebuilding = false)
     {
         int whichAmbulance = currentSelected;
         if (ambulances[whichAmbulance].CheckMaxLevel())
@@ -135,14 +156,17 @@ public class AmbulanceManager : MonoBehaviour
             return;
         }
 
-        if (Goverment.instance.Money >= ambulances[whichAmbulance].UpgradePrice)
+        if (!isRebuilding)
         {
-            Goverment.instance.Money -= ambulances[whichAmbulance].UpgradePrice;
-        }
-        else
-        {
-            UIManager.instance.ShowNotifPanel("you don't have enough money");
-            return;
+            if (Goverment.instance.Money >= ambulances[whichAmbulance].UpgradePrice)
+            {
+                Goverment.instance.Money -= ambulances[whichAmbulance].UpgradePrice;
+            }
+            else
+            {
+                UIManager.instance.ShowNotifPanel("you don't have enough money");
+                return;
+            }
         }
 
         ambulances[whichAmbulance].UpgradePharmacy();

@@ -28,7 +28,7 @@ public class PharmacyManager : MonoBehaviour
 
     private Image[] pharmacySprites;
     [SerializeField] private int price=20;
-    private Pharmacy[] pharmacy;
+    public Pharmacy[] pharmacy;
     private bool[] alreadyBought;
 
     int index = 0;
@@ -72,6 +72,18 @@ public class PharmacyManager : MonoBehaviour
         pharmacyBuyPanel.SetActive(show);
     }
 
+    public void RebuildPharmacy(int whichPharmacy, int _level)
+    {
+        if (_level == 0) return;
+
+        BuildPharmacy(whichPharmacy, true);
+        for (int i = 0; i < _level - 1; i++)
+        {
+            UpgradePharmacy(whichPharmacy);
+            UpgradeAllAttribute(true);
+        }
+    }
+
     public void BuyPharmacy(int whichPharmacy)
     {
         if (AudioManager.instance != null) AudioManager.instance.Play("tap");
@@ -80,17 +92,25 @@ public class PharmacyManager : MonoBehaviour
             UpgradePharmacy(whichPharmacy);
             return;
         }
+        BuildPharmacy(whichPharmacy);
+    }
 
-        if (Goverment.instance.Money < price)
+    private void BuildPharmacy(int whichPharmacy, bool isRebuilding = false)
+    {
+        if (!isRebuilding)
         {
-            UIManager.instance.ShowNotifPanel("you don't have enough money");
-            return;
+            if (Goverment.instance.Money < price)
+            {
+                UIManager.instance.ShowNotifPanel("you don't have enough money");
+                return;
+            }
+            else
+            {
+                Goverment.instance.Money -= price;
+            }
+            if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         }
-        else
-        {
-            Goverment.instance.Money -= price;
-        }
-        if (AudioManager.instance != null) AudioManager.instance.Play("construct");
+
         buyMark.SetActive(false);
         GameObject go = Instantiate(pharmacyObj, pharmacyPoints[whichPharmacy].transform.position, pharmacyPoints[whichPharmacy].transform.rotation) as GameObject;
         go.GetComponent<Pharmacy>().AssignLevelSystem(pharmacyLevelSystem);
@@ -108,7 +128,7 @@ public class PharmacyManager : MonoBehaviour
         {
             go.GetComponent<SpriteRenderer>().sortingOrder = 2;
         }
-        else if(whichPharmacy == 3)
+        else if (whichPharmacy == 3)
         {
             go.GetComponent<SpriteRenderer>().sortingOrder = 3;
         }
@@ -137,22 +157,26 @@ public class PharmacyManager : MonoBehaviour
         pharmacySprites[index].sprite = pharmacy[index].GetSprite();
     }
 
-    public void UpgradeAllAttribute()
+    public void UpgradeAllAttribute(bool isRebuilding = false)
     {
         int whichPharmacy = currentSelected;
         if (pharmacy[whichPharmacy].CheckMaxLevel()) return;
 
         Debug.Log("upgrade price: " + pharmacy[whichPharmacy].UpgradePrice);
-        if (Goverment.instance.Money >= pharmacy[whichPharmacy].UpgradePrice)
+        if (!isRebuilding)
         {
-            Goverment.instance.Money -= pharmacy[whichPharmacy].UpgradePrice;
+            if (Goverment.instance.Money >= pharmacy[whichPharmacy].UpgradePrice)
+            {
+                Goverment.instance.Money -= pharmacy[whichPharmacy].UpgradePrice;
+            }
+            else
+            {
+                UIManager.instance.ShowNotifPanel("you don't have enough money");
+                return;
+            }
+            if (AudioManager.instance != null) AudioManager.instance.Play("construct");
         }
-        else
-        {
-            UIManager.instance.ShowNotifPanel("you don't have enough money");
-            return;
-        }
-        if (AudioManager.instance != null) AudioManager.instance.Play("construct");
+
         pharmacy[whichPharmacy].UpgradePharmacy();
         UpdateBuyUI(whichPharmacy);
         upgradePanel.SetActive(false);
