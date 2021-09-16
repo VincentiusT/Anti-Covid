@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 0
   m_Name: crowdSpawnPoint5
   m_TagString: spawnPointMall
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -42,7 +42,7 @@ GameObject:
   m_Layer: 0
   m_Name: crowdSpawnPoint2
   m_TagString: spawnPointRU
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -72,7 +72,7 @@ GameObject:
   m_Layer: 0
   m_Name: crowdSpawnPoint3
   m_TagString: spawnPointLU
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -102,7 +102,7 @@ GameObject:
   m_Layer: 0
   m_Name: crowdSpawnPoint6
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -175,6 +175,8 @@ MonoBehaviour:
   timeToIncreaseTransmissionRate: 20
   transmissionIncreaseRate: 25
   deathRate: 0.03
+  crowdSpawnTimeMax: 30
+  crowdSpawnTimeMin: 8
   awareness: 0.1
   crowds: []
   crowdObj:
@@ -212,7 +214,7 @@ GameObject:
   m_Layer: 0
   m_Name: crowdSpawnPoint4
   m_TagString: spawnPointRU
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -242,7 +244,7 @@ GameObject:
   m_Layer: 0
   m_Name: crowdSpawnPoint1
   m_TagString: spawnPointLU
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

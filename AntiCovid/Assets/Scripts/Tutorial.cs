@@ -9,8 +9,9 @@ public class Tutorial : MonoBehaviour
     public GameObject canvasTutorial, canvasGeneralTutorial, objectTutorial;
     private bool isBuyTutorial = true;
     private bool isFinished = true;
+    private bool lastTutorial;
 
-    private GameObject tutorialHospitalBuyPanel, tutorialVaccinationBuyPanel, governmentPanel, tutorialLastPanel;
+    private GameObject tutorialHospitalBuyPanel, tutorialVaccinationBuyPanel, governmentPanel, tutorialLastPanel, tutorialHospitalizedPanel;
 
     public bool IsBuyTutorial
     {
@@ -18,9 +19,23 @@ public class Tutorial : MonoBehaviour
         get { return isBuyTutorial; }
     }
 
+    public bool LastTutorial
+    {
+        get { return lastTutorial; }
+    }
+    public void TurnOffLastTutorial()
+    {
+        lastTutorial = false;
+    }
+
     public bool IsFinished
     {
         get { return isFinished; }
+    }
+
+    public GameObject TutorialHospitalize
+    {
+        get { return tutorialHospitalizedPanel; }
     }
 
     private void Awake()
@@ -36,6 +51,7 @@ public class Tutorial : MonoBehaviour
         tutorialVaccinationBuyPanel = canvasGeneralTutorial.transform.Find("Tutorial Vaccination Buy").gameObject;
         governmentPanel = canvasGeneralTutorial.transform.Find("Tutorial Government").gameObject;
         tutorialLastPanel = canvasGeneralTutorial.transform.Find("Tutorial Last").gameObject;
+        tutorialHospitalizedPanel = canvasGeneralTutorial.transform.Find("Tutorial Hospitalize").gameObject;
 
         //PlayerPrefs.SetInt("crowdTutorial", 0);
         PlayerPrefs.SetInt("generalTutorial", 0);
@@ -122,6 +138,7 @@ public class Tutorial : MonoBehaviour
 
     public void TutorialLast()
     {
+        lastTutorial = true;
         tutorialLastPanel.SetActive(true);
     }
 }

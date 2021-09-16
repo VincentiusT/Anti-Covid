@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class TapManager : MonoBehaviour
 {
     public delegate void OnMultiplierChange(float multiplier);
@@ -24,6 +24,12 @@ public class TapManager : MonoBehaviour
     {
         if (AudioManager.instance!=null) AudioManager.instance.Play("tap");
         if (HospitalManager.instance.placeCount() < 1) UIManager.instance.ShowNotifPanel("You don't have any hospital!\nTry to build a hospital first before hospitalize people.");
+
+        if (Tutorial.instance.LastTutorial)
+        {
+            Tutorial.instance.TutorialHospitalize.GetComponent<Button>().onClick.Invoke();
+            Tutorial.instance.TurnOffLastTutorial();
+        }
 
         timeElapsedSinceLastTap = 0f;
         tapAmount++;

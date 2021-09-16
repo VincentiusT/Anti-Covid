@@ -8,6 +8,7 @@ public class Hospital : MonoBehaviour
 {
     public HospitalData hospitalData;
 
+    [SerializeField]private GameObject hospitalEmptyMark;
     //private int level=1;
     //private int capacity = 100;
     [SerializeField] private Slider slider;
@@ -63,7 +64,14 @@ public class Hospital : MonoBehaviour
         {
             hospitalData.restTime -= Time.deltaTime;
         }
-
+        if (hospitalizedPeoples <= 0)
+        {
+            hospitalEmptyMark.SetActive(true);
+        }
+        else
+        {
+            hospitalEmptyMark.SetActive(false);
+        }
         updateSlider();
     }
 
@@ -138,17 +146,19 @@ public class Hospital : MonoBehaviour
 
     private void ShowPeopleText(int total)
     {
-        Vector3 offset = new Vector3(0.1f, 0, 0);
+        int x = Random.Range(-2, 2);
+        int y = Random.Range(-2, 2);
+        Vector3 offset = new Vector3(x/10f, y/10f, 0);
         if (total > 0)
         {
-            GameObject go = Instantiate(peopleIn, transform.position - offset, transform.rotation) as GameObject;
+            GameObject go = Instantiate(peopleIn, transform.position + offset, transform.rotation) as GameObject;
             go.transform.SetParent(transform);
             go.GetComponentInChildren<TextMeshProUGUI>().text = "+" + total;
             Destroy(go, 0.5f);
         }
         else
         {
-            GameObject go = Instantiate(peopleOut, transform.position - offset, transform.rotation) as GameObject;
+            GameObject go = Instantiate(peopleOut, transform.position + offset, transform.rotation) as GameObject;
             go.transform.SetParent(transform);
             go.GetComponentInChildren<TextMeshProUGUI>().text = total.ToString();
             Destroy(go, 0.5f);

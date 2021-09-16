@@ -10,7 +10,15 @@ public class DialogueDatabase : MonoBehaviour
     {
 
         Beginning();
-        
+
+        dialogue.Add("RandomEventTutorial", new string[] {
+            "Good Morning Sir!",
+            "i heard that you're here to fight covid in this city",
+            "that's a really great news",
+            "well.. i hope all the best for you!",
+            "i have some donation for you! not much but.. it may help you to build some facilities here!",
+            "Good luck!!"
+        });
 
         dialogue.Add("RandomEventForeign", new string[] {
             "Good Morning!",
