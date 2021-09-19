@@ -135,6 +135,11 @@ public class PharmacyManager : MonoBehaviour
         //pharmacy.Add(go.GetComponent<Pharmacy>());
         pharmacy[whichPharmacy] = go.GetComponent<Pharmacy>();
 
+        if (pharmacyPoints[whichPharmacy].tag == "left")
+        {
+            go.GetComponent<SpriteRenderer>().flipX = true;
+        }
+
         ShowBuyPharmacyPanel(false);
         alreadyBought[whichPharmacy] = true;
         UpdateBuyUI(whichPharmacy);

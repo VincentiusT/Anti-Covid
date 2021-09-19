@@ -78,7 +78,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.77, y: 0.76}
+  m_Size: {x: 0.82, y: 0.72}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -96,6 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8d4583a602874043be28e814fd7a7b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ambulanceData:
+    level: 0
+    pickUpRate: 0
+    pickUpTime: 0
+    pickUpTimeMax: 0
   ambulanceLevelSystem: []
 --- !u!95 &6272372768419788348
 Animator:

@@ -57,7 +57,6 @@ public class DialogueDatabase : MonoBehaviour
             "Good luck and see you later!"
         });
 
-
     }
 
     void Beginning()
@@ -102,6 +101,12 @@ public class DialogueDatabase : MonoBehaviour
             "Let's go!"
         });
 
+        dialogue.Add("pekanbaru", new string[] {
+            "My job is not over yet",
+            "Now it's time to save this city.. Pekanbaru!",
+            "Let's go!"
+        });
+
         dialogue.Add("surabaya", new string[] {
             "My job is not over yet",
             "Now it's time to save this city.. Surabaya!",
@@ -111,6 +116,12 @@ public class DialogueDatabase : MonoBehaviour
         dialogue.Add("jogja", new string[] {
             "My job is not over yet",
             "Now it's time to save this city.. Jogjakarta!",
+            "Let's go!"
+        });
+
+        dialogue.Add("jakarta", new string[] {
+            "My job is not over yet",
+            "Now it's time to save this city.. Jakarta!",
             "Let's go!"
         });
     }

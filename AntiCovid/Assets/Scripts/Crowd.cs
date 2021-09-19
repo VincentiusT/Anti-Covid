@@ -43,7 +43,7 @@ public class Crowd : MonoBehaviour
             }
         }
         GameObject go = Instantiate(tandaSeru, transform.position, transform.rotation);
-        go.transform.position += new Vector3(0, 0.5f, 0);
+        if(!inMall) go.transform.position += new Vector3(0, 0.5f, 0);
         go.transform.SetParent(transform);
 
         //BUAT TUTORIAL

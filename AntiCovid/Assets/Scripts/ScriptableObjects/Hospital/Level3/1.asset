@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SkinPlayer
   level: 1
   price: 0
-  prices: 
-  capacity: 100
-  outRate: 20
-  outSpeed: 10
-  peopleOutPerTap: 1
+  capacity: 7030
+  outRate: 1054
+  outSpeed: 15
+  peopleOutPerTap: 35
   sprite: {fileID: 21300000, guid: f3a30322ca26d0e4992170b4c2bbff39, type: 3}

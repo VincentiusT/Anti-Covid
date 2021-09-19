@@ -208,6 +208,11 @@ public class HospitalManager : MonoBehaviour
             go.GetComponent<SpriteRenderer>().sortingOrder = 7;
         }
 
+        if(hospitalPoints[whichHospital].tag == "left")
+        {
+            go.GetComponent<SpriteRenderer>().flipX=true;
+        }
+
         hospitals[whichHospital] = go.GetComponent<Hospital>();
 
         ShowBuyHospitalPanel(false);

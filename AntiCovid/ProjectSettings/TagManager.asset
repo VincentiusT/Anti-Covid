@@ -22,6 +22,7 @@ TagManager:
   - spawnPointLU
   - spawnPointRU
   - spawnPointMall
+  - left
   layers:
   - Default
   - TransparentFX

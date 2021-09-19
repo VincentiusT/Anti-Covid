@@ -93,6 +93,8 @@ public class Goverment : MonoBehaviour
         PSBBpriceText.text = "Price: " + PSBBprice.ToString("0");
         lockDownPriceText.text = "Price: " + lockDownPrice.ToString("0");
         socializationPriceText.text = "Price: " + socializationPrice.ToString("0");
+        buyVaccineText.text = "Price: " + vaccinePrice.ToString("0");
+        
         timeToDecreaseLockDownTemp = timeToDecreaseLockDown;
         timeToDecreasePSBBTemp = timeToDecreasePSBB;
         timeToIncreaseSocializationTemp = timeToIncreaseSocialization;
