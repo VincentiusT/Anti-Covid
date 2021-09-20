@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 2
   m_EditorClassIdentifier: 
   sellWhat: hand sanitizer
-  price: 47300
-  transmissionDecreaseRate: 10
+  price: 228000
+  transmissionDecreaseRate: 37
   sprite: {fileID: 21300000, guid: ad0d6bf8a97ea6b4097b171308573c83, type: 3}

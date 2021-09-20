@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 3
   m_EditorClassIdentifier: 
   level: 3
-  price: 2700
-  pickupRate: 40
-  pickupTime: 10
-  pickupTimeMax: 25
+  price: 52000
+  pickupRate: 1475
+  pickupTime: 5
+  pickupTimeMax: 20

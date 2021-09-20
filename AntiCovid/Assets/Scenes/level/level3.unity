@@ -9323,7 +9323,7 @@ PrefabInstance:
       objectReference: {fileID: 346901080}
     - target: {fileID: 8053372234729375061, guid: 8ddd9a3ccae1f9a49b9bb009f203e6df, type: 3}
       propertyPath: PSBBprice
-      value: 1620
+      value: 80149
       objectReference: {fileID: 0}
     - target: {fileID: 8053372234729375061, guid: 8ddd9a3ccae1f9a49b9bb009f203e6df, type: 3}
       propertyPath: moneyText
@@ -9347,7 +9347,7 @@ PrefabInstance:
       objectReference: {fileID: 726619237}
     - target: {fileID: 8053372234729375061, guid: 8ddd9a3ccae1f9a49b9bb009f203e6df, type: 3}
       propertyPath: lockDownPrice
-      value: 2700
+      value: 113368
       objectReference: {fileID: 0}
     - target: {fileID: 8053372234729375061, guid: 8ddd9a3ccae1f9a49b9bb009f203e6df, type: 3}
       propertyPath: buyVaksinPanel
@@ -9362,9 +9362,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7941377133326356841}
     - target: {fileID: 8053372234729375061, guid: 8ddd9a3ccae1f9a49b9bb009f203e6df, type: 3}
+      propertyPath: moneyBoostPrice
+      value: 63000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053372234729375061, guid: 8ddd9a3ccae1f9a49b9bb009f203e6df, type: 3}
       propertyPath: socializationPanel
       value: 
       objectReference: {fileID: 1622481173}
+    - target: {fileID: 8053372234729375061, guid: 8ddd9a3ccae1f9a49b9bb009f203e6df, type: 3}
+      propertyPath: socializationPrice
+      value: 90694
+      objectReference: {fileID: 0}
     - target: {fileID: 8053372234729375062, guid: 8ddd9a3ccae1f9a49b9bb009f203e6df, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].x
       value: -0.9784275

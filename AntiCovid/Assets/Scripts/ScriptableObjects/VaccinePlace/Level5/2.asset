@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 2
   m_EditorClassIdentifier: 
   level: 2
-  price: 4900
-  vaksinRate: 10
-  vaksinTime: 8
+  price: 15000
+  vaksinRate: 1506
+  vaksinTime: 10

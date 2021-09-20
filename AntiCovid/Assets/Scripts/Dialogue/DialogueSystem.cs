@@ -15,7 +15,7 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] private Sprite defaultCharacterSprite;
     private DialogueDatabase dialogueDatabase;
     private int paragraphIndex = 0;
-
+    private bool onlyOnce;
     private bool isDoneShowing; 
 
     private void Start()
@@ -55,7 +55,14 @@ public class DialogueSystem : MonoBehaviour
                 Time.timeScale = 1f;
                 Tutorial.instance.StartTutorial();
                 mainPanel.SetActive(true);
-                if (extraPanel != null) extraPanel.SetActive(true);
+                if (!onlyOnce)
+                {
+                    if (extraPanel != null)
+                    {
+                        extraPanel.SetActive(true);
+                        onlyOnce = true;
+                    }
+                }
                 return;
             }
             ShowNextSentence();

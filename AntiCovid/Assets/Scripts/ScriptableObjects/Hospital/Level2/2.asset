@@ -16,6 +16,6 @@ MonoBehaviour:
   price: 84500
   capacity: 52000
   outRate: 4550
-  outSpeed: 10
+  outSpeed: 35
   peopleOutPerTap: 156
   sprite: {fileID: 21300000, guid: d865cb1db0dc2114c84b7843bf397f45, type: 3}

@@ -34,8 +34,8 @@ public class Goverment : MonoBehaviour
     private float timeToGetMoney = 1f;
     private float timeToGetMoneyTemp;
 
-    private float PSBBdecreaseRate = 0.2f;
-    private float lockDownDecreaseRate = 0.5f;
+    private float PSBBdecreaseRate = 0.15f;
+    private float lockDownDecreaseRate = 0.35f;
     private float socializationIncreaseRate = 0.1f;
     private float moneyBoostIncreaseRate = 0.1f;
 
@@ -51,8 +51,8 @@ public class Goverment : MonoBehaviour
     private int socializationDuration = 5;
     private int moneyBoostDuration = 3;
 
-    private float timeToDecreasePSBB = 15f, timeToDecreasePSBBTemp;
-    private float timeToDecreaseLockDown = 15f, timeToDecreaseLockDownTemp;
+    private float timeToDecreasePSBB = 25f, timeToDecreasePSBBTemp;
+    private float timeToDecreaseLockDown = 25f, timeToDecreaseLockDownTemp;
     private float timeToIncreaseSocialization = 15f, timeToIncreaseSocializationTemp;
 
     private bool isPSBB, isLockDown, isSocialization, isMoneyBoost;

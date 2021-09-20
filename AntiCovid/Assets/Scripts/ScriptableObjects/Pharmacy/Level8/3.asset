@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 3
   m_EditorClassIdentifier: 
   sellWhat: drugs
-  price: 2100
-  transmissionDecreaseRate: 20
+  price: 25000
+  transmissionDecreaseRate: 30
   sprite: {fileID: 21300000, guid: 83bc656600e638743ad64e075f6003ed, type: 3}
