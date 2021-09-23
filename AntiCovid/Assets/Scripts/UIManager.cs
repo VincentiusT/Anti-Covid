@@ -178,4 +178,9 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
     }
+
+    public void NextLevel()
+    {
+        GameManager.instance.NextLevel();
+    }
 }

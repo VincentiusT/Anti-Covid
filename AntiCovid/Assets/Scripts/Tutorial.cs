@@ -87,10 +87,10 @@ public class Tutorial : MonoBehaviour
         if (PlayerPrefs.GetInt("crowdTutorial") == 1) return;
 
         PlayerPrefs.SetInt("crowdTutorial", 1);
-        canvasTutorial.SetActive(true);
-        GameObject tutorialPanelGO = canvasTutorial.transform.Find("Tutorial Crowd").gameObject;
-        tutorialPanelGO.SetActive(true);
-        tutorialPanelGO.transform.position = crowdPosition.localPosition;
+        //canvasTutorial.SetActive(true);
+        //GameObject tutorialPanelGO = canvasTutorial.transform.Find("Tutorial Crowd").gameObject;
+        //tutorialPanelGO.SetActive(true);
+        //tutorialPanelGO.transform.position = crowdPosition.localPosition;
         //CrowdTutorialPanel.SetActive(true);
     }
 

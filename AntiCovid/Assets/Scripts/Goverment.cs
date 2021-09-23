@@ -292,7 +292,7 @@ public class Goverment : MonoBehaviour
             return;
         }
         else money -= vaccinePrice;
-
+        if (AudioManager.instance != null) AudioManager.instance.Play("tap");
         VaksinManager.instance.VaccineStock += vaccineStock;
         if (Tutorial.instance.IsBuyTutorial)
         {
