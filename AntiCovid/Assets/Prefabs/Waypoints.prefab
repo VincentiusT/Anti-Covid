@@ -509,7 +509,6 @@ Transform:
   - {fileID: 9131916145978405199}
   - {fileID: 9131916146069438333}
   - {fileID: 9131916146827277108}
-  - {fileID: 9131916147804778306}
   m_Father: {fileID: 9131916147046629071}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -714,7 +713,7 @@ MonoBehaviour:
     arahJalan: 0
     orderLayer: 0
   neighbourWaypointTwo:
-    waypoint: {fileID: 9131916147804778307}
+    waypoint: {fileID: 0}
     arahJalan: 1
     orderLayer: 0
 --- !u!1 &9131916146930631587
@@ -1091,54 +1090,3 @@ MonoBehaviour:
     waypoint: {fileID: 0}
     arahJalan: 0
     orderLayer: 5
---- !u!1 &9131916147804778305
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9131916147804778306}
-  - component: {fileID: 9131916147804778307}
-  m_Layer: 0
-  m_Name: Waypoint6
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &9131916147804778306
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9131916147804778305}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.527, y: 4.728, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 9131916146525478257}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9131916147804778307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9131916147804778305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07e36d7e395b7f74abf69a72716155e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  neighbourWaypointOne:
-    waypoint: {fileID: 9131916146827277107}
-    arahJalan: 2
-    orderLayer: 0
-  neighbourWaypointTwo:
-    waypoint: {fileID: 0}
-    arahJalan: 0
-    orderLayer: 0

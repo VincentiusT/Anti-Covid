@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
 
     public void Home()
     {
+        Inventory.instance.Save();
         SceneManager.LoadScene("menu");
     }
 

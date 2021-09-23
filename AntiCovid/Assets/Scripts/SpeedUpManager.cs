@@ -27,7 +27,7 @@ public class SpeedUpManager : MonoBehaviour
 
     void ChangeSpeedUpMultiplier()
     {
-        Debug.Log("change speedup time to: " + timeMultiplier);
+        //Debug.Log("change speedup time to: " + timeMultiplier);
         Time.timeScale = timeMultiplier;
     }
 

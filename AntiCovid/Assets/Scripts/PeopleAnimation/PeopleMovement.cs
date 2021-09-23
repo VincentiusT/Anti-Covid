@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,7 +29,7 @@ public class PeopleMovement : MonoBehaviour
 
             //Debug.Log("Heading to " + nextWaypointWrapper.waypoint.transform.name);
 
-            StartCoroutine(StartMoving(nextWaypointWrapper.waypoint, nextWaypointWrapper.arahJalan, nextWaypointWrapper.orderLayer));
+            StartCoroutine(StartMoving(nextWaypointWrapper.waypoint, nextWaypointWrapper.orderLayer));
 
             lastWaypoint = nextWaypointWrapper.waypoint;
         }
@@ -40,9 +39,10 @@ public class PeopleMovement : MonoBehaviour
         }
     }
 
-    private IEnumerator StartMoving(Waypoint waypoint, ArahJalan arahJalan, int orderLayer)
+    private IEnumerator StartMoving(Waypoint waypoint, int orderLayer)
     {
         //TODO: set animator to coresponding animation
+        ArahJalan arahJalan = DetermineArahJalan(waypoint);
         PlayAnimation(arahJalan);
         GetComponent<SpriteRenderer>().sortingOrder = orderLayer;
 
@@ -65,6 +65,17 @@ public class PeopleMovement : MonoBehaviour
             yield return new WaitForSeconds(3f);
 
         SearchForNextWaypoint();
+    }
+
+    private ArahJalan DetermineArahJalan(Waypoint waypoint)
+    {
+        Vector2 direction = waypoint.transform.position - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        if (angle >= 0f && angle <= 90f) return ArahJalan.KANAN_ATAS;
+        else if (angle >= 90f && angle <= 180f) return ArahJalan.KIRI_ATAS;
+        else if (angle < 0f && angle >= -90f) return ArahJalan.KANAN_BAWAH;
+        else return ArahJalan.KIRI_BAWAH;
     }
 
     private void PlayAnimation(ArahJalan arahJalan)

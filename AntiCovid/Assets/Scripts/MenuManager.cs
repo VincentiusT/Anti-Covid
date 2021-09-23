@@ -28,4 +28,9 @@ public class MenuManager : MonoBehaviour
         AudioManager.instance.Play("tap");
         Application.Quit();
     }
+
+    public void OpenCovidWebsite()
+    {
+        Application.OpenURL("https://covid19.who.int/");
+    }
 }

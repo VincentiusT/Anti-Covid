@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Inventory : MonoBehaviour
 {
+    public static Inventory instance;
+
     private bool load = true;
 
     public LevelData[] levelData;
@@ -13,12 +15,13 @@ public class Inventory : MonoBehaviour
 
     private void Awake()
     {
+        if(instance == null)
+        {
+            Debug.Log("set instance");
+            instance = this;
+        }
+
         levelData = new LevelData[SceneManager.sceneCountInBuildSettings - 2];
-        //if (load)
-        //{
-        //    Load();
-        //    load = false;
-        //}
     }
 
     private void Start()
