@@ -98,7 +98,7 @@ public class Inventory : MonoBehaviour
         LevelData thisLevelData = levelData[GetSceneIndex()];
         if (thisLevelData == null) return;
 
-        Debug.Log(thisLevelData.Money);
+        //Debug.Log(thisLevelData.Money);
         dayManager.setDay(thisLevelData.Day);
         Goverment.instance.Money = thisLevelData.Money;
         Citizen.instance.TotalCitizen = thisLevelData.TotalCitizen;

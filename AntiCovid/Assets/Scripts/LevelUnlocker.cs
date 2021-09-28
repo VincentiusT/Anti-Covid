@@ -13,7 +13,7 @@ public class LevelUnlocker : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetInt("MaxLevel", 2);
+        //PlayerPrefs.SetInt("MaxLevel", 0);
         //    if(PlayerPrefs.GetInt("AnimatedLevelUnlock") == 0)
         //    {
         //        PlayerPrefs.SetInt("AnimatedLevelUnlock", 1);
@@ -41,7 +41,7 @@ public class LevelUnlocker : MonoBehaviour
 
     private void AnimateLastUnlockedLevel()
     {
-        Debug.Log("ANIMASI WOI");
+        //Debug.Log("ANIMASI WOI");
         Transform targetLevelPanel = levelContainer.transform.GetChild(maxLevelNow);
         Vector2 levelPositionInContainer = (Vector2)scrollRect.transform.InverseTransformPoint(levelContainer.transform.position) - (Vector2)scrollRect.transform.InverseTransformPoint(targetLevelPanel.transform.position);
         StartCoroutine(MoveLevelContainerToUnlockingLevel(levelPositionInContainer, targetLevelPanel));
