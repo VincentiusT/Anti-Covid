@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class VaksinPlace : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class VaksinPlace : MonoBehaviour
     //private int vaksinRate = 5; //people per vaksinTime
 
     [SerializeField] private VaccineLevelSystem[] vaccineLevelSystem;
-
+    [SerializeField] private GameObject textPopup;
     //private float vaksinTime = 10;
     private float vaksinTimeTemp;
 
@@ -46,6 +47,20 @@ public class VaksinPlace : MonoBehaviour
     void Start()
     {
 
+    }
+
+    private void ShowVaccinatedPeopleInText(int total)
+    {
+        if (total <= 0) return;
+        //int x = Random.Range(-2, 2);
+        //int y = Random.Range(-2, 2);
+        //Vector3 offset = new Vector3(x / 10f, y / 10f, 0);
+
+        GameObject go = Instantiate(textPopup, transform.position , transform.rotation) as GameObject;
+        go.transform.SetParent(transform);
+        go.GetComponentInChildren<TextMeshProUGUI>().text = "+" + total;
+        Destroy(go, 0.5f);
+        
     }
 
     void Update()
@@ -100,10 +115,12 @@ public class VaksinPlace : MonoBehaviour
     {
         if(VaksinManager.instance.VaccineStock < people)
         {
+            ShowVaccinatedPeopleInText(VaksinManager.instance.VaccineStock);
             Citizen.instance.GetFirstVaccine(VaksinManager.instance.VaccineStock);
             VaksinManager.instance.VaccineStock = 0;
             return;
         }
+        ShowVaccinatedPeopleInText(people);
         Citizen.instance.GetFirstVaccine(people);
         VaksinManager.instance.VaccineStock -= people;
 
@@ -113,10 +130,12 @@ public class VaksinPlace : MonoBehaviour
     {
         if (VaksinManager.instance.VaccineStock < people)
         {
+            ShowVaccinatedPeopleInText(VaksinManager.instance.VaccineStock);
             Citizen.instance.GetSeccondVaccine(VaksinManager.instance.VaccineStock);
             VaksinManager.instance.VaccineStock = 0;
             return;
         }
+        ShowVaccinatedPeopleInText(people);
         Citizen.instance.GetSeccondVaccine(people);
         VaksinManager.instance.VaccineStock -= people;
 

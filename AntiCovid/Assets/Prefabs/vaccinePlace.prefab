@@ -95,7 +95,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4c9a453cb6cb146abf853b03f28805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vaccinePlaceData:
+    level: 0
+    vaksinRate: 0
+    vaksinTime: 0
   vaccineLevelSystem:
   - {fileID: 11400000, guid: bc7730f4e68045749a46ba5c44118173, type: 2}
   - {fileID: 11400000, guid: 5d8981e361191bd4791cef2210f6b641, type: 2}
   - {fileID: 11400000, guid: 9984b3eeae230cc498b5f58df984e2bb, type: 2}
+  textPopup: {fileID: 6885468946335693797, guid: c58e9d7241c60824c817ee90c2d6d824, type: 3}

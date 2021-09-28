@@ -6,6 +6,6 @@ public class DebugMoney : MonoBehaviour
 {
     public void IncreaseDebugMoney()
     {
-        Goverment.instance.Money += 10000;
+        Goverment.instance.Money += 100000;
     }
 }

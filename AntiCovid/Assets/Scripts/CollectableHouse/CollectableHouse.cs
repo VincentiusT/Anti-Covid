@@ -44,6 +44,7 @@ public class CollectableHouse : MonoBehaviour
     {
         if (isReadyToBeCollected)
         {
+            if (AudioManager.instance != null) AudioManager.instance.Play("coin");
             Goverment.instance.Money += RandomizeMoneyGet();
             ResetHouseAttribute();
             SetHouseNotification(false);

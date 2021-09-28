@@ -19,7 +19,7 @@ public class GraphDataFeeder : MonoBehaviour
         {
             yield return new WaitForSeconds(timeToFeedToGraph);
             windowGraphs[0].AddGraphData(Citizen.instance.SickPeoples);
-            windowGraphs[1].AddGraphData(Citizen.instance.HealthyPeoples);
+            windowGraphs[1].AddGraphData(Citizen.instance.HealthyPeoples + Citizen.instance.VaksinedPeoples + Citizen.instance.VaksinedPeoples2);
             windowGraphs[2].AddGraphData(Citizen.instance.HospitalizedPeoples);
         }
     }

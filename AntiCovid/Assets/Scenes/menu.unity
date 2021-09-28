@@ -1559,12 +1559,12 @@ RectTransform:
   m_Children:
   - {fileID: 1714630459}
   m_Father: {fileID: 2117497633}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -625}
-  m_SizeDelta: {x: 188.68, y: 67.1974}
+  m_AnchoredPosition: {x: 0, y: -109.89998}
+  m_SizeDelta: {x: 254.721, y: 72.813}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &712966822
 MonoBehaviour:
@@ -2820,11 +2820,11 @@ RectTransform:
   m_Father: {fileID: 1578530125}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 711}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 727.4875}
   m_SizeDelta: {x: 510.88, y: 78.282}
-  m_Pivot: {x: 0.5, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1203820850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2953,7 +2953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: theme
-    clip: {fileID: 8300000, guid: 822f175efe2c4a24ba97b18845ab4744, type: 3}
+    clip: {fileID: 8300000, guid: bc0bd393be3160241814f78d08112cfb, type: 3}
     volume: 0.222
     pitch: 1
     source: {fileID: 0}
@@ -2988,6 +2988,12 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 1
+  - name: coin
+    clip: {fileID: 8300000, guid: c656cab0a81b9b24789a069bf9dbe7f0, type: 3}
+    volume: 0.93
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
   alreadyMuted: 0
   muteAll: 0
 --- !u!4 &1247380995
@@ -3450,8 +3456,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 33.05
+  m_fontSizeBase: 33.05
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3716,7 +3722,7 @@ RectTransform:
   m_Children:
   - {fileID: 1819213103}
   m_Father: {fileID: 2117497633}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4377,7 +4383,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -109.89998}
+  m_AnchoredPosition: {x: 0, y: -212}
   m_SizeDelta: {x: 254.721, y: 72.813}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1886829996
@@ -4708,8 +4714,8 @@ RectTransform:
   - {fileID: 1176458607}
   - {fileID: 1195098489}
   - {fileID: 34060258}
-  - {fileID: 1743975117}
   - {fileID: 712966821}
+  - {fileID: 1743975117}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
