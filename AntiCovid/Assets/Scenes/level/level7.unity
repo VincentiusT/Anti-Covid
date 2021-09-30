@@ -4687,7 +4687,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 82832167190512662, guid: 35acec6f071e5a2409b35efb7234f72b, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1394524234465663981, guid: 35acec6f071e5a2409b35efb7234f72b, type: 3}
       propertyPath: m_SortingOrder
@@ -9839,7 +9839,7 @@ PrefabInstance:
       objectReference: {fileID: 792622615}
     - target: {fileID: 1602058783593990231, guid: 4e255555c60cb65468a2296a9912fc89, type: 3}
       propertyPath: transmissionIncreaseRate
-      value: 160
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 1602058783593990231, guid: 4e255555c60cb65468a2296a9912fc89, type: 3}
       propertyPath: transmissionIncreaseRateText

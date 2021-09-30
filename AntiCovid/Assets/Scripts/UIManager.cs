@@ -151,8 +151,14 @@ public class UIManager : MonoBehaviour
 
     public void UpdateVaccineStockUI(int stock)
     {
-
-        vaccineStockText.text = stock.ToString("0");
+        if (stock < 10)
+        {
+            vaccineStockText.text = stock.ToString("0");
+        }
+        else
+        {
+            vaccineStockText.text = stock.ToString("#,#");
+        }
     }
     public void ShowNotifPanel(string text)
     {

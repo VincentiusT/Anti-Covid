@@ -11,6 +11,7 @@ public class SpeedUpManager : MonoBehaviour
 
     public void SpeedUpButtonPress(TextMeshProUGUI buttonText)
     {
+        if (AudioManager.instance != null) AudioManager.instance.Play("speedup");
         indexMultiplier++;
         indexMultiplier %= availableMultiplier.Length;
         timeMultiplier = availableMultiplier[indexMultiplier];

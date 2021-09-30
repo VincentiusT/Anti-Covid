@@ -2838,7 +2838,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1379416556952288131, guid: 17aa6ec303034004a95ef7f4c19c1d8d, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2454676969161310810, guid: 17aa6ec303034004a95ef7f4c19c1d8d, type: 3}
       propertyPath: m_Name
@@ -7821,6 +7821,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 82832167190512662, guid: 35acec6f071e5a2409b35efb7234f72b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2293646952973026911, guid: 35acec6f071e5a2409b35efb7234f72b, type: 3}
       propertyPath: m_Name
       value: Building2 (1)

@@ -6354,6 +6354,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 374437105}
+    - target: {fileID: 2098590331, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -9.416016
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098590331, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -86.02612
+      objectReference: {fileID: 0}
     - target: {fileID: 1852301168977456787, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -6361,6 +6369,10 @@ PrefabInstance:
     - target: {fileID: 1852301168977456787, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MoneyBoost
+      objectReference: {fileID: 0}
+    - target: {fileID: 2801870513880907919, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -41.77246
       objectReference: {fileID: 0}
     - target: {fileID: 4913469561225845121, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
       propertyPath: m_IsActive
@@ -6372,6 +6384,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4913469563251297231, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306642077503684800, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6884691658015030296, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
@@ -6590,6 +6606,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 826509205}
+    - target: {fileID: 7941377132198647877, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 6.8999023
+      objectReference: {fileID: 0}
     - target: {fileID: 7941377132365227234, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -6626,6 +6646,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 826509205}
+    - target: {fileID: 7941377133518334412, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -3.7001953
+      objectReference: {fileID: 0}
     - target: {fileID: 7941377133518334419, guid: 88ca05200a577024fa0e9fabca797983, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

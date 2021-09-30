@@ -211,6 +211,7 @@ public class HospitalManager : MonoBehaviour
         if(hospitalPoints[whichHospital].tag == "left")
         {
             go.GetComponent<SpriteRenderer>().flipX=true;
+            go.GetComponentInChildren<RectTransform>().position += Vector3.right*1f;
         }
 
         hospitals[whichHospital] = go.GetComponent<Hospital>();
