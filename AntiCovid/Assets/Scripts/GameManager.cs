@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
         }
         Time.timeScale = 0f;
         winPanel.SetActive(true);
+        
+        Inventory.instance.Save(true);
     }
 
     public void Restart()
@@ -54,7 +56,7 @@ public class GameManager : MonoBehaviour
 
     public void Home()
     {
-        Inventory.instance.Save();
+        Inventory.instance.Save(Citizen.instance.VaksinedPeoples2 >= Citizen.instance.TotalCitizen * 0.75);
         SceneManager.LoadScene("menu");
     }
 

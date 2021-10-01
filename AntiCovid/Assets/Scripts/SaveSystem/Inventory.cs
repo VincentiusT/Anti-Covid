@@ -47,9 +47,12 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void Save()
+    public void Save(bool isResetWin = false)
     {
-        levelData[GetSceneIndex()] = GetLevelDataNow();
+        if (isResetWin)
+            levelData[GetSceneIndex()] = null;
+        else
+            levelData[GetSceneIndex()] = GetLevelDataNow();
         SaveSystem.SavePlayer(this);
     }
 
