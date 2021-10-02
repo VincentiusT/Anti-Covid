@@ -45,7 +45,7 @@ public class InputManager : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             //if (tapTimer > 0f)
-            if(Vector2.Distance(firstMousePosition, mainCamera.WorldToScreenPoint(Input.mousePosition)) < 0.5f)
+            if(Vector2.Distance(firstMousePosition, mainCamera.WorldToScreenPoint(Input.mousePosition)) < 5000f)
             {
                 if (AudioManager.instance != null) AudioManager.instance.Play("tap");
 
